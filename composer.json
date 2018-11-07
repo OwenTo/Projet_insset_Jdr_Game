@@ -19,7 +19,8 @@
         "symfony/validator": "*",
         "symfony/web-profiler-bundle": "*",
         "symfony/webpack-encore-pack": "^1.0",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "symfony/dotenv": "*",
