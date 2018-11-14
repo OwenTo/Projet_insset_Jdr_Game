@@ -1,13 +1,16 @@
 var Encore = require('@symfony/webpack-encore');
+// const CopyWebpackPlugin = require('copy-webpack-plugin'); // this line tell to webpack to use the plugin
+
 
 Encore
-    // directory where compiled assets will be stored
+// directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
-
+    .addStyleEntry('css/app', './assets/css/app.css')
+    // .addStyleEntry('js/app', './assets/js/app.js')
     /*
      * ENTRY CONFIG
      *
@@ -17,9 +20,13 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('js/app', './assets/js/app.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
+    // .addPlugin(new CopyWebpackPlugin([
+    //     { from: './assets/images', to: 'images' }
+    // ]))
+
 
     /*
      * FEATURE CONFIG
@@ -35,13 +42,15 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+// uncomment if you use TypeScript
+//.enableTypeScriptLoader()
 
-    // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
+// uncomment if you're having problems with a jQuery plugin
+//.autoProvidejQuery()
+
 ;
 
 module.exports = Encore.getWebpackConfig();
+// console.log(module.exports);
