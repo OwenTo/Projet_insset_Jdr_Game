@@ -1,0 +1,23 @@
+
+
+
+{% extends '/base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+
+   <h1>Profil</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        <p> Nom d'utilisateur :{{ app.user.username }}</p>
+        <p> Votre E-mail :{{ app.user.email }}</p>
+        {#<p> vous avez utiliser : {{ total }}  Mo sur {{ app.user.stockage.stockage|number_format }} Mo</p>#}
+        <p> {{ message }} </p>
+<p>{{ user.memoireActuelle }}</p>
+    {% else %}
+
+        <p>vous n'avais  pas accée a cette page </p>
+    {% endif %}
+{% endblock %}
