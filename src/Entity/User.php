@@ -32,7 +32,6 @@ class User implements UserInterface
      */
     private $email;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="4",minMessage="votre mot de passe doit au moins faire 8 caractères")
@@ -45,13 +44,38 @@ class User implements UserInterface
      */
     public $confirm_password;
 
-
-
-
     /**
      * @ORM\Column(type="array")
      */
     private $roles = [];
+
+
+
+
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirm_password;
+    }
+
+    /**
+     * @param mixed $confirm_password
+     * @return User
+     */
+    public function setConfirmPassword($confirm_password)
+    {
+        $this->confirm_password = $confirm_password;
+        return $this;
+    }
+
+
+
 
 
     public function getId(): ?int
@@ -95,28 +119,22 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
     public function __construct()
     {
         $this->roles[]="ROLE_USER";
-    }
 
-    /**
-     * Returns the roles granted to the user.
-     *
-     *     public function getRoles()
-     *     {
-     *         return array('ROLE_USER');
-     *     }
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    public function getRoles()
-    {
-        // TODO: Implement getRoles() method.
     }
 
     /**
@@ -141,4 +159,6 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+
 }

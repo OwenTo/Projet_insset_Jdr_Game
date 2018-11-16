@@ -4,21 +4,18 @@
 
 {% block body %}
 
-    {#{% if  reponse is defined %}#}
-        {#<div class="reponse" style=" "><p>{{ reponse }}</p></div>#}
-    {#{% endif %}#}
+    {% if  reponse is defined %}
+        <div class="reponse" style=" "><p>{{ reponse }}</p></div>
+    {% endif %}
 
-    {#<h1> hello</h1>#}
+    <h1> hello</h1>
 
-    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        {#<p><a href="{{ path('infoUser',{'id':app.user.id}) }}">Voir Profil</a></p>#}
-        {#<p><a href="{{ path('listUserFolder',{'id':app.user.id}) }}">liste Fichier</a></p>#}
-        {#<a href="#">Faire une demande</a>#}
-{#<p>{{ app.user.memoireActuelle }}</p>#}
+      <p>{{ app.user.username }}</p>
 
 
-    {#{% else %}#}
+    {% else %}
 
         <p>Bienvenu sur un tout nouveau site de Stockage</p>
         {#<p>pour beneficier de ce cloud , veulez-vous inscrire ici <a href="{{ path('registration') }}  ">ici</a></p>#}
@@ -35,7 +32,7 @@
         adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni maiores
         minima
         molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
-    {#{% endif %}#}
+    {% endif %}
 
-    <button class="btn btn-danger badge-pill">bouton</button>
+    <button class="btn btn-danger ">bouton</button>
 {% endblock %}
