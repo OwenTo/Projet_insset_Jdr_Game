@@ -1,38 +1,61 @@
 {% extends '/base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
 
     {% if  reponse is defined %}
-        <div class="reponse" style=" "><p>{{ reponse }}</p></div>
+        <div class="alert alert-success" style=" "><p>{{ reponse }}</p></div>
     {% endif %}
 
-    <h1> hello</h1>
-
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-      <p>{{ app.user.username }}</p>
-
-
-    {% else %}
-
-        <p>Bienvenu sur un tout nouveau site de Stockage</p>
-        {#<p>pour beneficier de ce cloud , veulez-vous inscrire ici <a href="{{ path('registration') }}  ">ici</a></p>#}
-        <p class="col-lg-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id inventore,
-            itaque
-            iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
-            voluptatum.</p><p>
-        Ab ad amet, architecto autem culpa deleniti eveniet ex in magnam maiores minus nesciunt nihil odit officiis
-        ratione
-        reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p><p>Accusamus accusantium
-        dolorem ducimus esse non quibusdam, reiciendis repudiandae soluta suscipit voluptatem! Ad aut consequatur, dolor
-        ea
-        esse, eveniet exercitationem ipsam iusto labore maiores minima quisquam, quo suscipit tempore voluptate.</p><p>A
-        adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni maiores
-        minima
-        molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
+    {% if app.flashes is defined %}
+        {% for message in app.flashes('success') %}
+            <div class=" alert alert-success">{{ message }}
+            </div>
+        {% endfor %}
     {% endif %}
 
-    <button class="btn btn-danger ">bouton</button>
+    <div class="container-fuild   mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+        <div class=" centerText  col-12  card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {#{% include 'user/homeUser.html.twig' %}#}
+
+
+                <p>test</p>
+
+
+                {#{% include'folder/listeFolder.html.twig' %}#}
+            {% else %}
+
+                <p>Bienvenu sur un tout nouveau site de Stockage</p>
+                <p>pour beneficier de ce cloud , veulez-vous inscrire
+                    <a href="{{ path('registration') }}">ici</a></p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id
+                    inventore,
+                    itaque
+                    iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
+                    voluptatum.</p><p>
+                Ab ad amet, architecto autem culpa deleniti eveniet ex in magnam maiores minus nesciunt nihil odit
+                officiis
+                ratione
+                reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p><p>Accusamus
+                accusantium
+                dolorem ducimus esse non quibusdam, reiciendis repudiandae soluta suscipit voluptatem! Ad aut
+                consequatur,
+                dolor
+                ea
+                esse, eveniet exercitationem ipsam iusto labore maiores minima quisquam, quo suscipit tempore
+                voluptate.</p>
+                <p>A
+                    adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni
+                    maiores
+                    minima
+                    molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
