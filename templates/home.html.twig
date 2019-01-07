@@ -16,33 +16,35 @@
     {% endif %}
 
     <div class="container-fuild   mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+
+
+        {% if   is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        {% include 'user/homeUser.html.twig' %}
+
+
+
+
+
+        {#{% include'folder/listeFolder.html.twig' %}#}
+        {% else %}
         <div class=" centerText  col-12  card  shadow p-3 mb-5  rounded"
              style="margin-top: 10px; background-color: beige;">
+            <p>Bienvenu sur un tout nouveau site de Stockage</p>
+            <p>pour beneficier de ce cloud , veulez-vous inscrire
+                <a href="{{ path('registration') }}">ici</a></p>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-                {#{% include 'user/homeUser.html.twig' %}#}
-
-
-                <p>test</p>
-
-
-                {#{% include'folder/listeFolder.html.twig' %}#}
-            {% else %}
-
-                <p>Bienvenu sur un tout nouveau site de Stockage</p>
-                <p>pour beneficier de ce cloud , veulez-vous inscrire
-                    <a href="{{ path('registration') }}">ici</a></p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id
-                    inventore,
-                    itaque
-                    iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
-                    voluptatum.</p><p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id
+                inventore,
+                itaque
+                iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
+                voluptatum.</p>
+            <p>
                 Ab ad amet, architecto autem culpa deleniti eveniet ex in magnam maiores minus nesciunt nihil odit
                 officiis
                 ratione
-                reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p><p>Accusamus
+                reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p>
+            <p>Accusamus
                 accusantium
                 dolorem ducimus esse non quibusdam, reiciendis repudiandae soluta suscipit voluptatem! Ad aut
                 consequatur,
@@ -50,12 +52,123 @@
                 ea
                 esse, eveniet exercitationem ipsam iusto labore maiores minima quisquam, quo suscipit tempore
                 voluptate.</p>
-                <p>A
-                    adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni
-                    maiores
-                    minima
-                    molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
+            <p>A
+                adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni
+                maiores
+                minima
+                molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
+
+
+
+            <div class="row">
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Magie
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="#"></a>Liste des magies</li>
+                                        <li><a href="#"></a>Catégorie des magies</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Talents
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="#"></a>Liste des talents</li>
+                                        <li><a href="#"></a>Catégorie des talents</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Armure
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="#"></a>Liste des talents</li>
+                                        <li><a href="#"></a>Catégorie des talents</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Armes
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="#"></a>Liste des talents</li>
+                                        <li><a href="#"></a>Catégorie des talents</li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
             {% endif %}
         </div>
+
+
+
+
+
+
     </div>
+
 {% endblock %}
