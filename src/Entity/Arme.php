@@ -12,7 +12,7 @@ class Arme extends Item
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     private $degat;
 
@@ -26,9 +26,14 @@ class Arme extends Item
      */
     private $typeCategorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Materiel", inversedBy="collMArmes")
+     */
+    private $materiel;
 
 
-    public function setDegat(string $degat): self
+
+    public function setDegat(int $degat): self
     {
         $this->degat = $degat;
 
@@ -63,6 +68,18 @@ class Arme extends Item
     public function setTypeCategorie(?TypeCategorie $typeCategorie): self
     {
         $this->typeCategorie = $typeCategorie;
+
+        return $this;
+    }
+
+    public function getMateriel(): ?Materiel
+    {
+        return $this->materiel;
+    }
+
+    public function setMateriel(?Materiel $materiel): self
+    {
+        $this->materiel = $materiel;
 
         return $this;
     }

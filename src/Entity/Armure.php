@@ -17,7 +17,7 @@ class Armure
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
     private $defense;
 
@@ -25,6 +25,16 @@ class Armure
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="collArmures")
      */
     private $typeCategorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Materiel", inversedBy="collMArmure")
+     */
+    private $materiel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Equipement", inversedBy="collEArmure")
+     */
+    private $equipement;
 
     public function getId(): ?int
     {
@@ -36,7 +46,7 @@ class Armure
         return $this->defense;
     }
 
-    public function setDefense(string $defense): self
+    public function setDefense(int $defense): self
     {
         $this->defense = $defense;
 
@@ -51,6 +61,30 @@ class Armure
     public function setTypeCategorie(?TypeCategorie $typeCategorie): self
     {
         $this->typeCategorie = $typeCategorie;
+
+        return $this;
+    }
+
+    public function getMateriel(): ?Materiel
+    {
+        return $this->materiel;
+    }
+
+    public function setMateriel(?Materiel $materiel): self
+    {
+        $this->materiel = $materiel;
+
+        return $this;
+    }
+
+    public function getEquipement(): ?Equipement
+    {
+        return $this->equipement;
+    }
+
+    public function setEquipement(?Equipement $equipement): self
+    {
+        $this->equipement = $equipement;
 
         return $this;
     }

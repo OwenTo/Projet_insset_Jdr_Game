@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\InheritanceType;
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
 
  * @InheritanceType("JOINED")
- * @DiscriminatorColumn(name="discr", type="string")
+ * @DiscriminatorColumn(name="enfant", type="string")
  * @DiscriminatorMap({"item" = "Item", "arme" = "Arme","armure"="Armure","magie"="Magie"})
  */
 class Item
@@ -47,6 +47,16 @@ class Item
      * @ORM\Column(type="integer")
      */
     private $valeur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeDes", inversedBy="collItems")
+     */
+    private $typeDes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Monnaie", inversedBy="collItems")
+     */
+    private $monnaie;
 
     public function getId(): ?int
     {
@@ -109,6 +119,30 @@ class Item
     public function setValeur(int $valeur): self
     {
         $this->valeur = $valeur;
+
+        return $this;
+    }
+
+    public function getTypeDes(): ?TypeDes
+    {
+        return $this->typeDes;
+    }
+
+    public function setTypeDes(?TypeDes $typeDes): self
+    {
+        $this->typeDes = $typeDes;
+
+        return $this;
+    }
+
+    public function getMonnaie(): ?Monnaie
+    {
+        return $this->monnaie;
+    }
+
+    public function setMonnaie(?Monnaie $monnaie): self
+    {
+        $this->monnaie = $monnaie;
 
         return $this;
     }
