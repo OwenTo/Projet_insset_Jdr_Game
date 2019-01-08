@@ -12,16 +12,24 @@ class Arme extends Item
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $degat;
 
 
 
-    public function setDegat(int $degat): self
+    public function setDegat(string $degat): self
     {
         $this->degat = $degat;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDegat()
+    {
+        return $this->degat;
     }
 }

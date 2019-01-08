@@ -26,11 +26,19 @@ class Magie extends Item
     private $niveauMagie;
 
 
-    public function setDegatMagie(int $degatMagie): self
+    public function setDegatMagie(string $degatMagie): self
     {
         $this->degatMagie = $degatMagie;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDegatMagie()
+    {
+        return $this->degatMagie;
     }
 
     public function getCoutDeMana(): ?int
