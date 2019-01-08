@@ -21,6 +21,11 @@ class Armure
      */
     private $defense;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="collArmures")
+     */
+    private $typeCategorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Armure
     public function setDefense(string $defense): self
     {
         $this->defense = $defense;
+
+        return $this;
+    }
+
+    public function getTypeCategorie(): ?TypeCategorie
+    {
+        return $this->typeCategorie;
+    }
+
+    public function setTypeCategorie(?TypeCategorie $typeCategorie): self
+    {
+        $this->typeCategorie = $typeCategorie;
 
         return $this;
     }

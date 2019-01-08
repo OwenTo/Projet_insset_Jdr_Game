@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,6 +26,16 @@ class Magie extends Item
      * @ORM\Column(type="integer")
      */
     private $niveauMagie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TypeMagie", mappedBy="collMagie")
+     */
+    private $typeMagies;
+
+    public function __construct()
+    {
+        $this->typeMagies = new ArrayCollection();
+    }
 
 
     public function setDegatMagie(string $degatMagie): self
@@ -61,6 +73,37 @@ class Magie extends Item
     public function setNiveauMagie(int $niveauMagie): self
     {
         $this->niveauMagie = $niveauMagie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TypeMagie[]
+     */
+    public function getTypeMagies(): Collection
+    {
+        return $this->typeMagies;
+    }
+
+    public function addTypeMagy(TypeMagie $typeMagy): self
+    {
+        if (!$this->typeMagies->contains($typeMagy)) {
+            $this->typeMagies[] = $typeMagy;
+            $typeMagy->setCollMagie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeMagy(TypeMagie $typeMagy): self
+    {
+        if ($this->typeMagies->contains($typeMagy)) {
+            $this->typeMagies->removeElement($typeMagy);
+            // set the owning side to null (unless already changed)
+            if ($typeMagy->getCollMagie() === $this) {
+                $typeMagy->setCollMagie(null);
+            }
+        }
 
         return $this;
     }
