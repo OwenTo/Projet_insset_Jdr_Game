@@ -3,9 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\ORM\Mapping\InheritanceType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
+
+ * @InheritanceType("JOINED")
+ * @DiscriminatorColumn(name="discr", type="string")
+ * @DiscriminatorMap({"item" = "Item", "arme" = "Arme","armure"="Armure","magie"="Magie"})
  */
 class Item
 {
