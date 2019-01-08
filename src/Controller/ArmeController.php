@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/arme")
- */
+
 class ArmeController extends AbstractController
 {
     /**
-     * @Route("/", name="arme_index", methods={"GET"})
+     * @Route("/liste/arme", name="arme_index", methods={"GET"})
      */
     public function index(ArmeRepository $armeRepository): Response
     {
@@ -24,7 +22,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="arme_new", methods={"GET","POST"})
+     * @Route("/create/arme", name="arme_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="arme_show", methods={"GET"})
+     * @Route("/arme/{id}", name="arme_show", methods={"GET"})
      */
     public function show(Arme $arme): Response
     {
@@ -55,7 +53,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="arme_edit", methods={"GET","POST"})
+     * @Route("/edit/arme/{id}", name="arme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Arme $arme): Response
     {
@@ -75,7 +73,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="arme_delete", methods={"DELETE"})
+     * @Route("/supprime/arme/{id}", name="arme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Arme $arme): Response
     {

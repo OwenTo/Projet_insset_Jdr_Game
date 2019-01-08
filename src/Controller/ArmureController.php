@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/armure")
- */
+
 class ArmureController extends AbstractController
 {
     /**
-     * @Route("/", name="armure_index", methods={"GET"})
+     * @Route("/liste/armure", name="armure_index", methods={"GET"})
      */
     public function index(ArmureRepository $armureRepository): Response
     {
@@ -24,7 +22,7 @@ class ArmureController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="armure_new", methods={"GET","POST"})
+     * @Route("/create/armure", name="armure_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class ArmureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="armure_show", methods={"GET"})
+     * @Route("/detail/armure/{id}", name="armure_show", methods={"GET"})
      */
     public function show(Armure $armure): Response
     {
@@ -55,7 +53,7 @@ class ArmureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="armure_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="armure_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Armure $armure): Response
     {
@@ -75,7 +73,7 @@ class ArmureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="armure_delete", methods={"DELETE"})
+     * @Route("/supression/{id}", name="armure_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Armure $armure): Response
     {
