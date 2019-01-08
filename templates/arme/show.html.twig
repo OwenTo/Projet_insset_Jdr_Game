@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Arme{% endblock %}
+
+{% block body %}
+    <h1>Arme</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ arme.id }}</td>
+            </tr>
+            <tr>
+                <th>NomItem</th>
+                <td>{{ arme.nomItem }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionItem</th>
+                <td>{{ arme.descriptionItem }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ arme.poids }}</td>
+            </tr>
+            <tr>
+                <th>BeneficeMaluce</th>
+                <td>{{ arme.beneficeMaluce }}</td>
+            </tr>
+            <tr>
+                <th>Valeur</th>
+                <td>{{ arme.valeur }}</td>
+            </tr>
+            <tr>
+                <th>Degat</th>
+                <td>{{ arme.degat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('arme_index') }}">back to list</a>
+
+    <a href="{{ path('arme_edit', {'id': arme.id}) }}">edit</a>
+
+    {{ include('arme/_delete_form.html.twig') }}
+{% endblock %}

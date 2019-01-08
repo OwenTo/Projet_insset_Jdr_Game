@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magie index{% endblock %}
+
+{% block body %}
+    <h1>Magie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomItem</th>
+                <th>DescriptionItem</th>
+                <th>Poids</th>
+                <th>BeneficeMaluce</th>
+                <th>Valeur</th>
+                <th>DegatMagie</th>
+                <th>CoutDeMana</th>
+                <th>NiveauMagie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for magie in magies %}
+            <tr>
+                <td>{{ magie.id }}</td>
+                <td>{{ magie.nomItem }}</td>
+                <td>{{ magie.descriptionItem }}</td>
+                <td>{{ magie.poids }}</td>
+                <td>{{ magie.beneficeMaluce }}</td>
+                <td>{{ magie.valeur }}</td>
+                <td>{{ magie.degatMagie }}</td>
+                <td>{{ magie.coutDeMana }}</td>
+                <td>{{ magie.niveauMagie }}</td>
+                <td>
+                    <a href="{{ path('magie_show', {'id': magie.id}) }}">show</a>
+                    <a href="{{ path('magie_edit', {'id': magie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('magie_new') }}">Create new</a>
+{% endblock %}
