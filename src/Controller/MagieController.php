@@ -1,4 +1,4 @@
-git add <?php
+<?php
 
 namespace App\Controller;
 
@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/magie")
- */
+
 class MagieController extends AbstractController
 {
     /**
-     * @Route("/", name="magie_index", methods={"GET"})
+     * @Route("/liste/magie", name="magie_index", methods={"GET"})
      */
     public function index(MagieRepository $magieRepository): Response
     {
@@ -24,7 +22,7 @@ class MagieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="magie_new", methods={"GET","POST"})
+     * @Route("/create/magie", name="magie_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class MagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="magie_show", methods={"GET"})
+     * @Route("/detail/magie/{id}", name="magie_show", methods={"GET"})
      */
     public function show(Magie $magie): Response
     {
@@ -55,7 +53,7 @@ class MagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="magie_edit", methods={"GET","POST"})
+     * @Route("/edit/magie/{id}", name="magie_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Magie $magie): Response
     {
@@ -75,7 +73,7 @@ class MagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="magie_delete", methods={"DELETE"})
+     * @Route("/supression/magie/{id}", name="magie_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Magie $magie): Response
     {
