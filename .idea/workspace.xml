@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArmeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArmeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArmeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/ArmeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArmeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ArmureType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArmureType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MagieType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MagieType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/arme/show.html.twig" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,8 +59,8 @@
           <entry key="js" value="3" />
           <entry key="json" value="5" />
           <entry key="lock" value="1" />
-          <entry key="php" value="73" />
-          <entry key="twig" value="31" />
+          <entry key="php" value="108" />
+          <entry key="twig" value="35" />
           <entry key="yaml" value="7" />
         </counts>
       </usages-collector>
@@ -80,9 +70,9 @@
           <entry key="CSS" value="4" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="73" />
+          <entry key="PHP" value="108" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="31" />
+          <entry key="Twig" value="35" />
           <entry key="YAML" value="7" />
           <entry key="yarn.lock" value="1" />
         </counts>
@@ -91,7 +81,7 @@
         <counts>
           <entry key="css" value="17" />
           <entry key="json" value="2" />
-          <entry key="php" value="883" />
+          <entry key="php" value="1383" />
           <entry key="twig" value="377" />
           <entry key="yaml" value="42" />
         </counts>
@@ -100,7 +90,7 @@
         <counts>
           <entry key="CSS" value="17" />
           <entry key="JSON" value="2" />
-          <entry key="PHP" value="883" />
+          <entry key="PHP" value="1383" />
           <entry key="Twig" value="377" />
           <entry key="YAML" value="42" />
         </counts>
@@ -118,8 +108,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/ArmeType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state relative-caret-position="277">
+              <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="94" selection-end-line="203" />
+              <folding>
+                <element signature="e#30#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ArmeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="73" column="5" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="73" selection-end-column="5" />
+              <folding>
+                <element signature="e#34#54#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,15 +148,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/EquipementType.php">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/Entity/Fichier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="28" selection-end-line="108" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Form/MagieType.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Magie.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="571">
+              <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -153,7 +171,12 @@
     <findStrings>
       <find>getR</find>
       <find>enf</find>
+      <find>Arme1Type</find>
+      <find>contenuFileBefore</find>
     </findStrings>
+    <replaceStrings>
+      <replace>ArmeType</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -176,7 +199,6 @@
         <option value="$PROJECT_DIR$/templates/home.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/homeUser.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Magie.php" />
-        <option value="$PROJECT_DIR$/src/Entity/Item.php" />
         <option value="$PROJECT_DIR$/src/Entity/Arme.php" />
         <option value="$PROJECT_DIR$/src/Entity/Armure.php" />
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
@@ -193,10 +215,11 @@
         <option value="$PROJECT_DIR$/src/Controller/TypeMagieController.php" />
         <option value="$PROJECT_DIR$/src/Controller/TypeTalentController.php" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ArmeController.php" />
-        <option value="$PROJECT_DIR$/src/Form/ArmeType.php" />
         <option value="$PROJECT_DIR$/src/Form/ArmureType.php" />
         <option value="$PROJECT_DIR$/src/Form/MagieType.php" />
+        <option value="$PROJECT_DIR$/src/Form/ArmeType.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Item.php" />
+        <option value="$PROJECT_DIR$/src/Controller/ArmeController.php" />
       </list>
     </option>
   </component>
@@ -304,7 +327,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-8" />
     <option name="width" value="977" />
     <option name="height" value="1050" />
@@ -324,13 +347,18 @@
             <path>
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
@@ -348,6 +376,12 @@
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="arme" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -374,16 +408,16 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wamps64\www\projet_fin_d_annee\assets\img" />
-      <recent name="D:\wamps64\www\projet_fin_d_annee\templates\nav_bar" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\wamps64\www\projet_fin_d_annee\templates\nav_bar" />
       <recent name="D:\wamps64\www\projet_fin_d_annee\templates\security" />
       <recent name="D:\wamps64\www\projet_fin_d_annee\src\Entity" />
       <recent name="D:\wamps64\www\projet_fin_d_annee\templates" />
       <recent name="D:\wamps64\www\projet_fin_d_annee\src\Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamps64\www\projet_fin_d_annee\assets\img" />
+      <recent name="D:\wamps64\www\projet_fin_d_annee\templates\nav_bar" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -420,12 +454,12 @@
       <workItem from="1546874077048" duration="1143000" />
       <workItem from="1546935942006" duration="4325000" />
       <workItem from="1546951183337" duration="6414000" />
-      <workItem from="1547037821801" duration="3778000" />
+      <workItem from="1547037821801" duration="11689000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41364000" />
+    <option name="totallyTimeSpent" value="49275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -437,10 +471,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="840" extended-state="0" />
+    <frame x="-6" y="0" width="781" height="840" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41331485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3106796" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -469,66 +503,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="33" selection-start-line="8" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="895">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/_delete_form.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/user/_form.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/user/edit.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/user/show.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php" />
-    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Entity/Stage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Entity/Situation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/homeUser.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="69" column="74" selection-start-line="69" selection-start-column="74" selection-end-line="69" selection-end-column="74" />
-          <caret line="94" column="74" selection-start-line="94" selection-start-column="74" selection-end-line="94" selection-end-column="74" />
-          <caret line="42" column="74" selection-start-line="42" selection-start-column="74" selection-end-line="42" selection-end-column="74" />
-          <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Form/StageType.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php" />
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190108095742.php" />
-    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190108130348.php" />
     <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190108130435.php" />
     <entry file="file://$PROJECT_DIR$/src/Entity/TypeMagie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-74" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Monnaie.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/ArmeRepository.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -537,25 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Materiel.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/TypeDes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Magie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -582,20 +542,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Fichier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Entity/Fichier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="42" column="31" selection-start-line="36" selection-start-column="4" selection-end-line="42" selection-end-column="31" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/EquipementController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -680,16 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/var/cache/dev/ContainerODGxxlh/getArmeControllerService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -704,38 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArmeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Arme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/Arme1Type.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ArmeType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/ArmureType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -746,6 +654,196 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Form/EditeUserByAdminType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="46" selection-start-line="25" selection-start-column="20" selection-end-line="26" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Monnaie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/TypeDes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/TypeArme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/TypeCategorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Materiel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Controller/FolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="116" column="73" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Form/SituationType.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Arme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/_delete_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#37#48#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Form/StageType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="51" column="33" lean-forward="true" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Controller/FichierController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="65" column="25" selection-start-line="65" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Form/FolderType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../portfolio_baldini_dylan/src/AppBundle/Controller/SituationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="155" column="78" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/ArmureType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Form/FichierType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ue-framework-votreLoginSurGitHub_pour_janvier/src/Entity/Fichier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="142" column="40" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="40" />
+          <folding>
+            <element signature="e#31#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/ArmeType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Magie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="94" selection-end-line="203" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Fichier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="28" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArmeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="73" column="5" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="73" selection-end-column="5" />
+          <folding>
+            <element signature="e#34#54#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
