@@ -14,6 +14,7 @@ class MagieType extends AbstractType
         $builder
             ->add('nomItem')
             ->add('descriptionItem')
+            ->add('fichier')
             ->add('poids')
             ->add('beneficeMaluce')
             ->add('valeur')

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Arme;
-use App\Form\ArmeType;
+use App\Form\Arme1Type;
 use App\Repository\ArmeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class ArmeController extends AbstractController
     public function new(Request $request): Response
     {
         $arme = new Arme();
-        $form = $this->createForm(ArmeType::class, $arme);
+        $form = $this->createForm(Arme1Type::class, $arme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,7 +45,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/arme/{id}", name="arme_show", methods={"GET"})
+     * @Route("/detail/arme/{id}", name="arme_show", methods={"GET"})
      */
     public function show(Arme $arme): Response
     {
@@ -53,11 +53,11 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/edit/arme/{id}", name="arme_edit", methods={"GET","POST"})
+     * @Route("/edit/arme{id}", name="arme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Arme $arme): Response
     {
-        $form = $this->createForm(ArmeType::class, $arme);
+        $form = $this->createForm(Arme1Type::class, $arme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -73,7 +73,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/supprime/arme/{id}", name="arme_delete", methods={"DELETE"})
+     * @Route("/{suppression/arme/id}", name="arme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Arme $arme): Response
     {

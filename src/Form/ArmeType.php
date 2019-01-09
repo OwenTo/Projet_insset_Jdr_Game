@@ -19,6 +19,7 @@ class ArmeType extends AbstractType
             ->add('valeur')
             ->add('degat')
             ->add('typeDes')
+            ->add('fichier')
             ->add('monnaie')
             ->add('typeArme')
             ->add('typeCategorie')

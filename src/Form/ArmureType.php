@@ -13,6 +13,7 @@ class ArmureType extends AbstractType
     {
         $builder
             ->add('defense')
+            ->add('fichier')
             ->add('typeCategorie')
             ->add('materiel')
             ->add('equipement')
