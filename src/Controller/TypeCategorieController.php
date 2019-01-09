@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/type/categorie")
- */
+
 class TypeCategorieController extends AbstractController
 {
     /**
-     * @Route("/", name="type_categorie_index", methods={"GET"})
+     * @Route("/liste/type/categorie", name="type_categorie_index", methods={"GET"})
      */
     public function index(TypeCategorieRepository $typeCategorieRepository): Response
     {
@@ -24,7 +22,7 @@ class TypeCategorieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_categorie_new", methods={"GET","POST"})
+     * @Route("/create/type/categorie", name="type_categorie_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class TypeCategorieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_categorie_show", methods={"GET"})
+     * @Route("/detail/type/categorie/{id}", name="type_categorie_show", methods={"GET"})
      */
     public function show(TypeCategorie $typeCategorie): Response
     {
@@ -55,7 +53,7 @@ class TypeCategorieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_categorie_edit", methods={"GET","POST"})
+     * @Route("/edit/type/categorie/{id}", name="type_categorie_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeCategorie $typeCategorie): Response
     {
@@ -75,7 +73,7 @@ class TypeCategorieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_categorie_delete", methods={"DELETE"})
+     * @Route("/suppression/type/categorie/{id}", name="type_categorie_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeCategorie $typeCategorie): Response
     {

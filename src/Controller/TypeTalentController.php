@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeTalentController extends AbstractController
 {
     /**
-     * @Route("/", name="type_talent_index", methods={"GET"})
+     * @Route("/liste/type/talent", name="type_talent_index", methods={"GET"})
      */
     public function index(TypeTalentRepository $typeTalentRepository): Response
     {
@@ -24,7 +24,7 @@ class TypeTalentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_talent_new", methods={"GET","POST"})
+     * @Route("/create/type/talent", name="type_talent_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -55,7 +55,7 @@ class TypeTalentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_talent_edit", methods={"GET","POST"})
+     * @Route("/edit/type/talent/{id}", name="type_talent_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeTalent $typeTalent): Response
     {
@@ -75,7 +75,7 @@ class TypeTalentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_talent_delete", methods={"DELETE"})
+     * @Route("/supression/type/talent/{id}", name="type_talent_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeTalent $typeTalent): Response
     {

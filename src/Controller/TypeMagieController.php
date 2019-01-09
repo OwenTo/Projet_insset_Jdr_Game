@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeMagieController extends AbstractController
 {
     /**
-     * @Route("/", name="type_magie_index", methods={"GET"})
+     * @Route("/liste/type/magie", name="type_magie_index", methods={"GET"})
      */
     public function index(TypeMagieRepository $typeMagieRepository): Response
     {
@@ -24,7 +24,7 @@ class TypeMagieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_magie_new", methods={"GET","POST"})
+     * @Route("/create/type/magie", name="type_magie_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +47,7 @@ class TypeMagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_magie_show", methods={"GET"})
+     * @Route("/detail/type/magie/{id}", name="type_magie_show", methods={"GET"})
      */
     public function show(TypeMagie $typeMagie): Response
     {
@@ -55,7 +55,7 @@ class TypeMagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_magie_edit", methods={"GET","POST"})
+     * @Route("/edit//type/magie/{id}", name="type_magie_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeMagie $typeMagie): Response
     {
@@ -75,7 +75,7 @@ class TypeMagieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_magie_delete", methods={"DELETE"})
+     * @Route("/supression/type/magie/{id}", name="type_magie_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeMagie $typeMagie): Response
     {

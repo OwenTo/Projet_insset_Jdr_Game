@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/type/arme")
- */
+
 class TypeArmeController extends AbstractController
 {
     /**
-     * @Route("/", name="type_arme_index", methods={"GET"})
+     * @Route("/liste/type/arme", name="type_arme_index", methods={"GET"})
      */
     public function index(TypeArmeRepository $typeArmeRepository): Response
     {
@@ -24,7 +22,7 @@ class TypeArmeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_arme_new", methods={"GET","POST"})
+     * @Route("/create/type/arme", name="type_arme_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class TypeArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_arme_show", methods={"GET"})
+     * @Route("/detail/type/arme/{id}", name="type_arme_show", methods={"GET"})
      */
     public function show(TypeArme $typeArme): Response
     {
@@ -55,7 +53,7 @@ class TypeArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_arme_edit", methods={"GET","POST"})
+     * @Route("/edit/type/arme/{id}", name="type_arme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeArme $typeArme): Response
     {
@@ -75,7 +73,7 @@ class TypeArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_arme_delete", methods={"DELETE"})
+     * @Route("/suppression/type/arme/{id}", name="type_arme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeArme $typeArme): Response
     {

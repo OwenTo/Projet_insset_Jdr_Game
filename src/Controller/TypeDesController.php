@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/type/des")
- */
+
 class TypeDesController extends AbstractController
 {
     /**
-     * @Route("/", name="type_des_index", methods={"GET"})
+     * @Route("/liste/type/des", name="type_des_index", methods={"GET"})
      */
     public function index(TypeDesRepository $typeDesRepository): Response
     {
@@ -24,7 +22,7 @@ class TypeDesController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_des_new", methods={"GET","POST"})
+     * @Route("/create/type/des", name="type_des_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class TypeDesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_des_show", methods={"GET"})
+     * @Route("/{detail/type/des/{id}", name="type_des_show", methods={"GET"})
      */
     public function show(TypeDes $typeDe): Response
     {
@@ -55,7 +53,7 @@ class TypeDesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_des_edit", methods={"GET","POST"})
+     * @Route("/edit/type/des/{id}", name="type_des_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeDes $typeDe): Response
     {
@@ -75,7 +73,7 @@ class TypeDesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_des_delete", methods={"DELETE"})
+     * @Route("/suppression/type/des/{id}", name="type_des_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeDes $typeDe): Response
     {

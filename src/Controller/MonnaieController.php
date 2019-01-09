@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/monnaie")
- */
+
 class MonnaieController extends AbstractController
 {
     /**
-     * @Route("/", name="monnaie_index", methods={"GET"})
+     * @Route("/liste/monnaie", name="monnaie_index", methods={"GET"})
      */
     public function index(MonnaieRepository $monnaieRepository): Response
     {
@@ -24,7 +22,7 @@ class MonnaieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="monnaie_new", methods={"GET","POST"})
+     * @Route("/create/monnaie", name="monnaie_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class MonnaieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="monnaie_show", methods={"GET"})
+     * @Route("/detail/monnaie/{id}", name="monnaie_show", methods={"GET"})
      */
     public function show(Monnaie $monnaie): Response
     {
@@ -55,7 +53,7 @@ class MonnaieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="monnaie_edit", methods={"GET","POST"})
+     * @Route("/edit/monnaie/{id}", name="monnaie_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Monnaie $monnaie): Response
     {
@@ -75,7 +73,7 @@ class MonnaieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="monnaie_delete", methods={"DELETE"})
+     * @Route("/suppression/monnaie/{id}", name="monnaie_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Monnaie $monnaie): Response
     {

@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/talent")
- */
+
 class TalentController extends AbstractController
 {
     /**
-     * @Route("/", name="talent_index", methods={"GET"})
+     * @Route("/liste/talent", name="talent_index", methods={"GET"})
      */
     public function index(TalentRepository $talentRepository): Response
     {
@@ -24,7 +22,7 @@ class TalentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="talent_new", methods={"GET","POST"})
+     * @Route("/create/talent", name="talent_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,7 +45,7 @@ class TalentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="talent_show", methods={"GET"})
+     * @Route("/detail/talent/{id}", name="talent_show", methods={"GET"})
      */
     public function show(Talent $talent): Response
     {
@@ -55,7 +53,7 @@ class TalentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="talent_edit", methods={"GET","POST"})
+     * @Route("/edit/talent/{id}", name="talent_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Talent $talent): Response
     {
@@ -75,7 +73,7 @@ class TalentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="talent_delete", methods={"DELETE"})
+     * @Route("/supression/talent/{id}", name="talent_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Talent $talent): Response
     {
