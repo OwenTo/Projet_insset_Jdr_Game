@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Armure;
+use App\Entity\Fichier;
 use App\Form\ArmureType;
 use App\Repository\ArmureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,6 +33,35 @@ class ArmureController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+
+
+
+            $fichier = new Fichier();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+            $file = $form->get('imageAvInsertion')->getData();
+//                $file=$form['fichier']->getData();
+            $fileName = md5(uniqid());
+            // Move the file to the directory where brochures are stored
+            $fileNameExtension = $fileName . '.' . $file->guessExtension();
+
+            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+            $path_parts = pathinfo($fileNameExtension);
+
+            $fichier->setContenueFichier($fileNameExtension);
+            $fichier->setFichierExtension($path_parts['extension']);
+
+
+            $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+            $fichier->setCreateFileAt($dateCrea);
+            $entityManager->persist($fichier);
+            $armure->setFichier($fichier);
+
+
+
+
+
             $entityManager->persist($armure);
             $entityManager->flush();
 
@@ -61,7 +91,45 @@ class ArmureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            if ($armure->getImageAvInsertion() == null || empty($armure->getImageAvInsertion())) {
+            } else {
+
+                $filDir = $this->getParameter('upload_directory');
+                unlink($filDir . "/" . $armure->getFichier()->getContenueFichier());
+
+
+                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+                $file = $form->get('imageAvInsertion')->getData();
+//                $file=$form['fichier']->getData();
+                $fileName = md5(uniqid());
+                // Move the file to the directory where brochures are stored
+                $fileNameExtension = $fileName . '.' . $file->guessExtension();
+
+                $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+                $path_parts = pathinfo($fileNameExtension);
+
+                $dateModif = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+
+                $armure->getFichier()->setContenueFichier($fileNameExtension);
+                $armure->getFichier()->setFichierExtension($path_parts['extension']);
+                $armure->getFichier()->setModifFileAt($dateModif);
+
+
+
+
+            }
+
             $this->getDoctrine()->getManager()->flush();
+
+
+
+
+
+
+
 
             return $this->redirectToRoute('armure_index', ['id' => $armure->getId()]);
         }

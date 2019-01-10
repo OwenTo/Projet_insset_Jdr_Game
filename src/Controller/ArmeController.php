@@ -36,29 +36,26 @@ class ArmeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
 
-                $fichier = new Fichier();
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $fichier = new Fichier();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
-                $file=$form->get('imageAvInsertion')->getData();
+            $file = $form->get('imageAvInsertion')->getData();
 //                $file=$form['fichier']->getData();
-                $fileName = md5(uniqid());
-                // Move the file to the directory where brochures are stored
-                $fileNameExtension = $fileName . '.' . $file->guessExtension();
+            $fileName = md5(uniqid());
+            // Move the file to the directory where brochures are stored
+            $fileNameExtension = $fileName . '.' . $file->guessExtension();
 
-                $file->move($this->getParameter('upload_directory'), $fileNameExtension);
-                $path_parts = pathinfo($fileNameExtension);
+            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+            $path_parts = pathinfo($fileNameExtension);
 
-                $fichier->setContenueFichier($fileNameExtension);
-                $fichier->setFichierExtension($path_parts['extension']);
-
-
-                $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
-                $fichier->setCreateFileAt($dateCrea);
-                $entityManager->persist($fichier);
-                $arme->setFichier($fichier);
+            $fichier->setContenueFichier($fileNameExtension);
+            $fichier->setFichierExtension($path_parts['extension']);
 
 
-
+            $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+            $fichier->setCreateFileAt($dateCrea);
+            $entityManager->persist($fichier);
+            $arme->setFichier($fichier);
 
 
             $entityManager->persist($arme);
@@ -88,8 +85,35 @@ class ArmeController extends AbstractController
     {
         $form = $this->createForm(ArmeType::class, $arme);
         $form->handleRequest($request);
-
+        $filDir = $this->getParameter('upload_directory');
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($arme->getImageAvInsertion() == null || empty($arme->getImageAvInsertion())) {
+            } else {
+
+
+                unlink($filDir . "/" . $arme->getFichier()->getContenueFichier());
+
+
+                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+                $file = $form->get('imageAvInsertion')->getData();
+//                $file=$form['fichier']->getData();
+                $fileName = md5(uniqid());
+                // Move the file to the directory where brochures are stored
+                $fileNameExtension = $fileName . '.' . $file->guessExtension();
+
+                $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+                $path_parts = pathinfo($fileNameExtension);
+
+                $dateModif = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+
+                $arme->getFichier()->setContenueFichier($fileNameExtension);
+                $arme->getFichier()->setFichierExtension($path_parts['extension']);
+                $arme->getFichier()->setModifFileAt($dateModif);
+
+
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('arme_index', ['id' => $arme->getId()]);
@@ -106,7 +130,7 @@ class ArmeController extends AbstractController
      */
     public function delete(Request $request, Arme $arme): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$arme->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $arme->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($arme);
             $entityManager->flush();

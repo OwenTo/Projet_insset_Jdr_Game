@@ -31,7 +31,11 @@ class ArmeType extends AbstractType
                     'label'=>'Dés',
                     'choice_label'=>'des')
             )
-            ->add('imageAvInsertion', FileType::class            )
+            ->add('imageAvInsertion', FileType::class,
+                array('data_class' => null,
+                    'required'=>false
+    )
+            )
             ->add('monnaie',EntityType::class
             ,array('class'=>Monnaie::class,
                     'label'=>'Monnaie',

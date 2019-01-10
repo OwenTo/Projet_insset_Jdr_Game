@@ -7,14 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArmureRepository")
  */
-class Armure
+class Armure extends Item
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -36,10 +31,6 @@ class Armure
      */
     private $equipement;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getDefense(): ?string
     {
