@@ -126,12 +126,19 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/{suppression/arme/id}", name="arme_delete", methods={"DELETE"})
+     * @Route("/suppression/arme/{id}", name="arme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Arme $arme): Response
     {
         if ($this->isCsrfTokenValid('delete' . $arme->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if (!empty($arme->getFichier())){
+                $filDir = $this->getParameter('upload_directory');
+                unlink($filDir . "/" . $arme->getFichier()->getContenueFichier());
+
+            }
+
             $entityManager->remove($arme);
             $entityManager->flush();
         }

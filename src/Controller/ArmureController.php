@@ -147,6 +147,15 @@ class ArmureController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$armure->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if (!empty($armure->getFichier())){
+                $filDir = $this->getParameter('upload_directory');
+                unlink($filDir . "/" . $armure->getFichier()->getContenueFichier());
+
+            }
+
+
+
             $entityManager->remove($armure);
             $entityManager->flush();
         }

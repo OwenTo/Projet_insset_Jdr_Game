@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Fichier;
 use App\Entity\Magie;
 use App\Form\MagieType;
 use App\Repository\MagieRepository;
@@ -32,6 +33,32 @@ class MagieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+
+
+            $fichier = new Fichier();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+            $file = $form->get('imageAvInsertion')->getData();
+//                $file=$form['fichier']->getData();
+            $fileName = md5(uniqid());
+            // Move the file to the directory where brochures are stored
+            $fileNameExtension = $fileName . '.' . $file->guessExtension();
+
+            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+            $path_parts = pathinfo($fileNameExtension);
+
+            $fichier->setContenueFichier($fileNameExtension);
+            $fichier->setFichierExtension($path_parts['extension']);
+
+
+            $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+            $fichier->setCreateFileAt($dateCrea);
+            $entityManager->persist($fichier);
+            $magie->setFichier($fichier);
+
+
+
             $entityManager->persist($magie);
             $entityManager->flush();
 
@@ -61,6 +88,36 @@ class MagieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            if ($magie->getImageAvInsertion() == null || empty($magie->getImageAvInsertion())) {
+            } else {
+
+                $filDir = $this->getParameter('upload_directory');
+                unlink($filDir . "/" . $magie->getFichier()->getContenueFichier());
+
+
+                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+                $file = $form->get('imageAvInsertion')->getData();
+//                $file=$form['fichier']->getData();
+                $fileName = md5(uniqid());
+                // Move the file to the directory where brochures are stored
+                $fileNameExtension = $fileName . '.' . $file->guessExtension();
+
+                $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+                $path_parts = pathinfo($fileNameExtension);
+
+                $dateModif = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+
+                $magie->getFichier()->setContenueFichier($fileNameExtension);
+                $magie->getFichier()->setFichierExtension($path_parts['extension']);
+                $magie->getFichier()->setModifFileAt($dateModif);
+
+
+
+
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('magie_index', ['id' => $magie->getId()]);
@@ -79,6 +136,14 @@ class MagieController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$magie->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            if (!empty($magie->getFichier())){
+                $filDir = $this->getParameter('upload_directory');
+                unlink($filDir . "/" . $magie->getFichier()->getContenueFichier());
+
+            }
+
+
             $entityManager->remove($magie);
             $entityManager->flush();
         }
