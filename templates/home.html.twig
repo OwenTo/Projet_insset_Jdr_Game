@@ -25,9 +25,8 @@
 
 
 
-        {% include'folder/listeFolder.html.twig' %}
         {% else %}
-        <div class=" centerText  col-12  card  shadow p-3 mb-5  rounded"
+        <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
              style="margin-top: 10px; background-color: beige;">
             <p>Bienvenu sur un tout nouveau site de Stockage</p>
             <p>pour beneficier de ce cloud , veulez-vous inscrire
@@ -60,7 +59,8 @@
 
 
         </div>
-            <div class="row p-3 mb-5">
+            <div class="row">
+                {#Magie#}
                 <div class=" ">
 
                     <div class="col-mb-3 mr-2 ">
@@ -71,8 +71,8 @@
                                 </div>
                                 <div class="card-text">
                                     <ul>
-                                        <li><a href="#"></a>Liste des magies</li>
-                                        <li><a href="#"></a>Catégorie des magies</li>
+                                        <li><a href="{{ path('magie_index') }}">Liste des magies</a></li>
+                                        <li><a href="{{ path('type_magie_index') }}">Catégorie des magies</a></li>
                                     </ul>
                                 </div>
 
@@ -83,7 +83,7 @@
 
 
                 </div>
-
+                {#Talent#}
                 <div class="   ">
 
 
@@ -95,8 +95,8 @@
                                 </div>
                                 <div class="card-text">
                                     <ul>
-                                        <li><a href="#"></a>Liste des talents</li>
-                                        <li><a href="#"></a>Catégorie des talents</li>
+                                        <li><a href="{{ path('talent_index') }}">Liste des talents</a></li>
+                                        <li><a href="{{ path('type_talent_index') }}">Catégorie des talents</a></li>
                                     </ul>
                                 </div>
 
@@ -109,7 +109,7 @@
                 </div>
 
 
-
+                {#Armure#}
 
                 <div class="   ">
 
@@ -122,8 +122,8 @@
                                 </div>
                                 <div class="card-text">
                                     <ul>
-                                        <li><a href="#"></a>Liste des talents</li>
-                                        <li><a href="#"></a>Catégorie des talents</li>
+                                        <li><a href="{{ path('armure_index') }}">Liste des armures</a></li>
+                                        <li><a href="{{ path('equipement_index') }}">Catégorie des armures</a></li>
                                     </ul>
                                 </div>
 
@@ -135,6 +135,7 @@
 
                 </div>
 
+                {#Arme#}
                 <div class="   ">
 
 
@@ -146,8 +147,54 @@
                                 </div>
                                 <div class="card-text">
                                     <ul>
-                                        <li><a href="#"></a>Liste des talents</li>
-                                        <li><a href="#"></a>Catégorie des talents</li>
+                                        <li><a href="{{ path('arme_index') }}">Liste des arme</a></li>
+                                        <li><a href="{{ path('type_categorie_index') }}">Catégorie des arme</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {#monnaie#}
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Monnaie
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('monnaie_index') }}">Liste des Monnaies</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {#Dés#}
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Dés
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('monnaie_index') }}">Liste des Dés</a></li>
                                     </ul>
                                 </div>
 
@@ -160,7 +207,6 @@
                 </div>
 
             </div>
-
             {% endif %}
         </div>
 

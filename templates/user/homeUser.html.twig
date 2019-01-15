@@ -15,8 +15,8 @@
                     </div>
                     <div class="card-text">
                         <ul>
-                            <li><a href="#">Liste des magies</a></li>
-                            <li><a href="#">Catégorie des magies</a></li>
+                            <li><a href="{{ path('magie_index') }}">Liste des magies</a></li>
+                            <li><a href="{{ path('type_magie_index') }}">Catégorie des magies</a></li>
                         </ul>
                     </div>
 
@@ -39,8 +39,8 @@
                     </div>
                     <div class="card-text">
                         <ul>
-                            <li><a href="#">Liste des talents</a></li>
-                            <li><a href="#">Catégorie des talents</a></li>
+                            <li><a href="{{ path('talent_index') }}">Liste des talents</a></li>
+                            <li><a href="{{ path('type_talent_index') }}">Catégorie des talents</a></li>
                         </ul>
                     </div>
 
@@ -66,8 +66,8 @@
                     </div>
                     <div class="card-text">
                         <ul>
-                            <li><a href="#">Liste des talents</a></li>
-                            <li><a href="#">Catégorie des talents</a></li>
+                            <li><a href="{{ path('armure_index') }}">Liste des armures</a></li>
+                            <li><a href="{{ path('equipement_index') }}">Catégorie des armures</a></li>
                         </ul>
                     </div>
 
@@ -91,8 +91,54 @@
                     </div>
                     <div class="card-text">
                         <ul>
-                            <li><a href="#">Liste des talents</a></li>
-                            <li><a href="#">Catégorie des talents</a></li>
+                            <li><a href="{{ path('arme_index') }}">Liste des arme</a></li>
+                            <li><a href="{{ path('type_categorie_index') }}">Catégorie des arme</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{#monnaie#}
+    <div class=" ">
+
+        <div class="col-mb-3 mr-2 ">
+            <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                <div class="card-body">
+                    <div class="card-title">
+                      Monnaie
+                    </div>
+                    <div class="card-text">
+                        <ul>
+                            <li><a href="{{ path('monnaie_index') }}">Liste des Monnaies</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{#Dés#}
+    <div class=" ">
+
+        <div class="col-mb-3 mr-2 ">
+            <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                <div class="card-body">
+                    <div class="card-title">
+                        Dés
+                    </div>
+                    <div class="card-text">
+                        <ul>
+                            <li><a href="{{ path('monnaie_index') }}">Liste des Dés</a></li>
                         </ul>
                     </div>
 
