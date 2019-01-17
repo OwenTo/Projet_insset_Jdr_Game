@@ -8,22 +8,22 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomItem</th>
-                <th>DescriptionItem</th>
+
+                <th>Nom</th>
+                <th>Description</th>
                 <th>Poids</th>
-                <th>BeneficeMaluce</th>
+                <th>Benefice/Maluce</th>
                 <th>Valeur</th>
-                <th>DegatMagie</th>
-                <th>CoutDeMana</th>
-                <th>NiveauMagie</th>
-                <th>actions</th>
+                <th>Degat Magie</th>
+                <th>Cout De Mana</th>
+                <th>Niveau  Magie</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for magie in magies %}
             <tr>
-                <td>{{ magie.id }}</td>
+
                 <td>{{ magie.nomItem }}</td>
                 <td>{{ magie.descriptionItem }}</td>
                 <td>{{ magie.poids }}</td>
@@ -33,13 +33,15 @@
                 <td>{{ magie.coutDeMana }}</td>
                 <td>{{ magie.niveauMagie }}</td>
                 <td>
-                    <a href="{{ path('magie_show', {'id': magie.id}) }}">show</a>
-                    <a href="{{ path('magie_edit', {'id': magie.id}) }}">edit</a>
+                    <a href="{{ path('magie_show', {'id': magie.id}) }}"><i class="fas fa-info-circle"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('magie_edit', {'id': magie.id}) }}"><i class="fas fa-edit"></i></a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Aucune magie inséré</td>
             </tr>
         {% endfor %}
         </tbody>
