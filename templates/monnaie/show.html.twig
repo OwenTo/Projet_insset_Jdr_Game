@@ -3,7 +3,7 @@
 {% block title %}Monnaie{% endblock %}
 
 {% block body %}
-    <h1>Monnaie</h1>
+    <h1 class="text-center">Monnaie</h1>
 <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
 
 
@@ -23,11 +23,12 @@
     </table>
 
 </div>
+    <div class="row " >
+    <a class="btn btn-primary  mr-1 " href="{{ path('monnaie_index') }}"><i class="fas fa-undo"></i></a>
 
-    <a class="btn btn-primary m" href="{{ path('monnaie_index') }}"><i class="fas fa-undo"></i></a>
-
-    <a class="btn btn-primary" href="{{ path('monnaie_edit', {'id': monnaie.id}) }}"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-primary mr-1" href="{{ path('monnaie_edit', {'id': monnaie.id}) }}"><i class="fas fa-edit"></i></a>
 
     {{ include('monnaie/_delete_form.html.twig') }}
+    </div>
 </div>
     {% endblock %}

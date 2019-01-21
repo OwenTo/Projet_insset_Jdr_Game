@@ -6,6 +6,11 @@
 
     </div>
 
+    <div class=" row mt-2">
+        {{ form_label(form.imageAvInsertion,"Image") }}
+        {{ form_widget(form.imageAvInsertion) }}
+
+    </div>
 
     <div class="row">
         {{ form_label(form.descriptionItem,"Description") }}
@@ -72,13 +77,9 @@
 
     </div>
 
-    <div class=" row">
-        {{ form_label(form.imageAvInsertion,"Image") }}
-        {{ form_widget(form.imageAvInsertion) }}
 
-    </div>
 
 </div>
 
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
     {{ form_end(form) }}

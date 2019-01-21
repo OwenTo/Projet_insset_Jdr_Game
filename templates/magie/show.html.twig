@@ -3,52 +3,58 @@
 {% block title %}Magie{% endblock %}
 
 {% block body %}
-    <h1>Magie</h1>
+    <h1 class="text-center">Magie</h1>
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+        <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
+            <table class="table">
+                <tbody>
+                {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ magie.id }}</td>#}
+                {#</tr>#}
+                <tr>
+                    <th>Nom de la magie</th>
+                    <td>{{ magie.nomItem }}</td>
+                </tr>
+                <tr>
+                    <th>Description de la magie</th>
+                    <td>{{ magie.descriptionItem }}</td>
+                </tr>
+                <tr>
+                    <th>Poids</th>
+                    <td>{{ magie.poids }} Kg</td>
+                </tr>
+                <tr>
+                    <th>Benefice/Maluce</th>
+                    <td>{{ magie.beneficeMaluce }}</td>
+                </tr>
+                <tr>
+                    <th>Valeurs</th>
+                    <td>{{ magie.valeur }} {{ magie.monnaie.nomMonnaie }}</td>
+                </tr>
+                <tr>
+                    <th>Degat Magie</th>
+                    <td>{{ magie.degatMagie }} {{ magie.typeDes.des }}</td>
+                </tr>
+                <tr>
+                    <th>Cout De Mana</th>
+                    <td>{{ magie.coutDeMana }} Pm</td>
+                </tr>
+                <tr>
+                    <th>Niveau de la Magie</th>
+                    <td>{{ magie.niveauMagie }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row " >
+            <a class="btn btn-primary mr-1  " href="{{ path('magie_index') }}"><i class="fas fa-undo"></i></a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ magie.id }}</td>
-            </tr>
-            <tr>
-                <th>NomItem</th>
-                <td>{{ magie.nomItem }}</td>
-            </tr>
-            <tr>
-                <th>DescriptionItem</th>
-                <td>{{ magie.descriptionItem }}</td>
-            </tr>
-            <tr>
-                <th>Poids</th>
-                <td>{{ magie.poids }}</td>
-            </tr>
-            <tr>
-                <th>BeneficeMaluce</th>
-                <td>{{ magie.beneficeMaluce }}</td>
-            </tr>
-            <tr>
-                <th>Valeur</th>
-                <td>{{ magie.valeur }}</td>
-            </tr>
-            <tr>
-                <th>DegatMagie</th>
-                <td>{{ magie.degatMagie }}</td>
-            </tr>
-            <tr>
-                <th>CoutDeMana</th>
-                <td>{{ magie.coutDeMana }}</td>
-            </tr>
-            <tr>
-                <th>NiveauMagie</th>
-                <td>{{ magie.niveauMagie }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <a class="btn btn-primary mr-1 " href="{{ path('magie_edit', {'id': magie.id}) }}"><i
+                        class="fas fa-edit"></i></a>
 
-    <a href="{{ path('magie_index') }}">back to list</a>
-
-    <a href="{{ path('magie_edit', {'id': magie.id}) }}">edit</a>
-
-    {{ include('magie/_delete_form.html.twig') }}
+            {{ include('magie/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

@@ -3,8 +3,15 @@
 {% block title %}Magie index{% endblock %}
 
 {% block body %}
-    <h1>Magie index</h1>
+    <h1 class="text-center">liste magie</h1>
+<div class="container-fluid ">
+    {% if is_granted('ROLE_ADMIN') %}
+        <a  class="ml-5  mr-5 btn btn-primary"href="{{ path('magie_new') }}">Ajouter</a>
+    {% endif %}
 
+
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+         style="margin-top: 10px; background-color: beige;">
     <table class="table">
         <thead>
             <tr>
@@ -33,9 +40,9 @@
                 <td>{{ magie.coutDeMana }}</td>
                 <td>{{ magie.niveauMagie }}</td>
                 <td>
-                    <a href="{{ path('magie_show', {'id': magie.id}) }}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-primary" href="{{ path('magie_show', {'id': magie.id}) }}"><i class="fas fa-info-circle"></i></a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('magie_edit', {'id': magie.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-primary" href="{{ path('magie_edit', {'id': magie.id}) }}"><i class="fas fa-edit"></i></a>
                 {% endif %}
                 </td>
             </tr>
@@ -46,6 +53,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('magie_new') }}">Create new</a>
+</div>
+</div>
 {% endblock %}

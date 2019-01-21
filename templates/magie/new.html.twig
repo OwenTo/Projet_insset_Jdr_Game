@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Magie{% endblock %}
+{% block title %}Ajout d'une magie{% endblock %}
 
 {% block body %}
     <h1>Ajouter une  Magie</h1>
@@ -14,5 +14,7 @@
     {{ include('magie/_form.html.twig') }}
 
     </div>
-    <a href="{{ path('magie_index') }}"><i class="fas fa-backward"></i></a>
+    <a class="btn btn-primary" href="{{ path('magie_index') }}"><i class="fas fa-backward"></i></a>
+
+</div>
 {% endblock %}
