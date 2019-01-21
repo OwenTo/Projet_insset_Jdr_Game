@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/magie/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/magie/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monnaie/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monnaie/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monnaie/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monnaie/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monnaie/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monnaie/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +30,7 @@
     <session id="1796005858">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="27" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -94,7 +83,7 @@
           <entry key="css" value="17" />
           <entry key="json" value="2" />
           <entry key="php" value="1809" />
-          <entry key="twig" value="1943" />
+          <entry key="twig" value="1958" />
           <entry key="yaml" value="42" />
         </counts>
       </usages-collector>
@@ -103,7 +92,7 @@
           <entry key="CSS" value="17" />
           <entry key="JSON" value="2" />
           <entry key="PHP" value="1809" />
-          <entry key="Twig" value="1943" />
+          <entry key="Twig" value="1958" />
           <entry key="YAML" value="42" />
         </counts>
       </usages-collector>
@@ -122,8 +111,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/magie/index.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+                <state relative-caret-position="-23">
+                  <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
                   <folding>
                     <element signature="e#217#226#0#Twig" expanded="true" />
                   </folding>
@@ -138,8 +127,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/monnaie/index.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="169">
-                  <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="56" />
+                <state relative-caret-position="84">
+                  <caret line="5" column="27" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -338,9 +327,9 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="868" />
+    <option name="width" value="1222" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -470,12 +459,12 @@
       <workItem from="1547712251821" duration="681000" />
       <workItem from="1547715861635" duration="13391000" />
       <workItem from="1547800359877" duration="1060000" />
-      <workItem from="1548060838844" duration="3345000" />
+      <workItem from="1548060838844" duration="3830000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96785000" />
+    <option name="totallyTimeSpent" value="97270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -487,10 +476,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="840" extended-state="0" />
-    <editor active="true" />
+    <frame x="-6" y="0" width="977" height="840" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24133149" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18974918" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -835,15 +823,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/monnaie/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="56" />
+        <state relative-caret-position="84">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/magie/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        <state relative-caret-position="-23">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding>
             <element signature="e#217#226#0#Twig" expanded="true" />
           </folding>
