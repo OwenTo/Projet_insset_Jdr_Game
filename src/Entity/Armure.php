@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArmureRepository")
@@ -19,22 +17,25 @@ class Armure extends Item
     private $defense;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="collArmures")
-     */
-    private $typeCategorie;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Materiel", inversedBy="collMArmure")
-     */
-    private $materiel;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Equipement", inversedBy="collEArmure")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Equipement", inversedBy="CollArmures")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $equipement;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="collArmure")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
 
-    public function getDefense(): ?string
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Materiel", inversedBy="collArmure")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $materiel;
+
+
+    public function getDefense(): ?int
     {
         return $this->defense;
     }
@@ -42,30 +43,6 @@ class Armure extends Item
     public function setDefense(int $defense): self
     {
         $this->defense = $defense;
-
-        return $this;
-    }
-
-    public function getTypeCategorie(): ?TypeCategorie
-    {
-        return $this->typeCategorie;
-    }
-
-    public function setTypeCategorie(?TypeCategorie $typeCategorie): self
-    {
-        $this->typeCategorie = $typeCategorie;
-
-        return $this;
-    }
-
-    public function getMateriel(): ?Materiel
-    {
-        return $this->materiel;
-    }
-
-    public function setMateriel(?Materiel $materiel): self
-    {
-        $this->materiel = $materiel;
 
         return $this;
     }
@@ -78,6 +55,30 @@ class Armure extends Item
     public function setEquipement(?Equipement $equipement): self
     {
         $this->equipement = $equipement;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?TypeCategorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?TypeCategorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getMateriel(): ?Materiel
+    {
+        return $this->materiel;
+    }
+
+    public function setMateriel(?Materiel $materiel): self
+    {
+        $this->materiel = $materiel;
 
         return $this;
     }

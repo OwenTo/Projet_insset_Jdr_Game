@@ -3,13 +3,14 @@
 {% block title %}Armure index{% endblock %}
 
 {% block body %}
-    <h1>Armure index</h1>
+    <h1>Liste des armure</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Defense</th>
+                <th>Nom de l'armure</th>
+                <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,7 +18,8 @@
         {% for armure in armures %}
             <tr>
                 <td>{{ armure.id }}</td>
-                <td>{{ armure.defense }}</td>
+                <td>{{ armure.nomItem }}</td>
+                <td>{{ armure.descriptionItem }}</td>
                 <td>
                     <a href="{{ path('armure_show', {'id': armure.id}) }}">show</a>
                     <a href="{{ path('armure_edit', {'id': armure.id}) }}">edit</a>
@@ -25,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">il n'y a pas encore d'armure</td>
             </tr>
         {% endfor %}
         </tbody>

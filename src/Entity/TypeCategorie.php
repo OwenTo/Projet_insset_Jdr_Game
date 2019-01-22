@@ -29,15 +29,11 @@ class TypeCategorie
      */
     private $collArmes;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Armure", mappedBy="typeCategorie")
-     */
-    private $collArmures;
+
 
     public function __construct()
     {
         $this->collArmes = new ArrayCollection();
-        $this->collArmures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,34 +84,5 @@ class TypeCategorie
         return $this;
     }
 
-    /**
-     * @return Collection|Armure[]
-     */
-    public function getCollArmures(): Collection
-    {
-        return $this->collArmures;
-    }
 
-    public function addCollArmure(Armure $collArmure): self
-    {
-        if (!$this->collArmures->contains($collArmure)) {
-            $this->collArmures[] = $collArmure;
-            $collArmure->setTypeCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCollArmure(Armure $collArmure): self
-    {
-        if ($this->collArmures->contains($collArmure)) {
-            $this->collArmures->removeElement($collArmure);
-            // set the owning side to null (unless already changed)
-            if ($collArmure->getTypeCategorie() === $this) {
-                $collArmure->setTypeCategorie(null);
-            }
-        }
-
-        return $this;
-    }
 }

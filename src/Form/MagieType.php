@@ -46,7 +46,6 @@ class MagieType extends AbstractType
                     'choice_label' => 'nomTypeMagie',
                     'expanded' => true,
                     'multiple' => true
-//                , 'data'=>$options['defaultTypeMagie']
                 )
             );
     }
@@ -56,6 +55,5 @@ class MagieType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Magie::class,
         ]);
-//        $resolver->setRequired(array('defaultTypeMagie'));
     }
 }

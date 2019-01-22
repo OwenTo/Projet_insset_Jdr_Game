@@ -25,14 +25,16 @@ class Equipement
      */
     private $nomEquipement;
 
+
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Armure", mappedBy="equipement")
      */
-    private $collEArmure;
+    private $CollArmures;
 
     public function __construct()
     {
-        $this->collEArmure = new ArrayCollection();
+        $this->CollArmures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,31 +54,33 @@ class Equipement
         return $this;
     }
 
+
+
     /**
      * @return Collection|Armure[]
      */
-    public function getCollEArmure(): Collection
+    public function getCollArmures(): Collection
     {
-        return $this->collEArmure;
+        return $this->CollArmures;
     }
 
-    public function addCollEArmure(Armure $collEArmure): self
+    public function addCollArmure(Armure $collArmure): self
     {
-        if (!$this->collEArmure->contains($collEArmure)) {
-            $this->collEArmure[] = $collEArmure;
-            $collEArmure->setEquipement($this);
+        if (!$this->CollArmures->contains($collArmure)) {
+            $this->CollArmures[] = $collArmure;
+            $collArmure->setEquipement($this);
         }
 
         return $this;
     }
 
-    public function removeCollEArmure(Armure $collEArmure): self
+    public function removeCollArmure(Armure $collArmure): self
     {
-        if ($this->collEArmure->contains($collEArmure)) {
-            $this->collEArmure->removeElement($collEArmure);
+        if ($this->CollArmures->contains($collArmure)) {
+            $this->CollArmures->removeElement($collArmure);
             // set the owning side to null (unless already changed)
-            if ($collEArmure->getEquipement() === $this) {
-                $collEArmure->setEquipement(null);
+            if ($collArmure->getEquipement() === $this) {
+                $collArmure->setEquipement(null);
             }
         }
 
