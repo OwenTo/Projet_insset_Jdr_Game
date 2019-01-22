@@ -18,6 +18,11 @@
                     <td>{{ magie.nomItem }}</td>
                 </tr>
                 <tr>
+                    <th>image</th>
+                    <td><img class="picture" src="{{ asset('upload/'~magie.fichier.contenueFichier) }}"/></td>
+                </tr>
+
+                <tr>
                     <th>Description de la magie</th>
                     <td>{{ magie.descriptionItem }}</td>
                 </tr>

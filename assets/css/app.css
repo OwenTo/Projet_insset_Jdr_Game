@@ -9,12 +9,12 @@ body {
     background-repeat:no-repeat;
     background-size: cover;
 }
-.image{
-    width: 20%;
-    height: auto;
+.picture{
+    width: 20vw;
+    height: 15vh;
+
     display: block;
-    margin-left: auto;
-    margin-right: auto
+
 }
 
 .colorBox{

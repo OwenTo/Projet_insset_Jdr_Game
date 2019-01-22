@@ -8,26 +8,26 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Image</th>
                 <th>NomItem</th>
                 <th>DescriptionItem</th>
-                <th>Poids</th>
-                <th>BeneficeMaluce</th>
-                <th>Valeur</th>
-                <th>Degat</th>
+                {#<th>Poids</th>#}
+                {#<th>BeneficeMaluce</th>#}
+                {#<th>Valeur</th>#}
+                {#<th>Degat</th>#}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for arme in armes %}
             <tr>
-                <td>{{ arme.id }}</td>
+                <td> <img class="picture" src="{{ asset('upload/'~arme.fichier.contenueFichier) }}"/></td>
                 <td>{{ arme.nomItem }}</td>
                 <td>{{ arme.descriptionItem }}</td>
-                <td>{{ arme.poids }}</td>
-                <td>{{ arme.beneficeMaluce }}</td>
-                <td>{{ arme.valeur }}</td>
-                <td>{{ arme.degat }}</td>
+                {#<td>{{ arme.poids }} kg</td>#}
+                {#<td>{{ arme.beneficeMaluce }}</td>#}
+                {#<td>{{ arme.valeur }} {{ arme.monnaie.nomMonnaie }}</td>#}
+                {#<td>{{ arme.degat }} {{ arme.typeDes.des }}</td>#}
                 <td>
                     <a href="{{ path('arme_show', {'id': arme.id}) }}">show</a>
                     <a href="{{ path('arme_edit', {'id': arme.id}) }}">edit</a>

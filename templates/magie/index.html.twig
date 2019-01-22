@@ -16,13 +16,14 @@
         <thead>
             <tr>
 
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Description</th>
-                <th>Poids</th>
-                <th>Benefice/Maluce</th>
-                <th>Valeur</th>
-                <th>Degat Magie</th>
-                <th>Cout De Mana</th>
+                {#<th>Poids</th>#}
+                {#<th>Benefice/Maluce</th>#}
+                {#<th>Valeur</th>#}
+                {#<th>Degat Magie</th>#}
+                {#<th>Cout De Mana</th>#}
                 <th>Niveau  Magie</th>
                 <th>Actions</th>
             </tr>
@@ -30,15 +31,16 @@
         <tbody>
         {% for magie in magies %}
             <tr>
+                <td> <img class="picture" src="{{ asset('upload/'~magie.fichier.contenueFichier) }}"/></td>
 
                 <td>{{ magie.nomItem }}</td>
                 <td>{{ magie.descriptionItem }}</td>
-                <td>{{ magie.poids }}</td>
-                <td>{{ magie.beneficeMaluce }}</td>
-                <td>{{ magie.valeur }}</td>
-                <td>{{ magie.degatMagie }}</td>
-                <td>{{ magie.coutDeMana }}</td>
-                <td>{{ magie.niveauMagie }}</td>
+                {#<td>{{ magie.poids }}</td>#}
+                {#<td>{{ magie.beneficeMaluce }}</td>#}
+                {#<td>{{ magie.valeur }}</td>#}
+                {#<td>{{ magie.degatMagie }}</td>#}
+                {#<td>{{ magie.coutDeMana }}</td>#}
+                <td>Niveau :{{ magie.niveauMagie }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('magie_show', {'id': magie.id}) }}"><i class="fas fa-info-circle"></i></a>
                     {% if is_granted('ROLE_ADMIN') %}
