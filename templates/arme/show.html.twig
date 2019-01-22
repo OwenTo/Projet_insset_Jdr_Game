@@ -3,20 +3,26 @@
 {% block title %}Arme{% endblock %}
 
 {% block body %}
-    <h1>Arme</h1>
-
+    <h1 class="text-center">Arme</h1>
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+        <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
     <table class="table">
         <tbody>
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ arme.id }}</td>#}
+            {#</tr>#}
             <tr>
-                <th>Id</th>
-                <td>{{ arme.id }}</td>
-            </tr>
-            <tr>
-                <th>NomItem</th>
+                <th>Nomde l'arme</th>
                 <td>{{ arme.nomItem }}</td>
             </tr>
             <tr>
-                <th>DescriptionItem</th>
+                <th>image</th>
+                <td><img class="picture" src="{{ asset('upload/'~arme.fichier.contenueFichier) }}"/></td>
+            </tr>
+            <tr>
+                <th>Description de l'arme </th>
                 <td>{{ arme.descriptionItem }}</td>
             </tr>
             <tr>
@@ -24,23 +30,26 @@
                 <td>{{ arme.poids }}</td>
             </tr>
             <tr>
-                <th>BeneficeMaluce</th>
+                <th>Benefice/Maluce</th>
                 <td>{{ arme.beneficeMaluce }}</td>
             </tr>
             <tr>
                 <th>Valeur</th>
-                <td>{{ arme.valeur }}</td>
+                <td>{{ arme.valeur }} {{ arme.monnaie.nomMonnaie }}</td>
             </tr>
             <tr>
-                <th>Degat</th>
-                <td>{{ arme.degat }}</td>
+                <th>Dégat</th>
+                <td>{{ arme.degat }} {{ arme.typeDes.des }}</td>
             </tr>
         </tbody>
     </table>
+    </div>
+    <div class="row " >
+    <a class="btn btn-primary" href="{{ path('arme_index') }}"><i class="fas fa-undo"></i></a>
 
-    <a href="{{ path('arme_index') }}">back to list</a>
-
-    <a href="{{ path('arme_edit', {'id': arme.id}) }}">edit</a>
+    <a class="btn btn-primary" href="{{ path('arme_edit', {'id': arme.id}) }}"><i class="fas fa-edit"></i></a>
 
     {{ include('arme/_delete_form.html.twig') }}
+    </div>
+    </div>
 {% endblock %}

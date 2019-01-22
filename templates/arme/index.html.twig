@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Arme index{% endblock %}
+{% block title %}Liste des Armes{% endblock %}
 
 {% block body %}
-    <h1>Arme index</h1>
+    <h1 class="text-center">Liste des Armes</h1>
 
+    {% if is_granted('ROLE_ADMIN') %}
+        <a  class="ml-5  mr-5 btn btn-primary"href="{{ path('arme_new') }}">Ajouter</a>
+    {% endif %}
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+         style="margin-top: 10px; background-color: beige;">
+<div class="container-fluid ">
     <table class="table">
         <thead>
             <tr>
@@ -29,17 +35,19 @@
                 {#<td>{{ arme.valeur }} {{ arme.monnaie.nomMonnaie }}</td>#}
                 {#<td>{{ arme.degat }} {{ arme.typeDes.des }}</td>#}
                 <td>
-                    <a href="{{ path('arme_show', {'id': arme.id}) }}">show</a>
-                    <a href="{{ path('arme_edit', {'id': arme.id}) }}">edit</a>
+                    <a CLASS="btn btn-primary" href="{{ path('arme_show', {'id': arme.id}) }}"><i class="fas fa-info-circle"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a CLASS="btn btn-primary" href="{{ path('arme_edit', {'id': arme.id}) }}"><i class="fas fa-edit"></i></a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">aucune arme(s) a été trouvé </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('arme_new') }}">Create new</a>
+</div>
+   </div>
 {% endblock %}
