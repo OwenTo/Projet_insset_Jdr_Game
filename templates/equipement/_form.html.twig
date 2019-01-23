@@ -1,4 +1,8 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="form-group mb-1 container-fluid">
+    {{ form_label(form.nomEquipement,'Equipement') }}
+    {{ form_widget(form.nomEquipement,{'attr':{'class':'form-control'}}) }}
+
+    <button class=" mt-1 btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+    {{ form_end(form) }}

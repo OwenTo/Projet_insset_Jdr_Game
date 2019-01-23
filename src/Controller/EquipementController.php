@@ -53,7 +53,7 @@ class EquipementController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="equipement_edit", methods={"GET","POST"})
+     * @Route("/edit/equipement/{id}", name="equipement_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Equipement $equipement): Response
     {

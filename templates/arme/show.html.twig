@@ -44,12 +44,16 @@
         </tbody>
     </table>
     </div>
+    </div>
     <div class="row " >
-    <a class="btn btn-primary" href="{{ path('arme_index') }}"><i class="fas fa-undo"></i></a>
+    <a class="btn btn-primary mr-1" href="{{ path('arme_index') }}">
+        <i class="fas fa-undo"></i></a>
 
-    <a class="btn btn-primary" href="{{ path('arme_edit', {'id': arme.id}) }}"><i class="fas fa-edit"></i></a>
+    <a class="btn btn-primary mr-1" href="{{ path('arme_edit', {'id': arme.id}) }}">
+        <i class="fas fa-edit"></i>
+    </a>
 
     {{ include('arme/_delete_form.html.twig') }}
     </div>
-    </div>
+
 {% endblock %}

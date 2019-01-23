@@ -1,6 +1,11 @@
 
+
 <div class="  card  shadow p-2 mb-5  rounded"  style=" background-color: beige;">
-    <p><a href="#">Creér une partie </a></p>
+    <p>bienvenu a toi {{ app.user.username }}</p>
+</div>
+
+<div class="  card  shadow p-2 mb-5  rounded"  style=" background-color: beige;">
+    <p><a href="#">liste des parties </a></p>
 </div>
 
 <div class="row">
@@ -128,6 +133,29 @@
     </div>
 
 {#Dés#}
+    <div class=" ">
+
+        <div class="col-mb-3 mr-2 ">
+            <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                <div class="card-body">
+                    <div class="card-title">
+                        Dés
+                    </div>
+                    <div class="card-text">
+                        <ul>
+                            <li><a href="{{ path('monnaie_index') }}">Liste des Dés</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
     <div class=" ">
 
         <div class="col-mb-3 mr-2 ">

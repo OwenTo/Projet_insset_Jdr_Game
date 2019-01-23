@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Equipement{% endblock %}
+{% block title %}Détail de l'Equipement{% endblock %}
 
 {% block body %}
-    <h1>Equipement</h1>
-
+    <h1>Détail de l'Equipement</h1>
+<div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+     style="margin-top: 10px; background-color: beige;">
+    <div class="container-fluid ">
     <table class="table">
         <tbody>
             <tr>
@@ -17,10 +19,17 @@
             </tr>
         </tbody>
     </table>
+    </div>
+    <div class="row">
+    <a class="btn btn-primary" href="{{ path('equipement_index') }}">
+        <i class="fas fa-undo"></i>
+    </a>
 
-    <a href="{{ path('equipement_index') }}">back to list</a>
-
-    <a href="{{ path('equipement_edit', {'id': equipement.id}) }}">edit</a>
+    <a class="btn btn-primary" href="{{ path('equipement_edit', {'id': equipement.id}) }}">
+        <i class="fas fa-edit"></i>
+    </a>
 
     {{ include('equipement/_delete_form.html.twig') }}
+</div>
+</div>
 {% endblock %}
