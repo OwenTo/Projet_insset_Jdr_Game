@@ -1,28 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Armure index{% endblock %}
+{% block title %}Liste des Armures{% endblock %}
 
 {% block body %}
-    <h1>Liste des armure</h1>
+    <h1>Liste des Armures</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a  class="ml-5  mr-5 btn btn-primary"href="{{ path('armure_new') }}">Ajouter</a>
+    {% endif %}
 
+<div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+     style="margin-top: 10px; background-color: beige;">
+    <div class="container-fluid ">
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Image</th>
                 <th>Nom de l'armure</th>
-                <th>Description</th>
+                {#<th>Description</th>#}
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for armure in armures %}
             <tr>
-                <td>{{ armure.id }}</td>
+                <td> <img class="picture" src="{{ asset('upload/'~ armure.fichier.contenueFichier ) }}"></td>
                 <td>{{ armure.nomItem }}</td>
-                <td>{{ armure.descriptionItem }}</td>
+                {#<td>{{ armure.descriptionItem }}</td>#}
                 <td>
-                    <a href="{{ path('armure_show', {'id': armure.id}) }}">show</a>
-                    <a href="{{ path('armure_edit', {'id': armure.id}) }}">edit</a>
+
+                    <a  class="btn btn-primary" href="{{ path('armure_show', {'id': armure.id}) }}">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-primary" href="{{ path('armure_edit', {'id': armure.id}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -33,5 +46,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('armure_new') }}">Create new</a>
+    </div>
+</div>
 {% endblock %}

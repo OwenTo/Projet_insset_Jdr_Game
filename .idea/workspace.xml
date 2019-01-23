@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArmureController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Armure.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Armure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Equipement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Equipement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Materiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Materiel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TypeCategorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeCategorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ArmureType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MagieType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MagieType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/armure/show.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArmureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArmureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/arme/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/arme/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/armure/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/armure/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/armure/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/armure/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/armure/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/armure/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/armure/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/armure/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/armure/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/armure/new.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +39,7 @@
     <session id="1796005858">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="29" />
+          <entry key="project.closed" value="30" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -57,6 +51,7 @@
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.28" value="5" />
           <entry key="project.open.time.29" value="2" />
+          <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="1" />
@@ -66,7 +61,7 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,8 +72,8 @@
           <entry key="js" value="3" />
           <entry key="json" value="7" />
           <entry key="lock" value="1" />
-          <entry key="php" value="226" />
-          <entry key="twig" value="160" />
+          <entry key="php" value="228" />
+          <entry key="twig" value="173" />
           <entry key="yaml" value="10" />
         </counts>
       </usages-collector>
@@ -88,9 +83,9 @@
           <entry key="CSS" value="6" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="226" />
+          <entry key="PHP" value="228" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Twig" value="160" />
+          <entry key="Twig" value="173" />
           <entry key="YAML" value="10" />
           <entry key="yarn.lock" value="1" />
         </counts>
@@ -99,8 +94,8 @@
         <counts>
           <entry key="css" value="68" />
           <entry key="json" value="2" />
-          <entry key="php" value="2296" />
-          <entry key="twig" value="2710" />
+          <entry key="php" value="2312" />
+          <entry key="twig" value="2950" />
           <entry key="yaml" value="95" />
         </counts>
       </usages-collector>
@@ -108,8 +103,8 @@
         <counts>
           <entry key="CSS" value="68" />
           <entry key="JSON" value="2" />
-          <entry key="PHP" value="2296" />
-          <entry key="Twig" value="2710" />
+          <entry key="PHP" value="2312" />
+          <entry key="Twig" value="2950" />
           <entry key="YAML" value="95" />
         </counts>
       </usages-collector>
@@ -122,26 +117,14 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.48568702">
       <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/arme/_form.html.twig">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="648">
-                  <caret line="62" column="73" selection-end-line="81" />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/arme/new.html.twig">
+            <entry file="file://$PROJECT_DIR$/templates/arme/index.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="94" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="94" />
-                  <folding>
-                    <element signature="e#12#26#0#Twig" expanded="true" />
-                  </folding>
+                <state relative-caret-position="408">
+                  <caret line="39" column="122" selection-start-line="39" selection-start-column="95" selection-end-line="39" selection-end-column="122" />
                 </state>
               </provider>
             </entry>
@@ -149,24 +132,25 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/armure/_form.html.twig">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/templates/armure/index.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="81">
-                  <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
+                <state relative-caret-position="398">
+                  <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+                  <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+                  <folding>
+                    <element signature="e#223#233#0#Twig" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/armure/new.html.twig">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" selection-start-line="15" selection-end-line="15" />
-                  <folding>
-                    <element signature="e#12#26#0#Twig" expanded="true" />
-                  </folding>
+                <state relative-caret-position="187">
+                  <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -212,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Form/ArmeType.php" />
         <option value="$PROJECT_DIR$/src/Controller/ArmeController.php" />
         <option value="$PROJECT_DIR$/templates/nav_bar/navBar.html.twig" />
         <option value="$PROJECT_DIR$/templates/nav_bar/footer.html.twig" />
@@ -251,18 +234,19 @@
         <option value="$PROJECT_DIR$/templates/arme/show.html.twig" />
         <option value="$PROJECT_DIR$/templates/arme/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/arme/new.html.twig" />
-        <option value="$PROJECT_DIR$/templates/arme/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/MagieType.php" />
         <option value="$PROJECT_DIR$/src/Entity/Equipement.php" />
         <option value="$PROJECT_DIR$/src/Entity/Materiel.php" />
         <option value="$PROJECT_DIR$/src/Entity/TypeCategorie.php" />
         <option value="$PROJECT_DIR$/src/Entity/Armure.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ArmureController.php" />
-        <option value="$PROJECT_DIR$/templates/armure/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/armure/_delete_form.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/ArmureType.php" />
-        <option value="$PROJECT_DIR$/templates/armure/_form.html.twig" />
+        <option value="$PROJECT_DIR$/templates/armure/_delete_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/armure/new.html.twig" />
+        <option value="$PROJECT_DIR$/templates/armure/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/arme/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/ArmureController.php" />
+        <option value="$PROJECT_DIR$/templates/armure/_form.html.twig" />
+        <option value="$PROJECT_DIR$/templates/armure/index.html.twig" />
       </list>
     </option>
   </component>
@@ -382,6 +366,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="projet_fin_d_annee" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -403,53 +398,13 @@
             <path>
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="arme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="armure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="projet_fin_d_annee" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -529,12 +484,13 @@
       <workItem from="1548060838844" duration="3830000" />
       <workItem from="1548146134483" duration="1432000" />
       <workItem from="1548150677559" duration="3419000" />
-      <workItem from="1548163863848" duration="9627000" />
+      <workItem from="1548163863848" duration="10151000" />
+      <workItem from="1548252061905" duration="1294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111748000" />
+    <option name="totallyTimeSpent" value="113566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -546,10 +502,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="840" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37309292" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -570,6 +526,28 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.17449665" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20738254" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32673267" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.765928" weight="0.32956153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32867134" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5034674" side_tool="true" weight="0.33097595" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4965326" weight="0.33097595" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.17449665" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -578,7 +556,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/packages/liip_imagine.yaml" />
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -632,9 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -649,9 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -659,9 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -679,9 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,16 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/arme/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,30 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/arme/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="39" column="122" selection-start-line="39" selection-start-column="122" selection-end-line="39" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/arme/_delete_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
-          <folding>
-            <element signature="e#37#48#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/magie/_delete_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="69" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="69" />
-          <folding>
-            <element signature="e#37#49#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,9 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="38" column="33" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="33" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,9 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
-          <folding>
-            <element signature="e#2015#2027#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,9 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
           <caret line="123" selection-start-line="123" selection-end-line="123" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -846,23 +772,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Arme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Magie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,9 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
           <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,28 +800,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArmureController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#36#58#0#PHP" expanded="true" />
-            <element signature="e#598#622#0#PHP" expanded="true" />
-            <element signature="e#2141#2155#1#PHP" expanded="true" />
-            <element signature="e#2198#2220#0#PHP" expanded="true" />
-            <element signature="e#2495#2518#0#PHP" expanded="true" />
-            <element signature="e#4155#4169#0#PHP" expanded="true" />
-            <element signature="e#4240#4263#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Equipement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="25" column="26" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,50 +817,105 @@
     <entry file="file://$PROJECT_DIR$/src/Repository/ArmureRepository.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/armure/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/arme/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/armure/_delete_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/armure/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
+        <state relative-caret-position="187">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="e#419#429#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/arme/_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="62" column="73" selection-end-line="81" />
+        <state relative-caret-position="157">
+          <caret line="34" selection-start-line="34" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/arme/new.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/arme/_delete_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="94" lean-forward="true" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="94" />
+        <state relative-caret-position="51">
+          <caret line="3" column="69" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="69" />
+          <folding>
+            <element signature="e#37#48#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="11" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/armure/new.html.twig">
+    <entry file="file://$PROJECT_DIR$/templates/armure/_delete_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state>
+          <caret column="150" selection-start-column="150" selection-end-column="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/armure/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
           <folding>
             <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ArmureController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Arme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/armure/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/armure/_form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/arme/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="39" column="122" selection-start-line="39" selection-start-column="95" selection-end-line="39" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/armure/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding>
+            <element signature="e#223#233#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
