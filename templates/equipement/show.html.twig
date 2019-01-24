@@ -10,10 +10,10 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ equipement.id }}</td>
-            </tr>
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ equipement.id }}</td>#}
+            {#</tr>#}
             <tr>
                 <th>NomEquipement</th>
                 <td>{{ equipement.nomEquipement }}</td>
@@ -21,16 +21,20 @@
         </tbody>
     </table>
     </div>
-    <div class="row ml-5">
+
+    <div class="row ml-2">
     <a class="btn btn-primary" href="{{ path('equipement_index') }}">
         <i class="fas fa-undo"></i>
     </a>
+        {% if is_granted('ROLE_ADMIN') %}
 
     <a class="btn btn-primary" href="{{ path('equipement_edit', {'id': equipement.id}) }}">
         <i class="fas fa-edit"></i>
     </a>
 
     {{ include('equipement/_delete_form.html.twig') }}
+        {% endif %}
 </div>
+
 </div>
 {% endblock %}
