@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Equipement index{% endblock %}
+{% block title %}Liste des Equipements{% endblock %}
 
 {% block body %}
-    <h1>Equipement index</h1>
-
+    <h1 class="text-center">Liste dee Equipements </h1>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a  class="ml-5  mr-5 btn btn-primary"href="{{ path('equipement_new') }}">Ajouter</a>
+    {% endif %}
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+         style="margin-top: 10px; background-color: beige;">
+        <div class="container-fluid ">
     <table class="table">
         <thead>
             <tr>
@@ -19,8 +24,11 @@
                 {#<td>{{ equipement.id }}</td>#}
                 <td>{{ equipement.nomEquipement }}</td>
                 <td>
+
                     <a href="{{ path('equipement_show', {'id': equipement.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('equipement_edit', {'id': equipement.id}) }}">edit</a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -31,5 +39,6 @@
         </tbody>
     </table>
 
-
+    </div>
+    </div>
 {% endblock %}

@@ -4,9 +4,11 @@
 
 {% block body %}
     <h1 class="text-center">Détail de l'Armure</h1>
-<div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
      style="margin-top: 10px; background-color: beige;">
-    <div class="container-fluid ">
+
     <table class="table">
         <tbody>
             <tr>
@@ -41,17 +43,18 @@
         </tbody>
     </table>
     </div>
-</div>
-    <div class="row">
-    <a class="btn btn-primary"  href="{{ path('armure_index') }}">
+
+    <div class="row ml-5">
+    <a class="btn btn-primary mr-1"  href="{{ path('armure_index') }}">
         <i class="fas fa-undo"></i>
     </a>
 
-    <a class="btn btn-primary" href="{{ path('armure_edit', {'id': armure.id}) }}">
+    <a class="btn btn-primary mr-1" href="{{ path('armure_edit', {'id': armure.id}) }}">
         <i class="fas fa-edit"></i>
     </a>
 
     {{ include('armure/_delete_form.html.twig') }}
 
     </div>
+</div>
 {% endblock %}
