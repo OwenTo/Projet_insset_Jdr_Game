@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +65,7 @@
           <entry key="js" value="3" />
           <entry key="json" value="10" />
           <entry key="lock" value="1" />
-          <entry key="php" value="240" />
+          <entry key="php" value="241" />
           <entry key="twig" value="265" />
           <entry key="yaml" value="10" />
         </counts>
@@ -78,7 +76,7 @@
           <entry key="CSS" value="6" />
           <entry key="JSON" value="10" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="240" />
+          <entry key="PHP" value="241" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Twig" value="265" />
           <entry key="YAML" value="10" />
@@ -112,7 +110,15 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Race.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-308" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -314,7 +320,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="1027" />
     <option name="width" value="902" />
     <option name="height" value="1050" />
@@ -441,12 +447,12 @@
       <workItem from="1548252061905" duration="5647000" />
       <workItem from="1548317960787" duration="4369000" />
       <workItem from="1548408078722" duration="4120000" />
-      <workItem from="1548420557440" duration="3254000" />
+      <workItem from="1548420557440" duration="3604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129662000" />
+    <option name="totallyTimeSpent" value="130012000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,9 +464,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="822" y="0" width="721" height="840" extended-state="1" />
+    <frame x="822" y="0" width="721" height="840" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4160363" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4160363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -475,7 +481,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5034674" side_tool="true" weight="0.33097595" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4965326" weight="0.33097595" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4965326" visible="true" weight="0.33097595" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -511,13 +517,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Form/ArmureType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/ArmureRepository.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -860,6 +859,11 @@
         <state relative-caret-position="85">
           <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Race.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-308" />
       </provider>
     </entry>
   </component>
