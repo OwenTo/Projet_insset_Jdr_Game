@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="" />
+    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Entity/Partie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Partie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +68,7 @@
           <entry key="js" value="3" />
           <entry key="json" value="10" />
           <entry key="lock" value="1" />
-          <entry key="php" value="247" />
+          <entry key="php" value="248" />
           <entry key="twig" value="265" />
           <entry key="yaml" value="10" />
         </counts>
@@ -76,7 +79,7 @@
           <entry key="CSS" value="6" />
           <entry key="JSON" value="10" />
           <entry key="JavaScript" value="3" />
-          <entry key="PHP" value="247" />
+          <entry key="PHP" value="248" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Twig" value="265" />
           <entry key="YAML" value="10" />
@@ -120,12 +123,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/NiveauMetier.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="59">
               <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Entity/RangGuilde.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-118" />
           </provider>
         </entry>
       </file>
@@ -458,12 +468,12 @@
       <workItem from="1548252061905" duration="5647000" />
       <workItem from="1548317960787" duration="4369000" />
       <workItem from="1548408078722" duration="4120000" />
-      <workItem from="1548420557440" duration="4707000" />
+      <workItem from="1548420557440" duration="5242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131115000" />
+    <option name="totallyTimeSpent" value="131650000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -475,8 +485,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="781" height="840" extended-state="1" />
-    <editor active="true" />
+    <frame x="-6" y="0" width="781" height="840" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3814147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -493,7 +502,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5034674" side_tool="true" weight="0.33097595" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4965326" visible="true" weight="0.33097595" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4965326" weight="0.33097595" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -529,13 +538,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/ArmeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Arme.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -887,6 +889,11 @@
         <state relative-caret-position="59">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/RangGuilde.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-118" />
       </provider>
     </entry>
   </component>

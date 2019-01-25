@@ -21,6 +21,11 @@ class Partie
      */
     private $nomPartie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="parties")
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Partie
     public function setNomPartie(string $nomPartie): self
     {
         $this->nomPartie = $nomPartie;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?User
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?User $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

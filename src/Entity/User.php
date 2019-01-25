@@ -49,6 +49,11 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Partie", mappedBy="utilisateur")
+     */
+    private $parties;
+
 
 
 
@@ -134,6 +139,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles[]="ROLE_USER";
+        $this->parties = new ArrayCollection();
 //        $this->roles[]="ROLE_ADMIN";
 
     }
@@ -159,6 +165,37 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|Partie[]
+     */
+    public function getParties(): Collection
+    {
+        return $this->parties;
+    }
+
+    public function addParty(Partie $party): self
+    {
+        if (!$this->parties->contains($party)) {
+            $this->parties[] = $party;
+            $party->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParty(Partie $party): self
+    {
+        if ($this->parties->contains($party)) {
+            $this->parties->removeElement($party);
+            // set the owning side to null (unless already changed)
+            if ($party->getUtilisateur() === $this) {
+                $party->setUtilisateur(null);
+            }
+        }
+
+        return $this;
     }
 
 
