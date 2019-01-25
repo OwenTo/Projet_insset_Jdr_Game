@@ -42,6 +42,11 @@ class Fichier
      */
     private $item;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="maps")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Fichier
     public function setItem(?Item $item): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

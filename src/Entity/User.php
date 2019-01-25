@@ -61,7 +61,17 @@ class User implements UserInterface
 
 
 
+    //variable qui permet de verifier  elements du fichier uploader////
+    /**
+     * @var string
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
+     */
+    private $mapsAvInsertion;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Fichier", mappedBy="user")
+     */
+    private $maps;
 
 
 
@@ -146,6 +156,7 @@ class User implements UserInterface
         $this->roles[]="ROLE_USER";
         $this->parties = new ArrayCollection();
         $this->personnages = new ArrayCollection();
+        $this->maps = new ArrayCollection();
 //        $this->roles[]="ROLE_ADMIN";
 
     }
@@ -229,6 +240,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($personnage->getUser() === $this) {
                 $personnage->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Fichier[]
+     */
+    public function getMaps(): Collection
+    {
+        return $this->maps;
+    }
+
+    public function addMap(Fichier $map): self
+    {
+        if (!$this->maps->contains($map)) {
+            $this->maps[] = $map;
+            $map->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMap(Fichier $map): self
+    {
+        if ($this->maps->contains($map)) {
+            $this->maps->removeElement($map);
+            // set the owning side to null (unless already changed)
+            if ($map->getUser() === $this) {
+                $map->setUser(null);
             }
         }
 

@@ -33,6 +33,10 @@ class ClassePersonnage
         $this->personnages = new ArrayCollection();
     }
 
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -80,4 +84,6 @@ class ClassePersonnage
 
         return $this;
     }
+
+    
 }

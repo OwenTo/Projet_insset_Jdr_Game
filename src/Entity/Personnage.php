@@ -58,11 +58,7 @@ class Personnage
      */
     private $niveau;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ClassePersonnage", inversedBy="personnages")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $classe;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Langue", inversedBy="personnages")
@@ -104,6 +100,12 @@ class Personnage
      * @ORM\OneToOne(targetEntity="App\Entity\Inventaire", inversedBy="personnage", cascade={"persist", "remove"})
      */
     private $inventaire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ClassePersonnage", inversedBy="personnages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classe;
 
     public function __construct()
     {
@@ -215,17 +217,7 @@ class Personnage
         return $this;
     }
 
-    public function getClasse(): ?ClassePersonnage
-    {
-        return $this->classe;
-    }
-
-    public function setClasse(?ClassePersonnage $classe): self
-    {
-        $this->classe = $classe;
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection|Langue[]
@@ -409,6 +401,18 @@ class Personnage
     public function setInventaire(?Inventaire $inventaire): self
     {
         $this->inventaire = $inventaire;
+
+        return $this;
+    }
+
+    public function getClasse(): ?ClassePersonnage
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?ClassePersonnage $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }
