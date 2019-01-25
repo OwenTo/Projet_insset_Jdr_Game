@@ -11,24 +11,29 @@
      style="margin-top: 10px; background-color: beige;">
     <table class="table">
         <tbody>
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ monnaie.id }}</td>#}
+            {#</tr>#}
             <tr>
-                <th>Id</th>
-                <td>{{ monnaie.id }}</td>
-            </tr>
-            <tr>
-                <th>NomMonnaie</th>
+                <th>Monnaie</th>
                 <td>{{ monnaie.nomMonnaie }}</td>
             </tr>
         </tbody>
     </table>
 
 </div>
-    <div class="row " >
-    <a class="btn btn-primary  mr-1 " href="{{ path('monnaie_index') }}"><i class="fas fa-undo"></i></a>
-
-    <a class="btn btn-primary mr-1" href="{{ path('monnaie_edit', {'id': monnaie.id}) }}"><i class="fas fa-edit"></i></a>
+    <div class="row ml-2 " >
+    <a class="btn btn-primary  mr-1 " href="{{ path('monnaie_index') }}">
+        <i class="fas fa-undo"></i>
+    </a>
+        {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary mr-1" href="{{ path('monnaie_edit', {'id': monnaie.id}) }}">
+        <i class="fas fa-edit"></i>
+    </a>
 
     {{ include('monnaie/_delete_form.html.twig') }}
+        {% endif %}
     </div>
 </div>
     {% endblock %}
