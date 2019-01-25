@@ -54,6 +54,11 @@ class User implements UserInterface
      */
     private $parties;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Personnage", mappedBy="user", orphanRemoval=true)
+     */
+    private $personnages;
+
 
 
 
@@ -140,6 +145,7 @@ class User implements UserInterface
     {
         $this->roles[]="ROLE_USER";
         $this->parties = new ArrayCollection();
+        $this->personnages = new ArrayCollection();
 //        $this->roles[]="ROLE_ADMIN";
 
     }
@@ -192,6 +198,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($party->getUtilisateur() === $this) {
                 $party->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Personnage[]
+     */
+    public function getPersonnages(): Collection
+    {
+        return $this->personnages;
+    }
+
+    public function addPersonnage(Personnage $personnage): self
+    {
+        if (!$this->personnages->contains($personnage)) {
+            $this->personnages[] = $personnage;
+            $personnage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonnage(Personnage $personnage): self
+    {
+        if ($this->personnages->contains($personnage)) {
+            $this->personnages->removeElement($personnage);
+            // set the owning side to null (unless already changed)
+            if ($personnage->getUser() === $this) {
+                $personnage->setUser(null);
             }
         }
 

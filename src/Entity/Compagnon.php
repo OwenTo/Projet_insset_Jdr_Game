@@ -38,6 +38,11 @@ class Compagnon
      */
     private $race;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="collCompagnons")
+     */
+    private $personnage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +92,18 @@ class Compagnon
     public function setRace(?Race $race): self
     {
         $this->race = $race;
+
+        return $this;
+    }
+
+    public function getPersonnage(): ?Personnage
+    {
+        return $this->personnage;
+    }
+
+    public function setPersonnage(?Personnage $personnage): self
+    {
+        $this->personnage = $personnage;
 
         return $this;
     }

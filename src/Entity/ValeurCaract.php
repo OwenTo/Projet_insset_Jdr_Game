@@ -27,6 +27,11 @@ class ValeurCaract
      */
     private $caracteristique;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="valeurCaract")
+     */
+    private $personnage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class ValeurCaract
     public function setCaracteristique(?Caracteristique $caracteristique): self
     {
         $this->caracteristique = $caracteristique;
+
+        return $this;
+    }
+
+    public function getPersonnage(): ?Personnage
+    {
+        return $this->personnage;
+    }
+
+    public function setPersonnage(?Personnage $personnage): self
+    {
+        $this->personnage = $personnage;
 
         return $this;
     }

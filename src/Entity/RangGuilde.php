@@ -27,6 +27,11 @@ class RangGuilde
      */
     private $guilde;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="collRangGuilds")
+     */
+    private $personnage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class RangGuilde
     public function setGuilde(?Guilde $guilde): self
     {
         $this->guilde = $guilde;
+
+        return $this;
+    }
+
+    public function getPersonnage(): ?Personnage
+    {
+        return $this->personnage;
+    }
+
+    public function setPersonnage(?Personnage $personnage): self
+    {
+        $this->personnage = $personnage;
 
         return $this;
     }

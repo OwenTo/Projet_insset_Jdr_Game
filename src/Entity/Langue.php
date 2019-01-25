@@ -33,9 +33,15 @@ class Langue
      */
     private $langueTypes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Personnage", mappedBy="collLangues")
+     */
+    private $personnages;
+
     public function __construct()
     {
         $this->langueTypes = new ArrayCollection();
+        $this->personnages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +96,34 @@ class Langue
         if ($this->langueTypes->contains($langueType)) {
             $this->langueTypes->removeElement($langueType);
             $langueType->removeCollLangue($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Personnage[]
+     */
+    public function getPersonnages(): Collection
+    {
+        return $this->personnages;
+    }
+
+    public function addPersonnage(Personnage $personnage): self
+    {
+        if (!$this->personnages->contains($personnage)) {
+            $this->personnages[] = $personnage;
+            $personnage->addCollLangue($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonnage(Personnage $personnage): self
+    {
+        if ($this->personnages->contains($personnage)) {
+            $this->personnages->removeElement($personnage);
+            $personnage->removeCollLangue($this);
         }
 
         return $this;

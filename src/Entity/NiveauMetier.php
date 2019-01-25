@@ -27,6 +27,11 @@ class NiveauMetier
      */
     private $metier;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="collNiveauMetier")
+     */
+    private $personnage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class NiveauMetier
     public function setMetier(?Metier $metier): self
     {
         $this->metier = $metier;
+
+        return $this;
+    }
+
+    public function getPersonnage(): ?Personnage
+    {
+        return $this->personnage;
+    }
+
+    public function setPersonnage(?Personnage $personnage): self
+    {
+        $this->personnage = $personnage;
 
         return $this;
     }
