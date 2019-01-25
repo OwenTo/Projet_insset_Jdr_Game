@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
@@ -72,6 +74,14 @@ class Item
      * @ORM\OneToOne(targetEntity="App\Entity\Fichier", mappedBy="item", cascade={"persist", "remove"})
      */
     private $fichier;
+
+
+
+
+    public function __construct()
+    {
+        $this->inventaires = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -200,4 +210,7 @@ class Item
 
         return $this;
     }
+
+
+
 }
