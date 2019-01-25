@@ -32,6 +32,12 @@ class Compagnon
      */
     private $compagnonType;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Race", inversedBy="collCompagnon")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $race;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +75,18 @@ class Compagnon
     public function setCompagnonType(?CompagnonType $compagnonType): self
     {
         $this->compagnonType = $compagnonType;
+
+        return $this;
+    }
+
+    public function getRace(): ?Race
+    {
+        return $this->race;
+    }
+
+    public function setRace(?Race $race): self
+    {
+        $this->race = $race;
 
         return $this;
     }
