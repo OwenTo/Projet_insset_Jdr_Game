@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class Guilde
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeGuilde;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RangGuilde", mappedBy="guilde")
+     */
+    private $rangGuildes;
+
+    public function __construct()
+    {
+        $this->rangGuildes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,37 @@ class Guilde
     public function setTypeGuilde(?TypeGuilde $typeGuilde): self
     {
         $this->typeGuilde = $typeGuilde;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RangGuilde[]
+     */
+    public function getRangGuildes(): Collection
+    {
+        return $this->rangGuildes;
+    }
+
+    public function addRangGuilde(RangGuilde $rangGuilde): self
+    {
+        if (!$this->rangGuildes->contains($rangGuilde)) {
+            $this->rangGuildes[] = $rangGuilde;
+            $rangGuilde->setGuilde($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRangGuilde(RangGuilde $rangGuilde): self
+    {
+        if ($this->rangGuildes->contains($rangGuilde)) {
+            $this->rangGuildes->removeElement($rangGuilde);
+            // set the owning side to null (unless already changed)
+            if ($rangGuilde->getGuilde() === $this) {
+                $rangGuilde->setGuilde(null);
+            }
+        }
 
         return $this;
     }
