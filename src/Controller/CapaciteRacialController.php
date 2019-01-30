@@ -10,13 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/capacite/racial")
- */
 class CapaciteRacialController extends AbstractController
 {
     /**
-     * @Route("/", name="capacite_racial_index", methods={"GET"})
+     * @Route("/liste/capacite/racial", name="capacite_racial_index", methods={"GET"})
      */
     public function index(CapaciteRacialRepository $capaciteRacialRepository): Response
     {
@@ -26,7 +23,7 @@ class CapaciteRacialController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="capacite_racial_new", methods={"GET","POST"})
+     * @Route("/create/capacite/racial", name="capacite_racial_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +46,7 @@ class CapaciteRacialController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="capacite_racial_show", methods={"GET"})
+     * @Route("/detail/capacite/racial/{id}", name="capacite_racial_show", methods={"GET"})
      */
     public function show(CapaciteRacial $capaciteRacial): Response
     {
@@ -59,7 +56,7 @@ class CapaciteRacialController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="capacite_racial_edit", methods={"GET","POST"})
+     * @Route("/edit/capacite/racial/{id}", name="capacite_racial_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, CapaciteRacial $capaciteRacial): Response
     {
@@ -81,7 +78,7 @@ class CapaciteRacialController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="capacite_racial_delete", methods={"DELETE"})
+     * @Route("/suppression/capacite/racial/{id}", name="capacite_racial_delete", methods={"DELETE"})
      */
     public function delete(Request $request, CapaciteRacial $capaciteRacial): Response
     {
