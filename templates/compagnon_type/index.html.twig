@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CompagnonType index{% endblock %}
+
+{% block body %}
+    <h1>CompagnonType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TypeCompagnon</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compagnon_type in compagnon_types %}
+            <tr>
+                <td>{{ compagnon_type.id }}</td>
+                <td>{{ compagnon_type.typeCompagnon }}</td>
+                <td>
+                    <a href="{{ path('compagnon_type_show', {'id': compagnon_type.id}) }}">show</a>
+                    <a href="{{ path('compagnon_type_edit', {'id': compagnon_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('compagnon_type_new') }}">Create new</a>
+{% endblock %}
