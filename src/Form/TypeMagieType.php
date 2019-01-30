@@ -13,7 +13,7 @@ class TypeMagieType extends AbstractType
     {
         $builder
             ->add('nomTypeMagie')
-            ->add('collMagie')
+//            ->add('collMagie')
         ;
     }
 

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MaterielRepository")
@@ -31,12 +32,14 @@ class Materiel
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Armure", mappedBy="materiel")
      */
-    private $collMArmure;
+    private $collArmure;
+
+
 
     public function __construct()
     {
         $this->collMArmes = new ArrayCollection();
-        $this->collMArmure = new ArrayCollection();
+        $this->collArmure = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,31 +93,33 @@ class Materiel
     /**
      * @return Collection|Armure[]
      */
-    public function getCollMArmure(): Collection
+    public function getCollArmure(): Collection
     {
-        return $this->collMArmure;
+        return $this->collArmure;
     }
 
-    public function addCollMArmure(Armure $collMArmure): self
+    public function addCollArmure(Armure $collArmure): self
     {
-        if (!$this->collMArmure->contains($collMArmure)) {
-            $this->collMArmure[] = $collMArmure;
-            $collMArmure->setMateriel($this);
+        if (!$this->collArmure->contains($collArmure)) {
+            $this->collArmure[] = $collArmure;
+            $collArmure->setMateriel($this);
         }
 
         return $this;
     }
 
-    public function removeCollMArmure(Armure $collMArmure): self
+    public function removeCollArmure(Armure $collArmure): self
     {
-        if ($this->collMArmure->contains($collMArmure)) {
-            $this->collMArmure->removeElement($collMArmure);
+        if ($this->collArmure->contains($collArmure)) {
+            $this->collArmure->removeElement($collArmure);
             // set the owning side to null (unless already changed)
-            if ($collMArmure->getMateriel() === $this) {
-                $collMArmure->setMateriel(null);
+            if ($collArmure->getMateriel() === $this) {
+                $collArmure->setMateriel(null);
             }
         }
 
         return $this;
     }
+
+
 }

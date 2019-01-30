@@ -3,24 +3,60 @@
 {% block title %}Armure{% endblock %}
 
 {% block body %}
-    <h1>Armure</h1>
+    <h1 class="text-center">Détail de l'Armure</h1>
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+     style="margin-top: 10px; background-color: beige;">
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ armure.id }}</td>
+                <th>Nom: </th>
+                <td>{{ armure.nomItem }}</td>
             </tr>
             <tr>
-                <th>Defense</th>
+                <th>image: </th>
+                <td><img class="picture" src="{{ asset('upload/'~armure.fichier.contenueFichier) }}"/></td>
+            </tr>
+            <tr>
+                <th>Description de l'arme : </th>
+                <td>{{ armure.descriptionItem }}</td>
+            </tr>
+            <tr>
+                <th>Poids: </th>
+                <td>{{ armure.poids }}</td>
+            </tr>
+            <tr>
+                <th>Bénéfice/Maluce: </th>
+                <td>{{ armure.beneficeMaluce }}</td>
+            </tr>
+            <tr>
+                <th>Valeur: </th>
+                <td>{{ armure.valeur }} {{ armure.monnaie.nomMonnaie }}</td>
+            </tr>
+
+            <tr>
+                <th>Défense: </th>
                 <td>{{ armure.defense }}</td>
             </tr>
         </tbody>
     </table>
+    </div>
 
-    <a href="{{ path('armure_index') }}">back to list</a>
-
-    <a href="{{ path('armure_edit', {'id': armure.id}) }}">edit</a>
+    <div class="row ml-2">
+    <a class="btn btn-primary mr-1"  href="{{ path('armure_index') }}">
+        <i class="fas fa-undo"></i>
+    </a>
+        {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary mr-1" href="{{ path('armure_edit', {'id': armure.id}) }}">
+        <i class="fas fa-edit"></i>
+    </a>
 
     {{ include('armure/_delete_form.html.twig') }}
+
+
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

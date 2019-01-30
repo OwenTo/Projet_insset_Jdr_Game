@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MagieRepository")
@@ -28,6 +29,7 @@ class Magie extends Item
     private $niveauMagie;
 
     /**
+     * @Assert\NotNull(message="Il faut choisir au moins un type de Magie")
      * @ORM\OneToMany(targetEntity="App\Entity\TypeMagie", mappedBy="collMagie")
      */
     private $typeMagies;

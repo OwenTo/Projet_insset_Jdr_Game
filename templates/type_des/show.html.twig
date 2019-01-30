@@ -1,26 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TypeDes{% endblock %}
+{% block title %}Détail d'un dé{% endblock %}
 
 {% block body %}
-    <h1>TypeDes</h1>
-
+    <h1 class="text-center">Détail d'un dé</h1>
+<div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+    <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+         style="margin-top: 10px; background-color: beige;">
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ type_de.id }}</td>
+                {#<th>Id</th>#}
+                {#<td>{{ type_de.id }}</td>#}
             </tr>
             <tr>
-                <th>Des</th>
+                <th>Dé</th>
                 <td>{{ type_de.des }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('type_des_index') }}">back to list</a>
-
-    <a href="{{ path('type_des_edit', {'id': type_de.id}) }}">edit</a>
+    </div>
+    <div class="row ml-2">
+    <a class="btn btn-primary mr-1" href="{{ path('type_des_index') }}">
+        <i class="fas fa-undo"></i>
+    </a>
+        {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary mr-1" href="{{ path('type_des_edit', {'id': type_de.id}) }}">
+        <i class="fas fa-edit"></i>
+    </a>
 
     {{ include('type_des/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

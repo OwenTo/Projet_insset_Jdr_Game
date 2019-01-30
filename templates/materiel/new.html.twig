@@ -1,11 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Materiel{% endblock %}
+{% block title %}Création  Materiel{% endblock %}
 
 {% block body %}
-    <h1>Create new Materiel</h1>
+    <h1>Création d'un  Materiel</h1>
+    <div class="mb-5 mt-5" style="margin-right: 15%;margin-left: 15%">
 
-    {{ include('materiel/_form.html.twig') }}
+        <div class="centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
 
-    <a href="{{ path('materiel_index') }}">back to list</a>
+
+            {{ include('materiel/_form.html.twig') }}
+        </div>
+            <a class="btn btn-primary" href="{{ path('materiel_index') }}">
+                <i class="fas fa-backward"></i>
+            </a>
+
+    </div>
 {% endblock %}

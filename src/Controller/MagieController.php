@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Fichier;
 use App\Entity\Magie;
+use App\Entity\TypeMagie;
 use App\Form\MagieType;
 use App\Repository\MagieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,13 +28,23 @@ class MagieController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
+        // on recupére le type de la magie par défaut
+//        $em = $this->getDoctrine()->getRepository(TypeMagie::class);
+//        $defautTypeMagie = $em->find(1);
+
+
+
         $magie = new Magie();
         $form = $this->createForm(MagieType::class, $magie);
+
+//        $form = $this->createForm(MagieType::class, $magie,
+//            array('defaultTypeMagie' => $defautTypeMagie));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-
 
 
             $fichier = new Fichier();
@@ -56,7 +67,6 @@ class MagieController extends AbstractController
             $fichier->setCreateFileAt($dateCrea);
             $entityManager->persist($fichier);
             $magie->setFichier($fichier);
-
 
 
             $entityManager->persist($magie);
@@ -115,8 +125,6 @@ class MagieController extends AbstractController
                 $magie->getFichier()->setModifFileAt($dateModif);
 
 
-
-
             }
             $this->getDoctrine()->getManager()->flush();
 
@@ -134,10 +142,10 @@ class MagieController extends AbstractController
      */
     public function delete(Request $request, Magie $magie): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$magie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $magie->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            if (!empty($magie->getFichier())){
+            if (!empty($magie->getFichier())) {
                 $filDir = $this->getParameter('upload_directory');
                 unlink($filDir . "/" . $magie->getFichier()->getContenueFichier());
 

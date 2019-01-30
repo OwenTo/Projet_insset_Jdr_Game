@@ -35,6 +35,8 @@ class ArmureController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
 
+            if(!empty($form->get('imageAvInsertion')->getData())){
+
 
 
             $fichier = new Fichier();
@@ -66,6 +68,7 @@ class ArmureController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('armure_index');
+            }
         }
 
         return $this->render('armure/new.html.twig', [
@@ -83,7 +86,7 @@ class ArmureController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="armure_edit", methods={"GET","POST"})
+     * @Route("/edit/armure/{id}", name="armure_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Armure $armure): Response
     {

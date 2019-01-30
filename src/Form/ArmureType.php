@@ -25,10 +25,11 @@ class ArmureType extends AbstractType
             ->add('poids')
             ->add('beneficeMaluce')
             ->add('valeur')
-
             ->add('defense')
-
-
+            ->add('equipement',EntityType::class,
+                array('class'=>Equipement::class,
+                    'label'=>'Equipement',
+                    'choice_label'=>'nomEquipement'))
 
             ->add('typeDes', EntityType::class,
                 array('class'=>TypeDes::class,
@@ -37,7 +38,6 @@ class ArmureType extends AbstractType
             )
             ->add('imageAvInsertion', FileType::class,
                 array('data_class' => null,
-                    'label'=>'Image ',
                     'required'=>false
                 )
             )
@@ -47,7 +47,7 @@ class ArmureType extends AbstractType
                     'choice_label'=>'nomMonnaie'))
 
 
-            ->add('typeCategorie', EntityType::class,
+            ->add('categorie', EntityType::class,
                 array('class'=>TypeCategorie::class,
                     'label'=>'Categorie',
                     'choice_label'=>'categorie')
@@ -57,12 +57,7 @@ class ArmureType extends AbstractType
                     'label'=>"Materiel de l'objet",
                     'choice_label'=>'typeMateriel')
             )
-//           ')
-            ->add('equipement',EntityType::class,
-                array('class'=>Equipement::class,
-                    'label'=>"Partie de l'équipement",
-                    'choice_label'=>"nomEquipement")
-            )
+
         ;
     }
 

@@ -3,9 +3,15 @@
 {% block title %}New Arme{% endblock %}
 
 {% block body %}
-    <h1>Create new Arme</h1>
+    <h1>Creation d'une arme</h1>
+<div class="mb-5 mt-5" style="margin-right: 15%;margin-left: 15%">
+
+    <div class="centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded" style="margin-top: 10px; background-color: beige;" >
+
 
     {{ include('arme/_form.html.twig') }}
-
-    <a href="{{ path('arme_index') }}">back to list</a>
+    </div>
+    <a class="btn btn-primary" href="{{ path('arme_index') }}"><i class="fas fa-backward"></i>
+    </a>
+</div>
 {% endblock %}
