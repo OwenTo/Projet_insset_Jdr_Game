@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/langue/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue/show.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/langue_type/show.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/materiel/show.html.twig" beforeDir="false" />
-    </list>
+    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -566,12 +547,12 @@
       <workItem from="1548408078722" duration="4120000" />
       <workItem from="1548420557440" duration="7017000" />
       <workItem from="1548847325633" duration="754000" />
-      <workItem from="1548854854885" duration="624000" />
+      <workItem from="1548854854885" duration="864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134803000" />
+    <option name="totallyTimeSpent" value="135043000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
