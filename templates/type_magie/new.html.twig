@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeMagie{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeMagie</h1>
+
+    {{ include('type_magie/_form.html.twig') }}
+
+    <a href="{{ path('type_magie_index') }}">back to list</a>
+{% endblock %}

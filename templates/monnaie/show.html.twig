@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monnaie{% endblock %}
+
+{% block body %}
+    <h1>Monnaie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ monnaie.id }}</td>
+            </tr>
+            <tr>
+                <th>NomMonnaie</th>
+                <td>{{ monnaie.nomMonnaie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('monnaie_index') }}">back to list</a>
+
+    <a href="{{ path('monnaie_edit', {'id': monnaie.id}) }}">edit</a>
+
+    {{ include('monnaie/_delete_form.html.twig') }}
+{% endblock %}

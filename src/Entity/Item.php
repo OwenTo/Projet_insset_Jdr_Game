@@ -58,6 +58,11 @@ class Item
      */
     private $monnaie;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Fichier", mappedBy="item", cascade={"persist", "remove"})
+     */
+    private $fichier;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,6 +148,24 @@ class Item
     public function setMonnaie(?Monnaie $monnaie): self
     {
         $this->monnaie = $monnaie;
+
+        return $this;
+    }
+
+    public function getFichier(): ?Fichier
+    {
+        return $this->fichier;
+    }
+
+    public function setFichier(?Fichier $fichier): self
+    {
+        $this->fichier = $fichier;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newItem = $fichier === null ? null : $this;
+        if ($newItem !== $fichier->getItem()) {
+            $fichier->setItem($newItem);
+        }
 
         return $this;
     }

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monnaie index{% endblock %}
+
+{% block body %}
+    <h1>Monnaie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomMonnaie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for monnaie in monnaies %}
+            <tr>
+                <td>{{ monnaie.id }}</td>
+                <td>{{ monnaie.nomMonnaie }}</td>
+                <td>
+                    <a href="{{ path('monnaie_show', {'id': monnaie.id}) }}">show</a>
+                    <a href="{{ path('monnaie_edit', {'id': monnaie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('monnaie_new') }}">Create new</a>
+{% endblock %}
