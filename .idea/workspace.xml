@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="" />
+    <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/templates/langue/_delete_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue/_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue/show.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/_delete_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/langue_type/show.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/_delete_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/_form.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/edit.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/new.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/materiel/show.html.twig" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,7 +425,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="806" />
     <option name="y" value="20" />
     <option name="width" value="1048" />
@@ -434,6 +453,23 @@
               <item name="projet_fin_d_annee - Copie (4)" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projet_fin_d_annee - Copie (4)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projet_fin_d_annee - Copie (4)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projet_fin_d_annee - Copie (4)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projet_fin_d_annee - Copie (4)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projet_fin_d_annee - Copie (4)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projet_fin_d_annee - Copie (4)" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -530,12 +566,12 @@
       <workItem from="1548408078722" duration="4120000" />
       <workItem from="1548420557440" duration="7017000" />
       <workItem from="1548847325633" duration="754000" />
-      <workItem from="1548854854885" duration="299000" />
+      <workItem from="1548854854885" duration="624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134478000" />
+    <option name="totallyTimeSpent" value="134803000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -547,7 +583,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="838" height="840" extended-state="0" />
+    <frame x="645" y="16" width="838" height="840" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4048843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
