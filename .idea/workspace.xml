@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b8037a04-97bd-415a-8249-5acee5fb4438" name="Default Changelist" comment="">
 
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
 
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -442,7 +441,7 @@
     </include_path>
   </component>
 
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
 
     <option name="x" value="-8" />
     <option name="width" value="977" />
@@ -563,14 +562,15 @@
 
       <workItem from="1548408078722" duration="4120000" />
       <workItem from="1548420557440" duration="7017000" />
-      <workItem from="1548847325633" duration="519000" />
+
+      <workItem from="1548847325633" duration="754000" />
 
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 
-    <option name="totallyTimeSpent" value="133944000" />
+    <option name="totallyTimeSpent" value="134179000" />
 
   </component>
   <component name="TodoView">
