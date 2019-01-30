@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InventaireBourse index{% endblock %}
+
+{% block body %}
+    <h1>InventaireBourse index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ValeurBoursePerso</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventaire_bourse in inventaire_bourses %}
+            <tr>
+                <td>{{ inventaire_bourse.id }}</td>
+                <td>{{ inventaire_bourse.valeurBoursePerso }}</td>
+                <td>
+                    <a href="{{ path('inventaire_bourse_show', {'id': inventaire_bourse.id}) }}">show</a>
+                    <a href="{{ path('inventaire_bourse_edit', {'id': inventaire_bourse.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventaire_bourse_new') }}">Create new</a>
+{% endblock %}
