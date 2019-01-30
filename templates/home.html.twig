@@ -3,7 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-
     {% if  reponse is defined %}
         <div class="alert alert-success" style=" "><p>{{ reponse }}</p></div>
     {% endif %}
@@ -15,7 +14,7 @@
         {% endfor %}
     {% endif %}
 
-    <div class="container-fuild   mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
 
 
         {% if   is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -26,7 +25,7 @@
 
 
 
-        {#{% include'folder/listeFolder.html.twig' %}#}
+        {% include'folder/listeFolder.html.twig' %}
         {% else %}
         <div class=" centerText  col-12  card  shadow p-3 mb-5  rounded"
              style="margin-top: 10px; background-color: beige;">
@@ -164,7 +163,6 @@
 
             {% endif %}
         </div>
-
 
 
 

@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
 use Doctrine\ORM\Mapping\InheritanceType;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
@@ -58,10 +60,39 @@ class Item
      */
     private $monnaie;
 
+
+    //variable qui permet de verifier  elements du fichier uploader////
+    /**
+     * @var string
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
+     */
+    private $imageAvInsertion;
+
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Fichier", mappedBy="item", cascade={"persist", "remove"})
      */
     private $fichier;
+
+    /**
+     * @return string
+     */
+    public function getImageAvInsertion(): ?string
+    {
+        return $this->imageAvInsertion;
+    }
+
+    /**
+     * @param string $imageAvInsertion
+     * @return Item
+     */
+    public function setImageAvInsertion(string $imageAvInsertion): Item
+    {
+        $this->imageAvInsertion = $imageAvInsertion;
+        return $this;
+    }
+
+
+
 
     public function getId(): ?int
     {
