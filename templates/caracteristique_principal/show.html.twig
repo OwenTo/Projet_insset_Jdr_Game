@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CaracteristiquePrincipal{% endblock %}
+
+{% block body %}
+    <h1>CaracteristiquePrincipal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ caracteristique_principal.id }}</td>
+            </tr>
+            <tr>
+                <th>NomCaracteristique</th>
+                <td>{{ caracteristique_principal.nomCaracteristique }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('caracteristique_principal_index') }}">back to list</a>
+
+    <a href="{{ path('caracteristique_principal_edit', {'id': caracteristique_principal.id}) }}">edit</a>
+
+    {{ include('caracteristique_principal/_delete_form.html.twig') }}
+{% endblock %}
