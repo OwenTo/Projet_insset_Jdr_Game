@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/compagnon")
- */
+
 class CompagnonController extends AbstractController
 {
     /**
-     * @Route("/", name="compagnon_index", methods={"GET"})
+     * @Route("/liste/compagnon", name="compagnon_index", methods={"GET"})
      */
     public function index(CompagnonRepository $compagnonRepository): Response
     {
@@ -26,7 +24,7 @@ class CompagnonController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="compagnon_new", methods={"GET","POST"})
+     * @Route("/create/compagnon", name="compagnon_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class CompagnonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="compagnon_show", methods={"GET"})
+     * @Route("/detail/compagnon/{id}", name="compagnon_show", methods={"GET"})
      */
     public function show(Compagnon $compagnon): Response
     {
@@ -59,7 +57,7 @@ class CompagnonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="compagnon_edit", methods={"GET","POST"})
+     * @Route("/edit/compagnon/{id}", name="compagnon_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Compagnon $compagnon): Response
     {
@@ -81,7 +79,7 @@ class CompagnonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="compagnon_delete", methods={"DELETE"})
+     * @Route("/suppression/compagnon/{id}", name="compagnon_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Compagnon $compagnon): Response
     {
