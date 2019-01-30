@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/langue")
- */
+
 class LangueController extends AbstractController
 {
     /**
-     * @Route("/", name="langue_index", methods={"GET"})
+     * @Route("/liste/langue", name="langue_index", methods={"GET"})
      */
     public function index(LangueRepository $langueRepository): Response
     {
@@ -26,7 +24,7 @@ class LangueController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="langue_new", methods={"GET","POST"})
+     * @Route("/create/langue", name="langue_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class LangueController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="langue_show", methods={"GET"})
+     * @Route("/detail/langue/{id}", name="langue_show", methods={"GET"})
      */
     public function show(Langue $langue): Response
     {
@@ -59,7 +57,7 @@ class LangueController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="langue_edit", methods={"GET","POST"})
+     * @Route("/edit/langue/{id}", name="langue_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Langue $langue): Response
     {
@@ -81,7 +79,7 @@ class LangueController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="langue_delete", methods={"DELETE"})
+     * @Route("/suppression/langue/{id}", name="langue_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Langue $langue): Response
     {
