@@ -1,0 +1,18 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+
+    <h1 class="text-center">Connexion</h1>
+
+<div class="container    card-body  card shadow p-3 mb-5  rounded " style=" background-color: beige;">
+    <form action="{{ path('security_login') }}" method="post">
+        <div class="form-group ">
+            <input  placeholder="Adresse mail" required name="_username" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <input  placeholder="Mot de passe" required name="_password" type="password" class="form-control">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-success">Connexion</button>        </div>
+    </form>
+    </div>
+{% endblock %}
