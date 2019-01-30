@@ -12,6 +12,9 @@ use App\Entity\TypeDes;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,12 +23,12 @@ class ArmureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomItem')
-            ->add('descriptionItem')
-            ->add('poids')
-            ->add('beneficeMaluce')
-            ->add('valeur')
-            ->add('defense')
+            ->add('nomItem',TextType::class)
+            ->add('descriptionItem',TextareaType::class)
+            ->add('poids',NumberType::class)
+            ->add('beneficeMaluce',TextareaType::class)
+            ->add('valeur',NumberType::class)
+            ->add('defense',NumberType::class)
             ->add('equipement',EntityType::class,
                 array('class'=>Equipement::class,
                     'label'=>'Equipement',
