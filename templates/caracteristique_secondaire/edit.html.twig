@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CaracteristiqueSecondaire{% endblock %}
+
+{% block body %}
+    <h1>Edit CaracteristiqueSecondaire</h1>
+
+    {{ include('caracteristique_secondaire/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('caracteristique_secondaire_index') }}">back to list</a>
+
+    {{ include('caracteristique_secondaire/_delete_form.html.twig') }}
+{% endblock %}
