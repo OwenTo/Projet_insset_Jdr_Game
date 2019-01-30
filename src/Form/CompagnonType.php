@@ -16,7 +16,7 @@ class CompagnonType extends AbstractType
             ->add('prixAchatVente')
             ->add('compagnonType')
             ->add('race')
-            ->add('personnage')
+//            ->add('personnage')
         ;
     }
 

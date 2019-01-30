@@ -43,6 +43,11 @@ class Compagnon
      */
     private $personnage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomCompagnon;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Compagnon
     public function setPersonnage(?Personnage $personnage): self
     {
         $this->personnage = $personnage;
+
+        return $this;
+    }
+
+    public function getNomCompagnon(): ?string
+    {
+        return $this->nomCompagnon;
+    }
+
+    public function setNomCompagnon(string $nomCompagnon): self
+    {
+        $this->nomCompagnon = $nomCompagnon;
 
         return $this;
     }
