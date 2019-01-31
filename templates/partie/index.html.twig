@@ -8,9 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {#<th>Id</th>#}
                 <th>NomPartie</th>
-                <th>actions</th>
+                {#<th>actions</th>#}
             </tr>
         </thead>
         <tbody>
@@ -18,10 +18,10 @@
             <tr>
                 <td>{{ partie.id }}</td>
                 <td>{{ partie.nomPartie }}</td>
-                <td>
-                    <a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>
-                    <a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>
-                </td>
+                {#<td>#}
+                    {#<a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>#}
+                    {#<a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>#}
+                {#</td>#}
             </tr>
         {% else %}
             <tr>
@@ -31,5 +31,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('partie_new') }}">Create new</a>
+    <a href="{{ path('partie_new',{'idUser':app.user.id}) }}">Create new</a>
+    <a href="{{ path('partie_new_user',{'idUser':app.user.id}) }}">Create new(user)</a>
 {% endblock %}

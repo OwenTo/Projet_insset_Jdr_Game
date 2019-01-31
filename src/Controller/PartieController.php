@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
+use App\Entity\User;
 use App\Form\PartieType;
 use App\Repository\PartieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,13 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/partie")
- */
+
 class PartieController extends AbstractController
 {
     /**
-     * @Route("/", name="partie_index", methods={"GET"})
+     * @Route("/liste/partie", name="partie_index", methods={"GET"})
      */
     public function index(PartieRepository $partieRepository): Response
     {
@@ -26,16 +25,34 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="partie_new", methods={"GET","POST"})
+     * @Route("/liste/partie/{idUser}", name="partie_index_user", methods={"GET"})
      */
-    public function new(Request $request): Response
+    public function liste(PartieRepository $partieRepository,User $idUser): Response
     {
+        $user=$partieRepository->find($idUser);
+
+        return $this->render('partie/mes_parties_liste.html.twig', [
+            'user' =>  $user,
+//            'parties' => $partieRepository->findAll(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/create/partie{idUser}", name="partie_new", methods={"GET","POST"})
+     * @Route("/add/partie/{idUser}", name="partie_new_user", methods={"GET","POST"})
+     */
+    public function new(Request $request, User $idUser): Response
+    {
+        $user=$this->searchUserForFolderAction($idUser);
         $partie = new Partie();
         $form = $this->createForm(PartieType::class, $partie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $partie->setUtilisateur($user);
             $entityManager->persist($partie);
             $entityManager->flush();
 
@@ -49,7 +66,7 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="partie_show", methods={"GET"})
+     * @Route("/detail/{id}", name="partie_show", methods={"GET"})
      */
     public function show(Partie $partie): Response
     {
@@ -59,7 +76,8 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="partie_edit", methods={"GET","POST"})
+     * @Route("/edit/partie/{id}", name="partie_edit", methods={"GET","POST"})
+     * @Route("/editer/partie/{id}", name="partie_edit_user", methods={"GET","POST"})
      */
     public function edit(Request $request, Partie $partie): Response
     {
@@ -81,7 +99,8 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="partie_delete", methods={"DELETE"})
+     * @Route("/suppression/partie/{id}", name="partie_delete", methods={"DELETE"})
+     * @Route("/supprimer/partie/{id}", name="partie_delete_user", methods={"DELETE"})
      */
     public function delete(Request $request, Partie $partie): Response
     {
@@ -92,5 +111,16 @@ class PartieController extends AbstractController
         }
 
         return $this->redirectToRoute('partie_index');
+    }
+
+
+    private function searchUserForFolderAction(User $user)
+    {
+        $repositoryUser = $this->getDoctrine()->getRepository('App:User');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoUser = $repositoryUser->find($user);
+
+        return $infoUser;
     }
 }
