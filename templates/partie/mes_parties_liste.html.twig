@@ -3,20 +3,22 @@
 {% block title %}Partie index{% endblock %}
 
 {% block body %}
-    <h1>Partie  biteindex</h1>
+    <h1>Partie  bite  index</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
+            {#<th>Id</th>#}
             <th>NomPartie</th>
-            <th>actions</th>
+            {#<th>actions</th>#}
         </tr>
         </thead>
         <tbody>
-        {% for partie in app.user.parties %}
+        {% for partie in parties %}
+
+
             <tr>
-                <td>{{ partie.id }}</td>
+                {#<td>{{ partie.username }}</td>#}
                 <td>{{ partie.nomPartie }}</td>
                 <td>
                     <a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>
@@ -31,6 +33,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('partie_new',{'idUser':app.user.id}) }}">Create new</a>
-    <a href="{{ path('partie_new_user',{'idUser':app.user.id}) }}">Create new(user)</a>
+    <a href="{{ path('partie_new',{'idUser':user.id}) }}">Create new</a>
+    <a href="{{ path('partie_new_user',{'idUser':user.id}) }}">Create new(user)</a>
+    {{ user.username }}
+
+    {% for uti in user %}
+    {{ uti.username }}
+    {% endfor %}
 {% endblock %}

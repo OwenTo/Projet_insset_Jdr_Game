@@ -25,14 +25,21 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/liste/partie/{idUser}", name="partie_index_user", methods={"GET"})
+     * @Route("/liste/mes/partie/{idUser}", name="partie_index_user")
      */
-    public function liste(PartieRepository $partieRepository,User $idUser): Response
+    public function liste(User $idUser) :Response
     {
-        $user=$partieRepository->find($idUser);
 
+
+        $user=$this->searchUserForFolderAction($idUser);
+$table=[];
+        foreach ($user->getParties() as $party) {
+            $table[]=$party->getId();
+        }
+        var_dump($table);
+//var_dump($user);
         return $this->render('partie/mes_parties_liste.html.twig', [
-            'user' =>  $user,
+            'parties' => $user->getParties(),'user'=>$user
 //            'parties' => $partieRepository->findAll(),
         ]);
     }
