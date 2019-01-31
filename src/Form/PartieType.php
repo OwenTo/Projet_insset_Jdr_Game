@@ -15,12 +15,12 @@ class PartieType extends AbstractType
     {
         $builder
             ->add('nomPartie')
-//            ->add('utilisateur',EntityType::class,
-//                array('class'=>User::class,
-//                    'label'=>"joueur potentiel",
-//                    'choice_label'=>"username",
-//                    'expanded'=>true,
-//                    'multiple'=>true))
+            ->add('joueurs',EntityType::class,
+                array('class'=>User::class,
+                    'label'=>"joueur potentiel",
+                    'choice_label'=>"username",
+                    'expanded'=>true,
+                    'multiple'=>true))
         ;
     }
 
