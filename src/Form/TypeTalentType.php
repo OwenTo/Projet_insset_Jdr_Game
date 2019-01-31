@@ -13,7 +13,7 @@ class TypeTalentType extends AbstractType
     {
         $builder
             ->add('nomTypeTalent')
-            ->add('collTalent')
+//            ->add('collTalent')
         ;
     }
 
