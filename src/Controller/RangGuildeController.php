@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Personnage;
 use App\Entity\RangGuilde;
 use App\Form\RangGuildeType;
 use App\Repository\RangGuildeRepository;
@@ -10,13 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/rang/guilde")
- */
+
 class RangGuildeController extends AbstractController
 {
     /**
-     * @Route("/", name="rang_guilde_index", methods={"GET"})
+     * @Route("/liste/rang/guilde", name="rang_guilde_index", methods={"GET"})
      */
     public function index(RangGuildeRepository $rangGuildeRepository): Response
     {
@@ -26,17 +25,24 @@ class RangGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="rang_guilde_new", methods={"GET","POST"})
+     * @Route("/create/rang/guilde/{idPersonnage}", name="rang_guilde_new", methods={"GET","POST"})
+     * @Route("add/rang/guilde/{idPersonnage}", name="rang_guilde_new_personnage", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,Personnage $idPersonnage): Response
     {
+        $personnage=$this->getDoctrine()->getRepository('Personnage')->find($idPersonnage);
+
+
         $rangGuilde = new RangGuilde();
         $form = $this->createForm(RangGuildeType::class, $rangGuilde);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $personnage->addCollRangGuilds($rangGuilde);
             $entityManager->persist($rangGuilde);
+            $entityManager->persist($personnage);
             $entityManager->flush();
 
             return $this->redirectToRoute('rang_guilde_index');
@@ -49,7 +55,7 @@ class RangGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="rang_guilde_show", methods={"GET"})
+     * @Route("/detail/rang/guilde/{id}", name="rang_guilde_show", methods={"GET"})
      */
     public function show(RangGuilde $rangGuilde): Response
     {
@@ -59,7 +65,8 @@ class RangGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="rang_guilde_edit", methods={"GET","POST"})
+     * @Route("/edit/rang/guilde/{id}", name="rang_guilde_edit", methods={"GET","POST"})
+     * @Route("/editer/rang/guilde/{id}", name="rang_guilde_edit_personnage", methods={"GET","POST"})
      */
     public function edit(Request $request, RangGuilde $rangGuilde): Response
     {
@@ -81,7 +88,8 @@ class RangGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="rang_guilde_delete", methods={"DELETE"})
+     * @Route("/suppression/rang/guilde/{id}", name="rang_guilde_delete", methods={"DELETE"})
+     * @Route("/supprimer/rang/guilde/{id}", name="rang_guilde_delete", methods={"DELETE"})
      */
     public function delete(Request $request, RangGuilde $rangGuilde): Response
     {

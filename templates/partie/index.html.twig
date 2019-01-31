@@ -10,18 +10,18 @@
             <tr>
                 {#<th>Id</th>#}
                 <th>NomPartie</th>
-                {#<th>actions</th>#}
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for partie in parties %}
             <tr>
-                <td>{{ partie.id }}</td>
+                {#<td>{{ partie.id }}</td>#}
                 <td>{{ partie.nomPartie }}</td>
-                {#<td>#}
-                    {#<a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>#}
+                <td>
+                    <a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>
                     {#<a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>#}
-                {#</td>#}
+                </td>
             </tr>
         {% else %}
             <tr>
