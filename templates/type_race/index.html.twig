@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeRace index{% endblock %}
+
+{% block body %}
+    <h1>TypeRace index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TypeRace</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_race in type_races %}
+            <tr>
+                <td>{{ type_race.id }}</td>
+                <td>{{ type_race.typeRace }}</td>
+                <td>
+                    <a href="{{ path('type_race_show', {'id': type_race.id}) }}">show</a>
+                    <a href="{{ path('type_race_edit', {'id': type_race.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_race_new') }}">Create new</a>
+{% endblock %}

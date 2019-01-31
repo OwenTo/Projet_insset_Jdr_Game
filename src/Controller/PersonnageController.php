@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/personnage")
- */
+
 class PersonnageController extends AbstractController
 {
     /**
-     * @Route("/", name="personnage_index", methods={"GET"})
+     * @Route("/liste/personnage", name="personnage_index", methods={"GET"})
      */
     public function index(PersonnageRepository $personnageRepository): Response
     {
@@ -26,7 +24,8 @@ class PersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="personnage_new", methods={"GET","POST"})
+     * @Route("/create/personnage/{idUser}", name="personnage_new", methods={"GET","POST"})
+     * @Route("/add/personnage/{idUser}", name="personnage_new_user", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +48,7 @@ class PersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="personnage_show", methods={"GET"})
+     * @Route("/detail/personnage/{id}", name="personnage_show", methods={"GET"})
      */
     public function show(Personnage $personnage): Response
     {
@@ -59,7 +58,7 @@ class PersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="personnage_edit", methods={"GET","POST"})
+     * @Route("/editer/personnage/{id}", name="personnage_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Personnage $personnage): Response
     {

@@ -9,14 +9,14 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>NomPersonnage</th>
-                <th>PrenomPersonnage</th>
-                <th>DescriptionPersonnege</th>
-                <th>Sexe</th>
-                <th>Age</th>
-                <th>Poids</th>
-                <th>Taille</th>
-                <th>Niveau</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                {#<th>DescriptionPersonnege</th>#}
+                {#<th>Sexe</th>#}
+                {#<th>Age</th>#}
+                {#<th>Poids</th>#}
+                {#<th>Taille</th>#}
+                {#<th>Niveau</th>#}
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,12 +26,12 @@
                 <td>{{ personnage.id }}</td>
                 <td>{{ personnage.nomPersonnage }}</td>
                 <td>{{ personnage.PrenomPersonnage }}</td>
-                <td>{{ personnage.DescriptionPersonnege }}</td>
-                <td>{{ personnage.sexe }}</td>
-                <td>{{ personnage.age }}</td>
-                <td>{{ personnage.poids }}</td>
-                <td>{{ personnage.taille }}</td>
-                <td>{{ personnage.niveau }}</td>
+                {#<td>{{ personnage.DescriptionPersonnege }}</td>#}
+                {#<td>{{ personnage.sexe }}</td>#}
+                {#<td>{{ personnage.age }}</td>#}
+                {#<td>{{ personnage.poids }}</td>#}
+                {#<td>{{ personnage.taille }}</td>#}
+                {#<td>{{ personnage.niveau }}</td>#}
                 <td>
                     <a href="{{ path('personnage_show', {'id': personnage.id}) }}">show</a>
                     <a href="{{ path('personnage_edit', {'id': personnage.id}) }}">edit</a>
@@ -45,5 +45,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('personnage_new') }}">Create new</a>
+    <a href="{{ path('personnage_new',{'idUser':app.user.id}) }}">Create new</a>
+    <a href="{{ path('personnage_new_user',{'idUser':app.user.id}) }}">Create new</a>
 {% endblock %}
