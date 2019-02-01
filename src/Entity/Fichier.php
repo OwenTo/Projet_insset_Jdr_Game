@@ -17,6 +17,15 @@ class Fichier
      */
     private $id;
 
+
+    //variable qui permet de verifier  elements du fichier uploader////
+    /**
+     * @var string
+     * @Assert\File(mimeTypes={ "application/pdf" ,"application/msword" , "application/vnd.openxmlformats-officedocument.wordprocessingml.document","image/jpeg", "image/png", "image/gif", "image/jpg"})
+     */
+
+    private $contenuFileBefore;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -123,4 +132,24 @@ class Fichier
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getContenuFileBefore(): string
+    {
+        return $this->contenuFileBefore;
+    }
+
+    /**
+     * @param string $contenuFileBefore
+     * @return Fichier
+     */
+    public function setContenuFileBefore(string $contenuFileBefore): Fichier
+    {
+        $this->contenuFileBefore = $contenuFileBefore;
+        return $this;
+    }
+
+
 }

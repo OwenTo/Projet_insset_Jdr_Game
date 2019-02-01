@@ -35,9 +35,4 @@
 
     <a href="{{ path('partie_new',{'idUser':user.id}) }}">Create new</a>
     <a href="{{ path('partie_new_user',{'idUser':user.id}) }}">Create new(user)</a>
-    {{ user.username }}
-
-    {% for uti in user %}
-    {{ uti.username }}
-    {% endfor %}
 {% endblock %}

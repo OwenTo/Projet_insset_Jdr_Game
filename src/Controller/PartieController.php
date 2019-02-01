@@ -31,12 +31,8 @@ class PartieController extends AbstractController
     {
 
 
-        $user=$this->searchUserForFolderAction($idUser);
-$table=[];
-        foreach ($user->getParties() as $party) {
-            $table[]=$party->getId();
-        }
-        var_dump($table);
+        $user=$this->searchUserAction($idUser);
+
 //var_dump($user);
         return $this->render('partie/mes_parties_liste.html.twig', [
             'parties' => $user->getParties(),'user'=>$user
@@ -51,7 +47,7 @@ $table=[];
      */
     public function new(Request $request, User $idUser): Response
     {
-        $user=$this->searchUserForFolderAction($idUser);
+        $user=$this->searchUserAction($idUser);
         $partie = new Partie();
         $form = $this->createForm(PartieType::class, $partie);
         $form->handleRequest($request);
@@ -121,7 +117,7 @@ $table=[];
     }
 
 
-    private function searchUserForFolderAction(User $user)
+    private function searchUserAction(User $user)
     {
         $repositoryUser = $this->getDoctrine()->getRepository('App:User');
         //on récupère l'id de la siuation
