@@ -114,7 +114,7 @@ class FichierController extends AbstractController
 //        var_dump($infoUser);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($fichier->getContenuFileBefore() != null || !empty($fichier->getContenuFileBefore())) {
+//            if ($fichier->getContenuFileBefore() != null || !empty($fichier->getContenuFileBefore())) {
                 unlink($filDir . "/" . $fichier->getContenueFichier());
 
 //             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
@@ -136,7 +136,7 @@ class FichierController extends AbstractController
 
 
 
-            }
+//            }
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('fichier_index', [
 //                'id' => $fichier->getId(),
