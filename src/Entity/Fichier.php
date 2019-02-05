@@ -134,15 +134,15 @@ class Fichier
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getContenuFileBefore(): string
+    public function getContenuFileBefore()
     {
         return $this->contenuFileBefore;
     }
 
     /**
-     * @param string $contenuFileBefore
+     * @param mixed $contenuFileBefore
      * @return Fichier
      */
     public function setContenuFileBefore(string $contenuFileBefore): Fichier

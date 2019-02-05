@@ -40,7 +40,7 @@ class FichierController extends AbstractController
 
 
     /**
-     * @Route("/add/map{idUser}", name="fichier_new", methods={"GET","POST"})
+     * @Route("/add/map/{idUser}", name="fichier_new", methods={"GET","POST"})
      */
     public function new(Request $request ,User $idUser): Response
     {
@@ -61,7 +61,7 @@ class FichierController extends AbstractController
             $file = $form->get('contenuFileBefore')->getData();
             // Generate a unique name for the file before saving it
             $fileName = md5(uniqid());
-            var_dump($fileName);
+            var_dump($file);
 
 //
 
@@ -101,7 +101,7 @@ class FichierController extends AbstractController
     }
 
     /**
-     * @Route("/editer/ma/maps/{id}", name="fichier_edit", methods={"GET","POST"})
+     * @Route("/editer/ma/maps/{idUser}/{id}", name="fichier_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Fichier $fichier ,User $idUser= null): Response
     {
@@ -140,7 +140,7 @@ class FichierController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('fichier_index', [
 //                'id' => $fichier->getId(),
-            'idUser'=>$user
+                'idUser'=>$user->getId()
             ]);
         }
 

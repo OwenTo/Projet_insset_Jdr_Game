@@ -26,7 +26,7 @@
                 <td>{{ fichier.modifFileAt ? fichier.modifFileAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('fichier_show', {'id': fichier.id}) }}">show</a>
-                    <a href="{{ path('fichier_edit', {'id': fichier.id}) }}">edit</a>
+                    <a href="{{ path('fichier_edit', {'idUser': fichier.user.id,'id': fichier.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
