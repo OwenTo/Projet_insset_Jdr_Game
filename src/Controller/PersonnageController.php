@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Personnage;
 use App\Entity\User;
+use App\Entity\ValeurCaract;
 use App\Form\PersonnageType;
 use App\Repository\PersonnageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,6 +54,45 @@ class PersonnageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $caractPrincipaux=$this->recuperationCaracteristiquePrincipal();
+            $caractSecondaires=$this->recuperationCaracteristiqueSecondaire();
+
+
+            foreach ($caractPrincipaux as $caractPrincipal){
+                $valeurCaract=new ValeurCaract();
+                $valeurCaract->setCaracteristique($caractPrincipal);
+                $valeurCaract->setPersonnage($personnage);
+                $nbr1=rand(1,6);
+                $nbr2=rand(1,6);
+                $nbr3=rand(1,6);
+                $nbrTotal=$nbr1+$nbr2+$nbr3;
+
+                $valeurCaract->setValeur($nbrTotal);
+                $entityManager->persist($valeurCaract);
+
+            }
+
+
+            foreach ($caractSecondaires as $caractSecondaire){
+                $valeurCaract=new ValeurCaract();
+                $valeurCaract->setCaracteristique($caractSecondaire);
+                $valeurCaract->setPersonnage($personnage);
+                $nbr1=rand(1,6);
+                $nbr2=rand(1,6);
+                $nbr3=rand(1,6);
+                $nbrTotal=$nbr1+$nbr2+$nbr3;
+
+                $valeurCaract->setValeur($nbrTotal);
+                $entityManager->persist($valeurCaract);
+
+            }
+
+
+
+
+
+
 
             $user->addPersonnage($personnage);
             $entityManager->persist($user);
@@ -125,6 +165,24 @@ class PersonnageController extends AbstractController
         $infoUser = $repositoryUser->find($user);
 
         return $infoUser;
+    }
+
+
+     private function recuperationCaracteristiquePrincipal(){
+         $repositoryCaractPrin = $this->getDoctrine()->getRepository('App:CaracteristiquePrincipal');
+
+         $allCaractPricipe=$repositoryCaractPrin->findAll();
+
+         return$allCaractPricipe;
+     }
+
+
+    private function recuperationCaracteristiqueSecondaire(){
+        $repositoryCaractSecondaire = $this->getDoctrine()->getRepository('App:CaracteristiquePrincipal');
+
+        $allCaractSecondaire=$repositoryCaractSecondaire->findAll();
+
+        return$allCaractSecondaire;
     }
 
 
