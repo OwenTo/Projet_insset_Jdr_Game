@@ -91,4 +91,8 @@ class CompagnonTypeController extends AbstractController
 
         return $this->redirectToRoute('compagnon_type_index');
     }
+
+
+
+
 }

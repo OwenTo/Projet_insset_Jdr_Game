@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\ClassePersonnage;
+use App\Entity\Compagnon;
+use App\Entity\Guilde;
 use App\Entity\Langue;
 use App\Entity\Personnage;
 use PackageVersions\FallbackVersions;
@@ -21,7 +23,7 @@ class PersonnageType extends AbstractType
         $builder
             ->add('nomPersonnage',TextType::class)
             ->add('PrenomPersonnage',TextType::class)
-            ->add('DescriptionPersonnege',TextareaType::class)
+            ->add('DescriptionPersonnege',TextareaType::class, array('required'   => false))
             ->add('sexe',TextType::class)
             ->add('age',NumberType::class)
             ->add('poids',NumberType::class)
@@ -33,15 +35,33 @@ class PersonnageType extends AbstractType
                     "choice_label"=>"nomLangue",
                     'expanded'=>true,
                     'multiple'=>true))
-//            ->add('inventaireBourse')
-//            ->add('user')
-//            ->add('inventaire')
+//
             ->add('classe',EntityType::class,
                 array('class'=>ClassePersonnage::class,
                     'label'=>"Classe",
                     "choice_label"=>"nomClasse",
                     'expanded'=>false,
                     'multiple'=>false))
+//
+
+//
+//            ->add('guilde',EntityType::class,
+//                array('class'=>Guilde::class,
+//                    'label'=>"guilde",
+//                    "choice_label"=>"nomGuilde",
+//                    'expanded'=>false,
+//                    'multiple'=>false,
+//                    'required'   => false))
+
+
+
+        ->add('collCompagnons',EntityType::class,
+            array('class'=>Compagnon::class,
+                'label'=>'Compagnon',
+                'choice_label'=>'nomCompagnon',
+                'expanded'=>true,
+                'multiple'=>true,
+                'required'   => false))
         ;
     }
 

@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Sexe</th>
+                <th>Nom</th>
                 <th>PrixAchatVente</th>
                 <th>actions</th>
             </tr>
@@ -18,7 +18,7 @@
         {% for compagnon in compagnons %}
             <tr>
                 <td>{{ compagnon.id }}</td>
-                <td>{{ compagnon.Sexe }}</td>
+                <td>{{ compagnon.nomCompagnon }}</td>
                 <td>{{ compagnon.prixAchatVente }}</td>
                 <td>
                     <a href="{{ path('compagnon_show', {'id': compagnon.id}) }}">show</a>

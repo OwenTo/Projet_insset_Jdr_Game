@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,15 +40,24 @@ class Compagnon
      */
     private $race;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="collCompagnons")
-     */
-    private $personnage;
+
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $nomCompagnon;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Personnage", mappedBy="collCompagnons")
+     */
+    private $personnages;
+
+    public function __construct()
+    {
+        $this->personnages = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -101,17 +112,6 @@ class Compagnon
         return $this;
     }
 
-    public function getPersonnage(): ?Personnage
-    {
-        return $this->personnage;
-    }
-
-    public function setPersonnage(?Personnage $personnage): self
-    {
-        $this->personnage = $personnage;
-
-        return $this;
-    }
 
     public function getNomCompagnon(): ?string
     {
@@ -124,4 +124,34 @@ class Compagnon
 
         return $this;
     }
+
+    /**
+     * @return Collection|Personnage[]
+     */
+    public function getPersonnages(): Collection
+    {
+        return $this->personnages;
+    }
+
+    public function addPersonnage(Personnage $personnage): self
+    {
+        if (!$this->personnages->contains($personnage)) {
+            $this->personnages[] = $personnage;
+            $personnage->addCollCompagnon($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonnage(Personnage $personnage): self
+    {
+        if ($this->personnages->contains($personnage)) {
+            $this->personnages->removeElement($personnage);
+            $personnage->removeCollCompagnon($this);
+        }
+
+        return $this;
+    }
+
+
 }

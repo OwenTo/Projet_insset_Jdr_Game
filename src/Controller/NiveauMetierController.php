@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\NiveauMetier;
+use App\Entity\Personnage;
+use App\Entity\User;
+use App\Form\NiveauMetier2Type;
 use App\Form\NiveauMetierType;
 use App\Repository\NiveauMetierRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,18 +28,31 @@ class NiveauMetierController extends AbstractController
 
     /**
      * @Route("/create/niveau/metier", name="niveau_metier_new", methods={"GET","POST"})
-     * @Route("/add/user/niveau/metier",name="user_niveau_metier", methods={"GET","POST"})
+     * @Route("/add/personnage/niveau/metier/{idPersonnage}",name="personnage_niveau_metier", methods={"GET","POST"})
 
      */
-    public function new(Request $request): Response
+    public function new(Request $request ,Personnage $idPersonnage): Response
     {
+        $personnage=$this->searchPersonnageAction($idPersonnage);
+
         $niveauMetier = new NiveauMetier();
         $form = $this->createForm(NiveauMetierType::class, $niveauMetier);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+
+
+            $niveauMetier->setNiveauMetier(1);
+            $niveauMetier->setPersonnage($personnage);
+
             $entityManager->persist($niveauMetier);
+
+
+
+            $entityManager->persist($personnage);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('niveau_metier_index');
@@ -60,12 +76,12 @@ class NiveauMetierController extends AbstractController
 
     /**
      * @Route("/edit/niveau/metier/{id}", name="niveau_metier_edit", methods={"GET","POST"})
-     * @Route("/editer/user/niveau/metier",name="user_niveau_metier_editer", methods={"GET","POST"})
+     * @Route("/editer/user/niveau/metier/{id}",name="personnage_niveau_metier_editer", methods={"GET","POST"})
 
      */
     public function edit(Request $request, NiveauMetier $niveauMetier): Response
     {
-        $form = $this->createForm(NiveauMetierType::class, $niveauMetier);
+        $form = $this->createForm(NiveauMetier2Type::class, $niveauMetier);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,8 +99,8 @@ class NiveauMetierController extends AbstractController
     }
 
     /**
-     * @Route("/suppression/niveau/metier/{id}", name="niveau_metier_delete", methods={"DELETE"})
-     * @Route("/editer/user/niveau/metier",name="user_niveau_metier_supression",  methods={"DELETE"})
+     * @Route("/suppression/personnage/niveau/metier/{id}", name="niveau_metier_delete", methods={"DELETE"})
+     * @Route("/delete/Personnage/niveau/metie/{id}",name="user_niveau_metier_supression",  methods={"DELETE"})
 
      */
     public function delete(Request $request, NiveauMetier $niveauMetier): Response
@@ -96,5 +112,15 @@ class NiveauMetierController extends AbstractController
         }
 
         return $this->redirectToRoute('niveau_metier_index');
+    }
+
+    private function searchPersonnageAction(Personnage $personnage)
+    {
+        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoPersonnage = $repositoryPersonnage->find($personnage);
+
+        return $infoPersonnage;
     }
 }

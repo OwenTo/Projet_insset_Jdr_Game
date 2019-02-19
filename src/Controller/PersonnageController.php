@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\InventaireBourse;
 use App\Entity\Personnage;
+use App\Entity\RangGuilde;
 use App\Entity\User;
 use App\Entity\ValeurCaract;
 use App\Form\PersonnageType;
@@ -21,7 +23,7 @@ class PersonnageController extends AbstractController
     public function index(PersonnageRepository $personnageRepository): Response
     {
 
-         return $this->render('personnage/index.html.twig', [
+        return $this->render('personnage/index.html.twig', [
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
@@ -43,7 +45,7 @@ class PersonnageController extends AbstractController
      * @Route("/create/personnage/{idUser}", name="personnage_new", methods={"GET","POST"})
      * @Route("/add/personnage/{idUser}", name="personnage_new_user", methods={"GET","POST"})
      */
-    public function new(Request $request ,User $idUser): Response
+    public function new(Request $request, User $idUser): Response
     {
         $user = $this->searchUserAction($idUser);
 
@@ -55,18 +57,25 @@ class PersonnageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $caractPrincipaux=$this->recuperationCaracteristiquePrincipal();
-            $caractSecondaires=$this->recuperationCaracteristiqueSecondaire();
+
+            $bourse = new InventaireBourse();
+
+            $bourse->setValeurBoursePerso(0);
+            $personnage->setInventaireBourse($bourse);
 
 
-            foreach ($caractPrincipaux as $caractPrincipal){
-                $valeurCaract=new ValeurCaract();
+            $caractPrincipaux = $this->recuperationCaracteristiquePrincipal();
+            $caractSecondaires = $this->recuperationCaracteristiqueSecondaire();
+
+
+            foreach ($caractPrincipaux as $caractPrincipal) {
+                $valeurCaract = new ValeurCaract();
                 $valeurCaract->setCaracteristique($caractPrincipal);
                 $valeurCaract->setPersonnage($personnage);
-                $nbr1=rand(1,6);
-                $nbr2=rand(1,6);
-                $nbr3=rand(1,6);
-                $nbrTotal=$nbr1+$nbr2+$nbr3;
+                $nbr1 = rand(1, 6);
+                $nbr2 = rand(1, 6);
+                $nbr3 = rand(1, 6);
+                $nbrTotal = $nbr1 + $nbr2 + $nbr3;
 
                 $valeurCaract->setValeur($nbrTotal);
                 $entityManager->persist($valeurCaract);
@@ -74,24 +83,35 @@ class PersonnageController extends AbstractController
             }
 
 
-            foreach ($caractSecondaires as $caractSecondaire){
-                $valeurCaract=new ValeurCaract();
+            foreach ($caractSecondaires as $caractSecondaire) {
+                $valeurCaract = new ValeurCaract();
                 $valeurCaract->setCaracteristique($caractSecondaire);
                 $valeurCaract->setPersonnage($personnage);
-                $nbr1=rand(1,6);
-                $nbr2=rand(1,6);
-                $nbr3=rand(1,6);
-                $nbrTotal=$nbr1+$nbr2+$nbr3;
+                $nbr1 = rand(1, 6);
+                $nbr2 = rand(1, 6);
+                $nbr3 = rand(1, 6);
+                $nbrTotal = $nbr1 + $nbr2 + $nbr3;
 
                 $valeurCaract->setValeur($nbrTotal);
                 $entityManager->persist($valeurCaract);
 
             }
 
+//            var_dump($form['guilde']->getData()->getId());
 
-
-
-
+//            if (empty($personnage->getGuilde()->getId())) {
+//
+//            } else {
+//                $guilde = $this->searchGuildBy($personnage->getGuilde());
+//                var_dump($guilde);
+//                $rangGuide = new RangGuilde();
+//                $rangGuide->setGuilde($guilde)
+//                    ->setPersonnage($personnage)
+//                    ->setRang('soldat');
+//
+//                $entityManager->persist($rangGuide);
+//
+//            }
 
 
             $user->addPersonnage($personnage);
@@ -145,7 +165,7 @@ class PersonnageController extends AbstractController
      */
     public function delete(Request $request, Personnage $personnage): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$personnage->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $personnage->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($personnage);
             $entityManager->flush();
@@ -153,8 +173,6 @@ class PersonnageController extends AbstractController
 
         return $this->redirectToRoute('personnage_index');
     }
-
-
 
 
     private function searchUserAction(User $user)
@@ -168,22 +186,31 @@ class PersonnageController extends AbstractController
     }
 
 
-     private function recuperationCaracteristiquePrincipal(){
-         $repositoryCaractPrin = $this->getDoctrine()->getRepository('App:CaracteristiquePrincipal');
+    private function recuperationCaracteristiquePrincipal()
+    {
+        $repositoryCaractPrin = $this->getDoctrine()->getRepository('App:CaracteristiquePrincipal');
 
-         $allCaractPricipe=$repositoryCaractPrin->findAll();
+        $allCaractPricipe = $repositoryCaractPrin->findAll();
 
-         return$allCaractPricipe;
-     }
-
-
-    private function recuperationCaracteristiqueSecondaire(){
-        $repositoryCaractSecondaire = $this->getDoctrine()->getRepository('App:CaracteristiquePrincipal');
-
-        $allCaractSecondaire=$repositoryCaractSecondaire->findAll();
-
-        return$allCaractSecondaire;
+        return $allCaractPricipe;
     }
 
 
+    private function recuperationCaracteristiqueSecondaire()
+    {
+        $repositoryCaractSecondaire = $this->getDoctrine()->getRepository('App:CaracteristiqueSecondaire');
+
+        $allCaractSecondaire = $repositoryCaractSecondaire->findAll();
+
+        return $allCaractSecondaire;
+    }
+
+
+//    private function searchGuildBy($guilde)
+//    {
+//        $repositoryGuilde = $this->getDoctrine()->getRepository('App:Guilde');
+//        $infoGuilde = $repositoryGuilde->findOneBy(array('nomGuilde' => $guilde));
+//
+//        return $infoGuilde;
+//    }
 }
