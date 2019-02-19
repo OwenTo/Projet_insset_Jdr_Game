@@ -31,7 +31,7 @@ class PersonnageType extends AbstractType
                 array('class'=>Langue::class,
                     'label'=>"Langue parlé",
                     "choice_label"=>"nomLangue",
-                    'expanded'=>false,
+                    'expanded'=>true,
                     'multiple'=>true))
 //            ->add('inventaireBourse')
 //            ->add('user')

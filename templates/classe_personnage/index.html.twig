@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ClassePersonnage index{% endblock %}
+
+{% block body %}
+    <h1>ClassePersonnage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomClasse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classe_personnage in classe_personnages %}
+            <tr>
+                <td>{{ classe_personnage.id }}</td>
+                <td>{{ classe_personnage.nomClasse }}</td>
+                <td>
+                    <a href="{{ path('classe_personnage_show', {'id': classe_personnage.id}) }}">show</a>
+                    <a href="{{ path('classe_personnage_edit', {'id': classe_personnage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('classe_personnage_new') }}">Create new</a>
+{% endblock %}

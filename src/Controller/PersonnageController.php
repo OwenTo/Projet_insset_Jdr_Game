@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Personnage;
+use App\Entity\User;
 use App\Form\PersonnageType;
 use App\Repository\PersonnageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,23 +19,43 @@ class PersonnageController extends AbstractController
      */
     public function index(PersonnageRepository $personnageRepository): Response
     {
-        return $this->render('personnage/index.html.twig', [
+
+         return $this->render('personnage/index.html.twig', [
             'personnages' => $personnageRepository->findAll(),
         ]);
     }
+
+
+//    /**
+//     * @Route("/liste/personnage/{idUser}", name="personnage_index", methods={"GET"})
+//     */
+//    public function index(PersonnageRepository $personnageRepository,User $idUser): Response
+//    {
+//        $user=$this->searchUserAction($idUser);
+//
+//        return $this->render('personnage/index.html.twig', [
+//            'personnages' => $user->getPersonnages(),
+//        ]);
+//    }
 
     /**
      * @Route("/create/personnage/{idUser}", name="personnage_new", methods={"GET","POST"})
      * @Route("/add/personnage/{idUser}", name="personnage_new_user", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request ,User $idUser): Response
     {
+        $user = $this->searchUserAction($idUser);
+
+
         $personnage = new Personnage();
         $form = $this->createForm(PersonnageType::class, $personnage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $user->addPersonnage($personnage);
+            $entityManager->persist($user);
             $entityManager->persist($personnage);
             $entityManager->flush();
 
@@ -92,4 +113,19 @@ class PersonnageController extends AbstractController
 
         return $this->redirectToRoute('personnage_index');
     }
+
+
+
+
+    private function searchUserAction(User $user)
+    {
+        $repositoryUser = $this->getDoctrine()->getRepository('App:User');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoUser = $repositoryUser->find($user);
+
+        return $infoUser;
+    }
+
+
 }
