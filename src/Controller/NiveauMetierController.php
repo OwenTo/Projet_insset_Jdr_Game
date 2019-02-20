@@ -17,12 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class NiveauMetierController extends AbstractController
 {
     /**
-     * @Route("/liste/niveau/metier", name="niveau_metier_index", methods={"GET"})
+     * @Route("/liste/personnage/{idPersonnage}/niveau/metier", name="personnage_niveau_metier_index", methods={"GET"})
      */
-    public function index(NiveauMetierRepository $niveauMetierRepository): Response
+    public function index(NiveauMetierRepository $niveauMetierRepository,Personnage $idPersonnage): Response
     {
+        $personnage=$this->searchPersonnageAction($idPersonnage);
+
+
         return $this->render('niveau_metier/index.html.twig', [
-            'niveau_metiers' => $niveauMetierRepository->findAll(),
+//            'niveau_metiers' => $niveauMetierRepository->findAll(),
+            'niveau_metiers' => $personnage->getCollNiveauMetier(),
+            'personnage'=>$personnage
         ]);
     }
 
@@ -55,11 +60,12 @@ class NiveauMetierController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('niveau_metier_index');
+            return $this->redirectToRoute('personnage_niveau_metier_index',array('idPersonnage'=>$personnage->getId()));
         }
 
         return $this->render('niveau_metier/new.html.twig', [
             'niveau_metier' => $niveauMetier,
+            'personnage'=>$personnage,
             'form' => $form->createView(),
         ]);
     }
@@ -83,17 +89,23 @@ class NiveauMetierController extends AbstractController
     {
         $form = $this->createForm(NiveauMetier2Type::class, $niveauMetier);
         $form->handleRequest($request);
-
+        $personnageId = $niveauMetier->getPersonnage()->getId();
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('niveau_metier_index', [
-                'id' => $niveauMetier->getId(),
+            return $this->redirectToRoute('personnage_niveau_metier_index', [
+//                'id' => $niveauMetier->getId(),
+            'idPersonnage'=>$personnageId
             ]);
         }
 
         return $this->render('niveau_metier/edit.html.twig', [
             'niveau_metier' => $niveauMetier,
+            'personnage'=>$personnageId,
+
             'form' => $form->createView(),
         ]);
     }
@@ -105,13 +117,15 @@ class NiveauMetierController extends AbstractController
      */
     public function delete(Request $request, NiveauMetier $niveauMetier): Response
     {
+        $persoonage=$niveauMetier->getPersonnage()->getId();
+
         if ($this->isCsrfTokenValid('delete'.$niveauMetier->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($niveauMetier);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('niveau_metier_index');
+        return $this->redirectToRoute('personnage_niveau_metier_index',array('idPersonnage'=>$persoonage));
     }
 
     private function searchPersonnageAction(Personnage $personnage)

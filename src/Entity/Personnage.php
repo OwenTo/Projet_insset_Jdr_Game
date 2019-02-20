@@ -125,7 +125,7 @@ class Personnage
     {
         $this->collLangues = new ArrayCollection();
         $this->collNiveauMetier = new ArrayCollection();
-//        $this->collRangGuilds = new ArrayCollection();
+        $this->collRangGuilds = new ArrayCollection();
         $this->collCompagnons = new ArrayCollection();
         $this->valeurCaract = new ArrayCollection();
     }

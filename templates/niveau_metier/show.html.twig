@@ -18,7 +18,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('niveau_metier_index') }}">back to list</a>
+    <a href="{{ path('personnage_niveau_metier_index',{'idPersonnage':metier.personnage.id}) }}">back to list</a>
 
     <a href="{{ path('niveau_metier_edit', {'id': niveau_metier.id}) }}">edit</a>
 

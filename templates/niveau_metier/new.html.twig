@@ -7,5 +7,5 @@
 
     {{ include('niveau_metier/_form.html.twig') }}
 
-    <a href="{{ path('niveau_metier_index') }}">back to list</a>
+    <a href="{{ path('personnage_niveau_metier_index',{'idPersonnage':personnage.id}) }}">Retour</a>
 {% endblock %}
