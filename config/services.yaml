@@ -6,11 +6,7 @@
 parameters:
     locale: 'fr'
     upload_directory: '%kernel.project_dir%/public/upload'
-<<<<<<< HEAD
     upload_directory_maps: '%kernel.project_dir%/public/maps'
-=======
->>>>>>> master
-
 
 services:
     # default configuration for services in *this* file
