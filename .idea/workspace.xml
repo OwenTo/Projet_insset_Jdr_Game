@@ -22,17 +22,21 @@
     <session id="1796005858">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
+
           <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+
           <entry key="css" value="2" />
           <entry key="env" value="1" />
+
           <entry key="js" value="3" />
           <entry key="json" value="3" />
           <entry key="lock" value="1" />
@@ -43,6 +47,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+
           <entry key=".env file" value="1" />
           <entry key="CSS" value="2" />
           <entry key="JSON" value="3" />
@@ -55,6 +60,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+
           <entry key="env" value="14" />
           <entry key="twig" value="43" />
           <entry key="yaml" value="3" />
@@ -72,6 +78,7 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+
         <entry file="file://$PROJECT_DIR$/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -199,9 +206,11 @@
       <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
     </include_path>
   </component>
+
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="977" />
+
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -209,12 +218,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+
       <pane id="Scope" />
+
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
+               <item name="projet_fin_d_annee" type="b2602c69:ProjectViewProjectNode" />
               <item name="projet_fin_d_annee" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -291,6 +302,7 @@
       <option name="presentableId" value="Default" />
       <updated>1542033580759</updated>
       <workItem from="1542033585710" duration="3551000" />
+
       <workItem from="1542039769611" duration="1948000" />
       <workItem from="1542184165178" duration="738000" />
     </task>
@@ -341,6 +353,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://$PROJECT_DIR$/yarn.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
