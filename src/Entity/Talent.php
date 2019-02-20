@@ -33,6 +33,12 @@ class Talent
      */
     private $beneficeMaluceTalent;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeTalent", inversedBy="talents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $typeTalent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +76,18 @@ class Talent
     public function setBeneficeMaluceTalent(?string $beneficeMaluceTalent): self
     {
         $this->beneficeMaluceTalent = $beneficeMaluceTalent;
+
+        return $this;
+    }
+
+    public function getTypeTalent(): ?TypeTalent
+    {
+        return $this->typeTalent;
+    }
+
+    public function setTypeTalent(?TypeTalent $typeTalent): self
+    {
+        $this->typeTalent = $typeTalent;
 
         return $this;
     }

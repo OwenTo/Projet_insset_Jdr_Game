@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,9 +25,16 @@ class TypeTalent
     private $nomTypeTalent;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Talent")
+     * @ORM\OneToMany(targetEntity="App\Entity\Talent", mappedBy="typeTalent")
      */
-    private $collTalent;
+    private $talents;
+
+    public function __construct()
+    {
+        $this->talents = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -44,15 +53,36 @@ class TypeTalent
         return $this;
     }
 
-    public function getCollTalent(): ?Talent
+    /**
+     * @return Collection|Talent[]
+     */
+    public function getTalents(): Collection
     {
-        return $this->collTalent;
+        return $this->talents;
     }
 
-    public function setCollTalent(?Talent $collTalent): self
+    public function addTalent(Talent $talent): self
     {
-        $this->collTalent = $collTalent;
+        if (!$this->talents->contains($talent)) {
+            $this->talents[] = $talent;
+            $talent->setTypeTalent($this);
+        }
 
         return $this;
     }
+
+    public function removeTalent(Talent $talent): self
+    {
+        if ($this->talents->contains($talent)) {
+            $this->talents->removeElement($talent);
+            // set the owning side to null (unless already changed)
+            if ($talent->getTypeTalent() === $this) {
+                $talent->setTypeTalent(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

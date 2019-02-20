@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/race")
- */
+
 class RaceController extends AbstractController
 {
     /**
-     * @Route("/", name="race_index", methods={"GET"})
+     * @Route("/liste/race", name="race_index", methods={"GET"})
      */
     public function index(RaceRepository $raceRepository): Response
     {
@@ -26,7 +24,7 @@ class RaceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="race_new", methods={"GET","POST"})
+     * @Route("/create/race", name="race_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class RaceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="race_show", methods={"GET"})
+     * @Route("/detail/race/{id}", name="race_show", methods={"GET"})
      */
     public function show(Race $race): Response
     {

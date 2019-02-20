@@ -1,6 +1,8 @@
 var Encore = require('@symfony/webpack-encore');
 
 // CopyWebpackPlugin = require('copy-webpack-plugin'); // this line tell to webpack to use the plugin
+// const CopyWebpackPlugin = require('copy-webpack-plugin'); // this line tell to webpack to use the plugin
+
 
 
 
@@ -24,11 +26,10 @@ var Encore = require('@symfony/webpack-encore');
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
 
-
     // .addPlugin(new CopyWebpackPlugin([
     //     { from: './assets/img', to: 'img' }
     // ]))
-
+    .addEntry('js/app', './assets/js/app.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
     // .addPlugin(new CopyWebpackPlugin([

@@ -9,20 +9,26 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>NiveauMetier</th>
+                <th>Niveau du Metier</th>
+                <th>Metier</th>
+                <th>Personnage</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for niveau_metier in niveau_metiers %}
+
             <tr>
                 <td>{{ niveau_metier.id }}</td>
                 <td>{{ niveau_metier.niveauMetier }}</td>
+                <td>{{ niveau_metier.metier.nomMetier }}</td>
+                <td>{{ niveau_metier.personnage.nomPersonnage}} {{ niveau_metier.personnage.prenomPersonnage }}</td>
                 <td>
-                    <a href="{{ path('niveau_metier_show', {'id': niveau_metier.id}) }}">show</a>
-                    <a href="{{ path('niveau_metier_edit', {'id': niveau_metier.id}) }}">edit</a>
+                    {#<a href="{{ path('niveau_metier_show', {'id': niveau_metier.id}) }}">show</a>#}
+                    <a href="{{ path('personnage_niveau_metier_editer', {'id': niveau_metier.id}) }}">edit</a>
                 </td>
             </tr>
+
         {% else %}
             <tr>
                 <td colspan="3">no records found</td>
@@ -30,6 +36,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('niveau_metier_new') }}">Create new</a>
+    <a href="{{ path('personnage_niveau_metier', {'idPersonnage': personnage.id}) }}">Add Metier</a>
+    <a href="{{ path('personnage_show', {'id': personnage.id}) }}">retour</a>
 {% endblock %}

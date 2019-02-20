@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/caracteristique/secondaire")
- */
+
 class CaracteristiqueSecondaireController extends AbstractController
 {
     /**
-     * @Route("/", name="caracteristique_secondaire_index", methods={"GET"})
+     * @Route("/liste/caracteristique/secondaire", name="caracteristique_secondaire_index", methods={"GET"})
      */
     public function index(CaracteristiqueSecondaireRepository $caracteristiqueSecondaireRepository): Response
     {
@@ -26,7 +24,7 @@ class CaracteristiqueSecondaireController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="caracteristique_secondaire_new", methods={"GET","POST"})
+     * @Route("/crate/caracteristique/secondaire", name="caracteristique_secondaire_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class CaracteristiqueSecondaireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="caracteristique_secondaire_show", methods={"GET"})
+     * @Route("/detail/caracteristique/secondaire/{id}", name="caracteristique_secondaire_show", methods={"GET"})
      */
     public function show(CaracteristiqueSecondaire $caracteristiqueSecondaire): Response
     {
@@ -59,7 +57,7 @@ class CaracteristiqueSecondaireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="caracteristique_secondaire_edit", methods={"GET","POST"})
+     * @Route("/edit/caracteristique/secondaire/{id}", name="caracteristique_secondaire_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, CaracteristiqueSecondaire $caracteristiqueSecondaire): Response
     {
@@ -81,7 +79,7 @@ class CaracteristiqueSecondaireController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="caracteristique_secondaire_delete", methods={"DELETE"})
+     * @Route("/suppression/caracteristique/secondaire/{id}", name="caracteristique_secondaire_delete", methods={"DELETE"})
      */
     public function delete(Request $request, CaracteristiqueSecondaire $caracteristiqueSecondaire): Response
     {

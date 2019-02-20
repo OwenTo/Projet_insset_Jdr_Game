@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fichier index{% endblock %}
+
+{% block body %}
+    <h1>Fichier index</h1>
+
+    {#<table class="table">#}
+    {#<thead>#}
+    {#<tr>#}
+    {#<th>Id</th>#}
+    {#<th>ContenueFichier</th>#}
+    {#<th>FichierExtension</th>#}
+    {#<th>CreateFileAt</th>#}
+    {#<th>ModifFileAt</th>#}
+    {#<th>actions</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+    {% if  fichiers is not empty %}
+    {% for fichier in fichiers %}
+
+        {#<td> {{ fichier.id }}</td>#}
+        <div class="col-mb-3 mr-2">
+            <div class="card mb-4 shadow p-1 mb-5  rounded">
+                <div class="card-body">
+                    {#<div class="card-title"> {{ fichier.contenuFichier }}#}
+                    <div class="card-text">
+                        <p>ajouter le : {{ fichier.createFileAt|date('Y-m-d') }}</p>
+                        <p>modifier le : {{ fichier.modifFileAt|date('Y-m-d') }}</p>
+                    </div>
+                    <div class="card-img">
+                        <a href="{{ asset('maps/' ~ fichier.contenueFichier) }}" target="_blank">
+                            {% if fichier.fichierExtension =="jpeg"or fichier.fichierExtension =="jpg"or fichier.fichierExtension =="png" %}
+                                <img src="https://img.icons8.com/flat_round/100/000000/image-file.png"> <a
+                                    href="{{ asset('maps/' ~ fichier.contenueFichier) }}"></a>
+                            {% elseif fichier.fichierExtension =="pdf" %}
+                                <img src="https://img.icons8.com/dusk/100/000000/pdf.png"> <a
+                                    href="{{ asset('maps/' ~ fichier.contenueFichier) }}"></a>
+                            {% elseif fichier.fichierExtension =="gif" %}
+                                <img src="https://img.icons8.com/ios/100/000000/gif.png"> <a
+                                    href="{{ asset('maps/' ~ fichier.contenueFichier) }}"></a>
+                            {% elseif fichier.fichierExtension =="doc" %}
+                                <img src="https://img.icons8.com/dusk/100/000000/ms-word.png"> <a
+                                    href="{{ asset('maps/' ~ fichier.contenueFichier) }}"></a>
+
+                            {% endif %}
+
+                        </a>
+                        <div class="card-text pt-2">
+                            {#<a class="btn btn-primary"#}
+                            {#href="{{ path('confirmationSuppressionFichier',{'id':fichier.id}) }}"><i class="fa fa-trash-alt" aria-hidden="true"></i></a>#}
+                            {#<a class="btn btn-primary" href="{{ path('fichier_show', {'id': fichier.id}) }}">show</a>#}
+                            <a class="btn btn-primary"
+                               href="{{ path('fichier_edit', {'idUser': fichier.user.id,'id': fichier.id}) }}">edit</a>
+
+                            {#<a class="btn btn-primary" href="{{ path('download_file', {'id': fichier.id}) }}"#}
+                            {#><i class="fas fa-download"></i></a>#}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {#<td>{{ fichier.fichierExtension }}</td>#}
+            {#<td>{{ fichier.createFileAt ? fichier.createFileAt|date('Y-m-d) H:i:s') : '' }}</td>#}
+            {#<td>{{ fichier.modifFileAt ? fichier.modifFileAt|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#<td>#}
+            {#<a href="{{ path('fichier_show', {'id': fichier.id}) }}">show</a>#}
+            {#<a href="{{ path('fichier_edit', {'idUser': fichier.user.id,'id': fichier.id}) }}">edit</a>#}
+            {#</td>#}
+        </div>
+    {% else %}
+        <div>
+            <td colspan="6">no records found</td>
+        </div>
+    {% endfor %}
+    {% endif %}
+    {#</tbody>#}
+    {#</table>#}
+
+    <a href="{{ path('fichier_new',{'idUser':user.id}) }}">Create new</a>
+{% endblock %}

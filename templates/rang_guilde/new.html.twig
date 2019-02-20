@@ -7,5 +7,5 @@
 
     {{ include('rang_guilde/_form.html.twig') }}
 
-    <a href="{{ path('rang_guilde_index') }}">back to list</a>
+    <a href="{{ path('personnage_rang_guilde_index',{'idPersonnage':personnage.id}) }}">back to list</a>
 {% endblock %}

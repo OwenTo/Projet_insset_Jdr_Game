@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/inventaire/bourse")
- */
+
 class InventaireBourseController extends AbstractController
 {
     /**
-     * @Route("/", name="inventaire_bourse_index", methods={"GET"})
+     * @Route("/liste/inventaire/bourse", name="inventaire_bourse_index", methods={"GET"})
      */
     public function index(InventaireBourseRepository $inventaireBourseRepository): Response
     {
@@ -26,7 +24,7 @@ class InventaireBourseController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="inventaire_bourse_new", methods={"GET","POST"})
+     * @Route("/create/inventaire/bourse", name="inventaire_bourse_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class InventaireBourseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="inventaire_bourse_show", methods={"GET"})
+     * @Route("/detail/inventaire/bourse/{id}", name="inventaire_bourse_show", methods={"GET"})
      */
     public function show(InventaireBourse $inventaireBourse): Response
     {
@@ -59,7 +57,7 @@ class InventaireBourseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="inventaire_bourse_edit", methods={"GET","POST"})
+     * @Route("/edit/inventaire/bourse/{id}", name="inventaire_bourse_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, InventaireBourse $inventaireBourse): Response
     {
@@ -81,7 +79,7 @@ class InventaireBourseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="inventaire_bourse_delete", methods={"DELETE"})
+     * @Route("/suppression/inventaire/bourse/{id}", name="inventaire_bourse_delete", methods={"DELETE"})
      */
     public function delete(Request $request, InventaireBourse $inventaireBourse): Response
     {

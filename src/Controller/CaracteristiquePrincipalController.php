@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/caracteristique/principal")
- */
+
 class CaracteristiquePrincipalController extends AbstractController
 {
     /**
-     * @Route("/", name="caracteristique_principal_index", methods={"GET"})
+     * @Route("/liste/caracteristique/principal", name="caracteristique_principal_index", methods={"GET"})
      */
     public function index(CaracteristiquePrincipalRepository $caracteristiquePrincipalRepository): Response
     {
@@ -26,7 +24,7 @@ class CaracteristiquePrincipalController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="caracteristique_principal_new", methods={"GET","POST"})
+     * @Route("/create/caracteristique/principal", name="caracteristique_principal_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class CaracteristiquePrincipalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="caracteristique_principal_show", methods={"GET"})
+     * @Route("/detail/caracteristique/principal/{id}", name="caracteristique_principal_show", methods={"GET"})
      */
     public function show(CaracteristiquePrincipal $caracteristiquePrincipal): Response
     {
@@ -59,7 +57,7 @@ class CaracteristiquePrincipalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="caracteristique_principal_edit", methods={"GET","POST"})
+     * @Route("/edit/caracteristique/principal/{id}", name="caracteristique_principal_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, CaracteristiquePrincipal $caracteristiquePrincipal): Response
     {
@@ -81,7 +79,7 @@ class CaracteristiquePrincipalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="caracteristique_principal_delete", methods={"DELETE"})
+     * @Route("/suppression/caracteristique/principal/{id}", name="caracteristique_principal_delete", methods={"DELETE"})
      */
     public function delete(Request $request, CaracteristiquePrincipal $caracteristiquePrincipal): Response
     {

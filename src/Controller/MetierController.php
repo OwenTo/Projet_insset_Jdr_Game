@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/metier")
- */
+
 class MetierController extends AbstractController
 {
     /**
-     * @Route("/", name="metier_index", methods={"GET"})
+     * @Route("/liste/metier", name="metier_index", methods={"GET"})
      */
     public function index(MetierRepository $metierRepository): Response
     {
@@ -26,7 +24,7 @@ class MetierController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="metier_new", methods={"GET","POST"})
+     * @Route("/create/metier", name="metier_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class MetierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="metier_show", methods={"GET"})
+     * @Route("/detail/metier/{id}", name="metier_show", methods={"GET"})
      */
     public function show(Metier $metier): Response
     {
@@ -59,7 +57,7 @@ class MetierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="metier_edit", methods={"GET","POST"})
+     * @Route("/edit/metier/{id}", name="metier_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Metier $metier): Response
     {
@@ -81,7 +79,7 @@ class MetierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="metier_delete", methods={"DELETE"})
+     * @Route("/suppression/metier/{id}", name="metier_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Metier $metier): Response
     {

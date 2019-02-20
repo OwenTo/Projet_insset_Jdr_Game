@@ -75,10 +75,7 @@ class Personnage
      */
     private $collRangGuilds;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Compagnon", mappedBy="personnage")
-     */
-    private $collCompagnons;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ValeurCaract", mappedBy="personnage")
@@ -106,6 +103,23 @@ class Personnage
      * @ORM\JoinColumn(nullable=false)
      */
     private $classe;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Compagnon", inversedBy="personnages")
+     */
+    private $collCompagnons;
+
+
+//    /**
+//     * @var string
+//     */
+//    private $guilde;
+
+    /**
+     * Personnage constructor.
+     */
+
+
 
     public function __construct()
     {
@@ -307,36 +321,6 @@ class Personnage
         return $this;
     }
 
-    /**
-     * @return Collection|Compagnon[]
-     */
-    public function getCollCompagnons(): Collection
-    {
-        return $this->collCompagnons;
-    }
-
-    public function addCollCompagnon(Compagnon $collCompagnon): self
-    {
-        if (!$this->collCompagnons->contains($collCompagnon)) {
-            $this->collCompagnons[] = $collCompagnon;
-            $collCompagnon->setPersonnage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCollCompagnon(Compagnon $collCompagnon): self
-    {
-        if ($this->collCompagnons->contains($collCompagnon)) {
-            $this->collCompagnons->removeElement($collCompagnon);
-            // set the owning side to null (unless already changed)
-            if ($collCompagnon->getPersonnage() === $this) {
-                $collCompagnon->setPersonnage(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|ValeurCaract[]
@@ -416,4 +400,50 @@ class Personnage
 
         return $this;
     }
+
+    /**
+     * @return Collection|Compagnon[]
+     */
+    public function getCollCompagnons(): Collection
+    {
+        return $this->collCompagnons;
+    }
+
+    public function addCollCompagnon(Compagnon $collCompagnon): self
+    {
+        if (!$this->collCompagnons->contains($collCompagnon)) {
+            $this->collCompagnons[] = $collCompagnon;
+        }
+
+        return $this;
+    }
+
+    public function removeCollCompagnon(Compagnon $collCompagnon): self
+    {
+        if ($this->collCompagnons->contains($collCompagnon)) {
+            $this->collCompagnons->removeElement($collCompagnon);
+        }
+
+        return $this;
+    }
+
+//
+//    /**
+//     * @return string
+//     */
+//    public function getGuilde()
+//    {
+//        return $this->guilde;
+//    }
+//
+//    /**
+//     * @param string $guilde
+//     * @return Personnage
+//     */
+//    public function setGuilde(string $guilde): Personnage
+//    {
+//        $this->guilde = $guilde;
+//        return $this;
+//    }
+
 }

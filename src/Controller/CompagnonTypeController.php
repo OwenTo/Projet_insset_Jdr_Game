@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/compagnon/type")
- */
+
 class CompagnonTypeController extends AbstractController
 {
     /**
-     * @Route("/", name="compagnon_type_index", methods={"GET"})
+     * @Route("/liste/compagnon/type", name="compagnon_type_index", methods={"GET"})
      */
     public function index(CompagnonTypeRepository $compagnonTypeRepository): Response
     {
@@ -26,7 +24,7 @@ class CompagnonTypeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="compagnon_type_new", methods={"GET","POST"})
+     * @Route("/create/compagnon/type", name="compagnon_type_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class CompagnonTypeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="compagnon_type_show", methods={"GET"})
+     * @Route("/detail/compagnon/type/{id}", name="compagnon_type_show", methods={"GET"})
      */
     public function show(CompagnonType $compagnonType): Response
     {
@@ -59,7 +57,7 @@ class CompagnonTypeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="compagnon_type_edit", methods={"GET","POST"})
+     * @Route("/edit/compagnon/type/{id}", name="compagnon_type_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, CompagnonType $compagnonType): Response
     {
@@ -81,7 +79,7 @@ class CompagnonTypeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="compagnon_type_delete", methods={"DELETE"})
+     * @Route("/suppression/compagnon/type/{id}", name="compagnon_type_delete", methods={"DELETE"})
      */
     public function delete(Request $request, CompagnonType $compagnonType): Response
     {
@@ -93,4 +91,8 @@ class CompagnonTypeController extends AbstractController
 
         return $this->redirectToRoute('compagnon_type_index');
     }
+
+
+
+
 }

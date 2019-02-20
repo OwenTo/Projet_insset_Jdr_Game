@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RegionLangue index{% endblock %}
+
+{% block body %}
+    <h1>RegionLangue index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>RegionLangue</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for region_langue in region_langues %}
+            <tr>
+                <td>{{ region_langue.id }}</td>
+                <td>{{ region_langue.regionLangue }}</td>
+                <td>
+                    <a href="{{ path('region_langue_show', {'id': region_langue.id}) }}">show</a>
+                    <a href="{{ path('region_langue_edit', {'id': region_langue.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('region_langue_new') }}">Create new</a>
+{% endblock %}

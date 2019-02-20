@@ -10,13 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/type/guilde")
- */
+
 class TypeGuildeController extends AbstractController
 {
     /**
-     * @Route("/", name="type_guilde_index", methods={"GET"})
+     * @Route("/liste/type/guilde", name="type_guilde_index", methods={"GET"})
      */
     public function index(TypeGuildeRepository $typeGuildeRepository): Response
     {
@@ -26,7 +24,7 @@ class TypeGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="type_guilde_new", methods={"GET","POST"})
+     * @Route("/create/type/guilde", name="type_guilde_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +47,7 @@ class TypeGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_guilde_show", methods={"GET"})
+     * @Route("/detail/type/guilde/{id}", name="type_guilde_show", methods={"GET"})
      */
     public function show(TypeGuilde $typeGuilde): Response
     {
@@ -59,7 +57,7 @@ class TypeGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="type_guilde_edit", methods={"GET","POST"})
+     * @Route("/edit/type/guilde/{id}", name="type_guilde_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, TypeGuilde $typeGuilde): Response
     {
@@ -81,7 +79,7 @@ class TypeGuildeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="type_guilde_delete", methods={"DELETE"})
+     * @Route("/suppression/type/guilde/{id}", name="type_guilde_delete", methods={"DELETE"})
      */
     public function delete(Request $request, TypeGuilde $typeGuilde): Response
     {

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Partie;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +15,12 @@ class PartieType extends AbstractType
     {
         $builder
             ->add('nomPartie')
-            ->add('utilisateur')
+            ->add('joueurs',EntityType::class,
+                array('class'=>User::class,
+                    'label'=>"joueur potentiel",
+                    'choice_label'=>"username",
+                    'expanded'=>true,
+                    'multiple'=>true))
         ;
     }
 

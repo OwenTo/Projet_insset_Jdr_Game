@@ -13,7 +13,7 @@ class LangueTypeType extends AbstractType
     {
         $builder
             ->add('langueType')
-            ->add('collLangues')
+//            ->add('collLangues')
         ;
     }
 

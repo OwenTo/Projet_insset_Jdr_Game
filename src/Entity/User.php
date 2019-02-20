@@ -73,6 +73,12 @@ class User implements UserInterface
      */
     private $maps;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Partie", mappedBy="joueurs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $partieRejoins;
+
 
 
 
@@ -157,6 +163,7 @@ class User implements UserInterface
         $this->parties = new ArrayCollection();
         $this->personnages = new ArrayCollection();
         $this->maps = new ArrayCollection();
+        $this->partieRejoins = new ArrayCollection();
 //        $this->roles[]="ROLE_ADMIN";
 
     }
@@ -272,6 +279,34 @@ class User implements UserInterface
             if ($map->getUser() === $this) {
                 $map->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Partie[]
+     */
+    public function getPartieRejoins(): Collection
+    {
+        return $this->partieRejoins;
+    }
+
+    public function addPartieRejoin(Partie $partieRejoin): self
+    {
+        if (!$this->partieRejoins->contains($partieRejoin)) {
+            $this->partieRejoins[] = $partieRejoin;
+            $partieRejoin->addJoueur($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartieRejoin(Partie $partieRejoin): self
+    {
+        if ($this->partieRejoins->contains($partieRejoin)) {
+            $this->partieRejoins->removeElement($partieRejoin);
+            $partieRejoin->removeJoueur($this);
         }
 
         return $this;
