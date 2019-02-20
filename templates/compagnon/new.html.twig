@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Compagnon{% endblock %}
+
+{% block body %}
+    <h1>Create new Compagnon</h1>
+
+    {{ include('compagnon/_form.html.twig') }}
+
+    <a href="{{ path('compagnon_index') }}">back to list</a>
+{% endblock %}

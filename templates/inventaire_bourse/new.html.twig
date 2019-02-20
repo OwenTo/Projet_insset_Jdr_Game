@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New InventaireBourse{% endblock %}
+
+{% block body %}
+    <h1>Create new InventaireBourse</h1>
+
+    {{ include('inventaire_bourse/_form.html.twig') }}
+
+    <a href="{{ path('inventaire_bourse_index') }}">back to list</a>
+{% endblock %}

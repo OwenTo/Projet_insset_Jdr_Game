@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CaracteristiquePrincipal{% endblock %}
+
+{% block body %}
+    <h1>Edit CaracteristiquePrincipal</h1>
+
+    {{ include('caracteristique_principal/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('caracteristique_principal_index') }}">back to list</a>
+
+    {{ include('caracteristique_principal/_delete_form.html.twig') }}
+{% endblock %}

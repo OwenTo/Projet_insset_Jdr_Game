@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CapaciteRacial{% endblock %}
+
+{% block body %}
+    <h1>Create new CapaciteRacial</h1>
+
+    {{ include('capacite_racial/_form.html.twig') }}
+
+    <a href="{{ path('capacite_racial_index') }}">back to list</a>
+{% endblock %}
