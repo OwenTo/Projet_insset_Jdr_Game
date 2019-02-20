@@ -7,42 +7,52 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ personnage.id }}</td>
-            </tr>
-            <tr>
-                <th>NomPersonnage</th>
-                <td>{{ personnage.nomPersonnage }}</td>
-            </tr>
-            <tr>
-                <th>PrenomPersonnage</th>
-                <td>{{ personnage.PrenomPersonnage }}</td>
-            </tr>
-            <tr>
-                <th>DescriptionPersonnege</th>
-                <td>{{ personnage.DescriptionPersonnege }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ personnage.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>{{ personnage.age }}</td>
-            </tr>
-            <tr>
-                <th>Poids</th>
-                <td>{{ personnage.poids }}</td>
-            </tr>
-            <tr>
-                <th>Taille</th>
-                <td>{{ personnage.taille }}</td>
-            </tr>
-            <tr>
-                <th>Niveau</th>
-                <td>{{ personnage.niveau }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ personnage.id }}</td>
+        </tr>
+        <tr>
+            <th>NomPersonnage</th>
+            <td>{{ personnage.nomPersonnage }}</td>
+        </tr>
+        <tr>
+            <th>PrenomPersonnage</th>
+            <td>{{ personnage.PrenomPersonnage }}</td>
+        </tr>
+        <tr>
+            <th>DescriptionPersonnege</th>
+            <td>{{ personnage.DescriptionPersonnege }}</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ personnage.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>{{ personnage.age }}</td>
+        </tr>
+        <tr>
+            <th>Poids</th>
+            <td>{{ personnage.poids }}</td>
+        </tr>
+        <tr>
+            <th>Taille</th>
+            <td>{{ personnage.taille }}</td>
+        </tr>
+        <tr>
+            <th>Niveau</th>
+            <td>{{ personnage.niveau }}</td>
+        </tr>
+        <tr>
+            <th>liste des métiers du personnage</th>
+            <td><a href="{{ path('personnage_niveau_metier_index', {'idPersonnage': personnage.id}) }}">liste metier</a>
+            </td>
+        </tr>
+        <tr>
+            <th> liste des guilde que le personnae posséde</th>
+            <td><a href="{{ path('personnage_rang_guilde_index', {'idPersonnage': personnage.id}) }}">liste guilde</a>
+
+        </tr>
         </tbody>
     </table>
 

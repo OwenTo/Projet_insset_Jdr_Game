@@ -71,7 +71,7 @@ class Personnage
     private $collNiveauMetier;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\RangGuilde", mappedBy="personnage")
+     * @ORM\OneToMany(targetEntity="App\Entity\RangGuilde", mappedBy="personnage")
      */
     private $collRangGuilds;
 

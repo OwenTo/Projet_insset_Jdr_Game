@@ -31,5 +31,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('rang_guilde_new') }}">Create new</a>
+    <a href="{{ path('rang_guilde_new_personnage', {'idPersonnage': personnage.id}) }}">Create new</a>
+    <a href="{{ path('personnage_show', {'id': personnage.id}) }}">retour</a>
 {% endblock %}

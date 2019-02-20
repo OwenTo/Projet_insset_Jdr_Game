@@ -28,7 +28,7 @@ class RangGuilde
     private $guilde;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Personnage", inversedBy="collRangGuilds")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Personnage", inversedBy="collRangGuilds")
      */
     private $personnage;
 
