@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Arme;
 use App\Entity\Fichier;
+use App\Entity\InventaireArme;
+use App\Entity\InventaireItem;
 use App\Form\ArmeType;
 use App\Repository\ArmeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +47,11 @@ class ArmeController extends AbstractController
             // Move the file to the directory where brochures are stored
             $fileNameExtension = $fileName . '.' . $file->guessExtension();
 
+//            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
             $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+
+
+
             $path_parts = pathinfo($fileNameExtension);
 
             $fichier->setContenueFichier($fileNameExtension);
@@ -58,8 +64,16 @@ class ArmeController extends AbstractController
             $arme->setFichier($fichier);
 
 
+
+
             $entityManager->persist($arme);
+
+//            var_dump($arme->getNomItem());
+            $this->createArmeItems($arme,$fichier,$file);
+
             $entityManager->flush();
+
+
 
             return $this->redirectToRoute('arme_index');
         }
@@ -144,5 +158,55 @@ class ArmeController extends AbstractController
         }
 
         return $this->redirectToRoute('arme_index');
+    }
+
+
+    private function createArmeItems(Arme $arme ,Fichier $fichier ,$file){
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        $itemInventaireArme = new InventaireArme();
+        $itemInventaireArme->setNomItemInventaire($arme->getNomItem()."invent")
+            ->setDescriptionItemInventaire($arme->getDescriptionItem())
+            ->setPoidsItemInventaire($arme->getPoids())
+            ->setBeneficeMaluceInventaire($arme->getBeneficeMaluce())
+            ->setValeurInventaire($arme->getValeur())
+            ->setTypesDes($arme->getTypeDes())
+            ->setMonnaie($arme->getMonnaie())
+            ->setMaterielInventaire($arme->getMateriel())
+            ->setTypeArmeInventaire($arme->getTypeArme())
+            ->setTypeCategorieInventaire($arme->getTypeCategorie())
+
+            ->setDegatArmeInventaire($arme->getDegat())
+        ;
+
+
+        $fichierInventaire = new Fichier();
+
+
+
+        $filInventaireName =  "test_".$fichier->getContenueFichier();
+
+        $file2=$file;
+
+//        $file2->move($this->getParameter('upload_directory_inventaire'), $filInventaireName);
+
+
+
+        $fichierInventaire->setCreateFileAt($fichier->getCreateFileAt());
+        $fichierInventaire->setContenueFichier($filInventaireName);
+        $fichierInventaire->setFichierExtension($fichier->getFichierExtension());
+
+        $entityManager->persist($fichierInventaire);
+        $itemInventaireArme->setFichier($fichierInventaire);
+
+
+
+
+        $entityManager->persist($itemInventaireArme);
+        var_dump($itemInventaireArme->getNomItemInventaire());
+        $entityManager->flush();
     }
 }

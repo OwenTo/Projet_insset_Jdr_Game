@@ -58,10 +58,7 @@ class InventaireItem
      */
     private $monnaie;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Fichier", cascade={"persist", "remove"})
-     */
-    private $fichier;
+
 
 
 
@@ -71,6 +68,11 @@ class InventaireItem
      * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/gif", "image/jpg"})
      */
     private $imageAvInsertionInventaire;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Fichier", inversedBy="inventaireItem", cascade={"persist", "remove"})
+     */
+    private $fichier;
 
 
     public function getId(): ?int
@@ -162,17 +164,7 @@ class InventaireItem
         return $this;
     }
 
-    public function getFichier(): ?Fichier
-    {
-        return $this->fichier;
-    }
 
-    public function setFichier(?Fichier $fichier): self
-    {
-        $this->fichier = $fichier;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -189,6 +181,18 @@ class InventaireItem
     public function setImageAvInsertionInventaire(string $imageAvInsertionInventaire): InventaireItem
     {
         $this->imageAvInsertionInventaire = $imageAvInsertionInventaire;
+        return $this;
+    }
+
+    public function getFichier(): ?Fichier
+    {
+        return $this->fichier;
+    }
+
+    public function setFichier(?Fichier $fichier): self
+    {
+        $this->fichier = $fichier;
+
         return $this;
     }
 

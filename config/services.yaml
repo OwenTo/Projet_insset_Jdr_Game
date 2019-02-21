@@ -7,7 +7,7 @@ parameters:
     locale: 'fr'
     upload_directory: '%kernel.project_dir%/public/upload'
     upload_directory_maps: '%kernel.project_dir%/public/maps'
-    upload_directory_inventaire: '%kernel.project_dir%/public/inventaire'
+    upload_directory_inventaire: '%kernel.project_dir%/public/inventaires'
 
 services:
     # default configuration for services in *this* file

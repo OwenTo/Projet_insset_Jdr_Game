@@ -56,6 +56,11 @@ class Fichier
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\InventaireItem", mappedBy="fichier", cascade={"persist", "remove"})
+     */
+    private $inventaireItem;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -148,6 +153,24 @@ class Fichier
     public function setContenuFileBefore(string $contenuFileBefore): Fichier
     {
         $this->contenuFileBefore = $contenuFileBefore;
+        return $this;
+    }
+
+    public function getInventaireItem(): ?InventaireItem
+    {
+        return $this->inventaireItem;
+    }
+
+    public function setInventaireItem(?InventaireItem $inventaireItem): self
+    {
+        $this->inventaireItem = $inventaireItem;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newFichier = $inventaireItem === null ? null : $this;
+        if ($newFichier !== $inventaireItem->getFichier()) {
+            $inventaireItem->setFichier($newFichier);
+        }
+
         return $this;
     }
 
