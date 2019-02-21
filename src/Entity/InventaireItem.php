@@ -3,10 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\ORM\Mapping\InheritanceType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InventaireItemRepository")
+ * @InheritanceType("JOINED")
+ * @DiscriminatorColumn(name="enfant", type="string")
+ * @DiscriminatorMap({"inventaireItem" = "InventaireItem", "inventaireArme" = "InventaireArme"})
  */
 class InventaireItem
 {

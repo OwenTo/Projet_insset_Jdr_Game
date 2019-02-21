@@ -34,12 +34,18 @@ class Materiel
      */
     private $collArmure;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventaireArme", mappedBy="materielInventaire")
+     */
+    private $inventaireArmes;
+
 
 
     public function __construct()
     {
         $this->collMArmes = new ArrayCollection();
         $this->collArmure = new ArrayCollection();
+        $this->inventaireArmes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,6 +121,37 @@ class Materiel
             // set the owning side to null (unless already changed)
             if ($collArmure->getMateriel() === $this) {
                 $collArmure->setMateriel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventaireArme[]
+     */
+    public function getInventaireArmes(): Collection
+    {
+        return $this->inventaireArmes;
+    }
+
+    public function addInventaireArme(InventaireArme $inventaireArme): self
+    {
+        if (!$this->inventaireArmes->contains($inventaireArme)) {
+            $this->inventaireArmes[] = $inventaireArme;
+            $inventaireArme->setMaterielInventaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventaireArme(InventaireArme $inventaireArme): self
+    {
+        if ($this->inventaireArmes->contains($inventaireArme)) {
+            $this->inventaireArmes->removeElement($inventaireArme);
+            // set the owning side to null (unless already changed)
+            if ($inventaireArme->getMaterielInventaire() === $this) {
+                $inventaireArme->setMaterielInventaire(null);
             }
         }
 
