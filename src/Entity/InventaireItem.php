@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\InventaireItemRepository")
  * @InheritanceType("JOINED")
  * @DiscriminatorColumn(name="enfant", type="string")
- * @DiscriminatorMap({"inventaireItem" = "InventaireItem", "inventaireArme" = "InventaireArme","indentaireArmure"="InventaireArmure"})
+ * @DiscriminatorMap({"inventaireItem" = "InventaireItem", "inventaireArme" = "InventaireArme","inventaireArmure"="InventaireArmure","inventaireMagie"="InventaireMagie"})
  */
 class InventaireItem
 {
