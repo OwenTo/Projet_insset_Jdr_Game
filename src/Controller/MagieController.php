@@ -68,6 +68,7 @@ class MagieController extends AbstractController
             $entityManager->persist($fichier);
             $magie->setFichier($fichier);
 
+//            var_dump($magie->getTypeMagies());
 
             $entityManager->persist($magie);
             $entityManager->flush();

@@ -24,19 +24,22 @@ class TypeMagie
      */
     private $nomTypeMagie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Magie", inversedBy="typeMagies")
-     */
-    private $collMagie;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\InventaireMagie", mappedBy="typeMagieInventaire")
      */
     private $inventaireMagies;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Magie", mappedBy="typeMagie")
+     */
+    private $magies;
+
     public function __construct()
     {
         $this->inventaireMagies = new ArrayCollection();
+        $this->magies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,17 +59,7 @@ class TypeMagie
         return $this;
     }
 
-    public function getCollMagie(): ?Magie
-    {
-        return $this->collMagie;
-    }
 
-    public function setCollMagie(?Magie $collMagie): self
-    {
-        $this->collMagie = $collMagie;
-
-        return $this;
-    }
 
     /**
      * @return Collection|InventaireMagie[]
@@ -91,6 +84,34 @@ class TypeMagie
         if ($this->inventaireMagies->contains($inventaireMagy)) {
             $this->inventaireMagies->removeElement($inventaireMagy);
             $inventaireMagy->removeTypeMagieInventaire($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Magie[]
+     */
+    public function getMagies(): Collection
+    {
+        return $this->magies;
+    }
+
+    public function addMagy(Magie $magy): self
+    {
+        if (!$this->magies->contains($magy)) {
+            $this->magies[] = $magy;
+            $magy->addTypeMagie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMagy(Magie $magy): self
+    {
+        if ($this->magies->contains($magy)) {
+            $this->magies->removeElement($magy);
+            $magy->removeTypeMagie($this);
         }
 
         return $this;

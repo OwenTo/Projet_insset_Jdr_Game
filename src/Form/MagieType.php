@@ -43,7 +43,7 @@ class MagieType extends AbstractType
                 , array('class' => Monnaie::class,
                     'label' => 'Monnaie',
                     'choice_label' => 'nomMonnaie'))
-            ->add('typeMagies', EntityType::class,
+            ->add('typeMagie', EntityType::class,
                 array('class' => TypeMagie::class,
                     'label' => 'Elementaire',
                     'choice_label' => 'nomTypeMagie',

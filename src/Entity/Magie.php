@@ -29,14 +29,16 @@ class Magie extends Item
     private $niveauMagie;
 
     /**
-     * @Assert\NotNull(message="Il faut choisir au moins un type de Magie")
-     * @ORM\OneToMany(targetEntity="App\Entity\TypeMagie", mappedBy="collMagie")
+     * @ORM\ManyToMany(targetEntity="App\Entity\TypeMagie", inversedBy="magies")
      */
-    private $typeMagies;
+    private $typeMagie;
+
+
 
     public function __construct()
     {
         $this->typeMagies = new ArrayCollection();
+        $this->typeMagie = new ArrayCollection();
     }
 
 
@@ -82,31 +84,28 @@ class Magie extends Item
     /**
      * @return Collection|TypeMagie[]
      */
-    public function getTypeMagies(): Collection
+    public function getTypeMagie(): Collection
     {
-        return $this->typeMagies;
+        return $this->typeMagie;
     }
 
-    public function addTypeMagy(TypeMagie $typeMagy): self
+    public function addTypeMagie(TypeMagie $typeMagie): self
     {
-        if (!$this->typeMagies->contains($typeMagy)) {
-            $this->typeMagies[] = $typeMagy;
-            $typeMagy->setCollMagie($this);
+        if (!$this->typeMagie->contains($typeMagie)) {
+            $this->typeMagie[] = $typeMagie;
         }
 
         return $this;
     }
 
-    public function removeTypeMagy(TypeMagie $typeMagy): self
+    public function removeTypeMagie(TypeMagie $typeMagie): self
     {
-        if ($this->typeMagies->contains($typeMagy)) {
-            $this->typeMagies->removeElement($typeMagy);
-            // set the owning side to null (unless already changed)
-            if ($typeMagy->getCollMagie() === $this) {
-                $typeMagy->setCollMagie(null);
-            }
+        if ($this->typeMagie->contains($typeMagie)) {
+            $this->typeMagie->removeElement($typeMagie);
         }
 
         return $this;
     }
+
+
 }
