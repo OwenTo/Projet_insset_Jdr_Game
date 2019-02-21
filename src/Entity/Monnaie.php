@@ -30,9 +30,15 @@ class Monnaie
      */
     private $collItems;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventaireItem", mappedBy="monnaie")
+     */
+    private $inventaireItems;
+
     public function __construct()
     {
         $this->collItems = new ArrayCollection();
+        $this->inventaireItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,37 @@ class Monnaie
             // set the owning side to null (unless already changed)
             if ($collItem->getMonnaie() === $this) {
                 $collItem->setMonnaie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventaireItem[]
+     */
+    public function getInventaireItems(): Collection
+    {
+        return $this->inventaireItems;
+    }
+
+    public function addInventaireItem(InventaireItem $inventaireItem): self
+    {
+        if (!$this->inventaireItems->contains($inventaireItem)) {
+            $this->inventaireItems[] = $inventaireItem;
+            $inventaireItem->setMonnaie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventaireItem(InventaireItem $inventaireItem): self
+    {
+        if ($this->inventaireItems->contains($inventaireItem)) {
+            $this->inventaireItems->removeElement($inventaireItem);
+            // set the owning side to null (unless already changed)
+            if ($inventaireItem->getMonnaie() === $this) {
+                $inventaireItem->setMonnaie(null);
             }
         }
 
