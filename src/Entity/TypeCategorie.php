@@ -34,12 +34,18 @@ class TypeCategorie
      */
     private $inventaireArmes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\InventaireArmure", mappedBy="categorieArmureInventaire")
+     */
+    private $inventaireArmures;
+
 
 
     public function __construct()
     {
         $this->collArmes = new ArrayCollection();
         $this->inventaireArmes = new ArrayCollection();
+        $this->inventaireArmures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -115,6 +121,37 @@ class TypeCategorie
             // set the owning side to null (unless already changed)
             if ($inventaireArme->getTypeCategorieInventaire() === $this) {
                 $inventaireArme->setTypeCategorieInventaire(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventaireArmure[]
+     */
+    public function getInventaireArmures(): Collection
+    {
+        return $this->inventaireArmures;
+    }
+
+    public function addInventaireArmure(InventaireArmure $inventaireArmure): self
+    {
+        if (!$this->inventaireArmures->contains($inventaireArmure)) {
+            $this->inventaireArmures[] = $inventaireArmure;
+            $inventaireArmure->setCategorieArmureInventaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInventaireArmure(InventaireArmure $inventaireArmure): self
+    {
+        if ($this->inventaireArmures->contains($inventaireArmure)) {
+            $this->inventaireArmures->removeElement($inventaireArmure);
+            // set the owning side to null (unless already changed)
+            if ($inventaireArmure->getCategorieArmureInventaire() === $this) {
+                $inventaireArmure->setCategorieArmureInventaire(null);
             }
         }
 
