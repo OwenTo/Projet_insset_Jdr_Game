@@ -24,7 +24,7 @@ class ArmeType extends AbstractType
     {
         $builder
             ->add('nomItem',TextType::class)
-            ->add('descriptionItem',TextareaType::class)
+            ->add('descriptionItem',TextareaType::class, array('required'   => false))
             ->add('poids',NumberType::class)
             ->add('beneficeMaluce',TextareaType::class)
             ->add('valeur',NumberType::class)

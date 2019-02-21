@@ -21,9 +21,9 @@ class MagieType extends AbstractType
     {
         $builder
             ->add('nomItem',TextType::class)
-            ->add('descriptionItem',TextareaType::class)
+            ->add('descriptionItem',TextareaType::class, array('required'   => false))
             ->add('poids',NumberType::class)
-            ->add('beneficeMaluce',TextareaType::class)
+            ->add('beneficeMaluce',TextareaType::class, array('required'   => false))
             ->add('valeur',NumberType::class)
             ->add('degatMagie',NumberType::class)
             ->add('coutDeMana',NumberType::class)

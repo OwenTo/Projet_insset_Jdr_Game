@@ -93,10 +93,7 @@ class Personnage
      */
     private $user;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Inventaire", inversedBy="personnage", cascade={"persist", "remove"})
-     */
-    private $inventaire;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ClassePersonnage", inversedBy="personnages")
@@ -377,17 +374,7 @@ class Personnage
         return $this;
     }
 
-    public function getInventaire(): ?Inventaire
-    {
-        return $this->inventaire;
-    }
 
-    public function setInventaire(?Inventaire $inventaire): self
-    {
-        $this->inventaire = $inventaire;
-
-        return $this;
-    }
 
     public function getClasse(): ?ClassePersonnage
     {
