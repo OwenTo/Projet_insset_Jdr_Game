@@ -191,7 +191,7 @@ class ArmeController extends AbstractController
 
         $file2=$file;
 
-//        $file2->move($this->getParameter('upload_directory_inventaire'), $filInventaireName);
+        $file2->move($this->getParameter('upload_directory_inventaire'), $filInventaireName);
 
 
 
