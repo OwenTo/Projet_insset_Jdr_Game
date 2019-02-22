@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Armure;
 use App\Entity\Fichier;
+use App\Entity\InventaireArmure;
 use App\Form\ArmureType;
 use App\Repository\ArmureRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class ArmureController extends AbstractController
@@ -35,39 +38,48 @@ class ArmureController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
 
-            if(!empty($form->get('imageAvInsertion')->getData())){
+            if (!empty($form->get('imageAvInsertion')->getData())) {
 
 
+                $fichier = new Fichier();
 
-            $fichier = new Fichier();
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-
-            $file = $form->get('imageAvInsertion')->getData();
-//                $file=$form['fichier']->getData();
-            $fileName = md5(uniqid());
-            // Move the file to the directory where brochures are stored
-            $fileNameExtension = $fileName . '.' . $file->guessExtension();
-
-            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
-            $path_parts = pathinfo($fileNameExtension);
-
-            $fichier->setContenueFichier($fileNameExtension);
-            $fichier->setFichierExtension($path_parts['extension']);
+                $uploaFile = new FileUploader($this->getParameter('upload_directory'));
 
 
-            $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
-            $fichier->setCreateFileAt($dateCrea);
-            $entityManager->persist($fichier);
-            $armure->setFichier($fichier);
+                $file = $form->get('imageAvInsertion')->getData();
+
+                $fileName = $uploaFile->upload($file);
+
+                $path_parts = pathinfo($fileName);
 
 
+//            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+//
+//            $file = $form->get('imageAvInsertion')->getData();
+////                $file=$form['fichier']->getData();
+//            $fileName = md5(uniqid());
+//            // Move the file to the directory where brochures are stored
+//            $fileNameExtension = $fileName . '.' . $file->guessExtension();
+//
+//            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+//            $path_parts = pathinfo($fileNameExtension);
+
+                $fichier->setContenueFichier($fileName);
+                $fichier->setFichierExtension($path_parts['extension']);
 
 
+                $dateCrea = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+                $fichier->setCreateFileAt($dateCrea);
+                $entityManager->persist($fichier);
+                $armure->setFichier($fichier);
 
-            $entityManager->persist($armure);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('armure_index');
+                $entityManager->persist($armure);
+                $this->createArmureItems($armure, $file);
+
+                $entityManager->flush();
+
+                return $this->redirectToRoute('armure_index');
             }
         }
 
@@ -121,17 +133,9 @@ class ArmureController extends AbstractController
                 $armure->getFichier()->setModifFileAt($dateModif);
 
 
-
-
             }
 
             $this->getDoctrine()->getManager()->flush();
-
-
-
-
-
-
 
 
             return $this->redirectToRoute('armure_index', ['id' => $armure->getId()]);
@@ -148,15 +152,14 @@ class ArmureController extends AbstractController
      */
     public function delete(Request $request, Armure $armure): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$armure->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $armure->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            if (!empty($armure->getFichier())){
+            if (!empty($armure->getFichier())) {
                 $filDir = $this->getParameter('upload_directory');
                 unlink($filDir . "/" . $armure->getFichier()->getContenueFichier());
 
             }
-
 
 
             $entityManager->remove($armure);
@@ -164,5 +167,50 @@ class ArmureController extends AbstractController
         }
 
         return $this->redirectToRoute('armure_index');
+    }
+
+
+    private function createArmureItems(Armure $armure, UploadedFile $file)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        $itemInventaireArumre = new InventaireArmure();
+        $itemInventaireArumre
+            ->setNomItemInventaire($armure->getNomItem())
+            ->setDescriptionItemInventaire($armure->getDescriptionItem())
+            ->setPoidsItemInventaire($armure->getPoids())
+            ->setBeneficeMaluceInventaire($armure->getBeneficeMaluce())
+            ->setValeurInventaire($armure->getValeur())
+            ->setTypesDes($armure->getTypeDes())
+            ->setMonnaie($armure->getMonnaie())
+            ->setMaterielArmureInventaire($armure->getMateriel())
+            ->setEquipementInventaire($armure->getEquipement())
+            ->setCategorieArmureInventaire($armure->getCategorie())
+            ->setDefenseArmureInventaire($armure->getDefense());
+
+
+//        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
+
+
+//        $fileName = $uploadFileInventaire->upload($file);
+//        var_dump($fileName);
+//
+//
+//        var_dump($uploadFileInventaire);
+
+
+        $fichierInventaire = new Fichier();
+        $fichierInventaire->setCreateFileAt($armure->getFichier()->getCreateFileAt())
+            ->setContenueFichier($armure->getFichier()->getContenueFichier())
+//            ->setContenueFichier($fileName)
+            ->setFichierExtension($armure->getFichier()->getFichierExtension());
+
+
+        $itemInventaireArumre->setFichier($fichierInventaire);
+        $entityManager->persist($fichierInventaire);
+        $entityManager->persist($itemInventaireArumre);
+        $entityManager->flush();
+
     }
 }

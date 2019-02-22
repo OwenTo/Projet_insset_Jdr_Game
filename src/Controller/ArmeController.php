@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
 class ArmeController extends AbstractController
 {
     /**
@@ -152,7 +151,7 @@ class ArmeController extends AbstractController
     }
 
 
-    private function createArmeItems(Arme $arme,UploadedFile $file)
+    private function createArmeItems(Arme $arme, UploadedFile $file)
     {
 
 
@@ -162,7 +161,7 @@ class ArmeController extends AbstractController
 
 
         $itemInventaireArme = new InventaireArme();
-        $itemInventaireArme->setNomItemInventaire($arme->getNomItem() . "_invent")
+        $itemInventaireArme->setNomItemInventaire($arme->getNomItem())
             ->setDescriptionItemInventaire($arme->getDescriptionItem())
             ->setPoidsItemInventaire($arme->getPoids())
             ->setBeneficeMaluceInventaire($arme->getBeneficeMaluce())
@@ -173,9 +172,6 @@ class ArmeController extends AbstractController
             ->setTypeArmeInventaire($arme->getTypeArme())
             ->setTypeCategorieInventaire($arme->getTypeCategorie())
             ->setDegatArmeInventaire($arme->getDegat());
-
-
-
 
 
 //        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
