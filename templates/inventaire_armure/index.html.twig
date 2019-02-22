@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InventaireArmure index{% endblock %}
+
+{% block body %}
+    <h1>InventaireArmure index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomItemInventaire</th>
+                <th>DescriptionItemInventaire</th>
+                <th>PoidsItemInventaire</th>
+                <th>BeneficeMaluceInventaire</th>
+                <th>ValeurInventaire</th>
+                <th>DefenseArmureInventaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventaire_armure in inventaire_armures %}
+            <tr>
+                <td>{{ inventaire_armure.id }}</td>
+                <td>{{ inventaire_armure.nomItemInventaire }}</td>
+                <td>{{ inventaire_armure.descriptionItemInventaire }}</td>
+                <td>{{ inventaire_armure.poidsItemInventaire }}</td>
+                <td>{{ inventaire_armure.beneficeMaluceInventaire }}</td>
+                <td>{{ inventaire_armure.valeurInventaire }}</td>
+                <td>{{ inventaire_armure.defenseArmureInventaire }}</td>
+                <td>
+                    <a href="{{ path('inventaire_armure_show', {'id': inventaire_armure.id}) }}">show</a>
+                    <a href="{{ path('inventaire_armure_edit', {'id': inventaire_armure.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventaire_armure_new') }}">Create new</a>
+{% endblock %}

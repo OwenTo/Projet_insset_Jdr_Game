@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\DiscriminatorMap;
@@ -73,6 +75,16 @@ class InventaireItem
      * @ORM\OneToOne(targetEntity="App\Entity\Fichier", inversedBy="inventaireItem", cascade={"persist", "remove"})
      */
     private $fichier;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Personnage", mappedBy="inventaire")
+     */
+    private $personnages;
+
+    public function __construct()
+    {
+        $this->personnages = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -192,6 +204,34 @@ class InventaireItem
     public function setFichier(?Fichier $fichier): self
     {
         $this->fichier = $fichier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Personnage[]
+     */
+    public function getPersonnages(): Collection
+    {
+        return $this->personnages;
+    }
+
+    public function addPersonnage(Personnage $personnage): self
+    {
+        if (!$this->personnages->contains($personnage)) {
+            $this->personnages[] = $personnage;
+            $personnage->addInventaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonnage(Personnage $personnage): self
+    {
+        if ($this->personnages->contains($personnage)) {
+            $this->personnages->removeElement($personnage);
+            $personnage->removeInventaire($this);
+        }
 
         return $this;
     }

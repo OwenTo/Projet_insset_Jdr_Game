@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InventaireMagie index{% endblock %}
+
+{% block body %}
+    <h1>InventaireMagie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomItemInventaire</th>
+                <th>DescriptionItemInventaire</th>
+                <th>PoidsItemInventaire</th>
+                <th>BeneficeMaluceInventaire</th>
+                <th>ValeurInventaire</th>
+                <th>DegatMagieInventaire</th>
+                <th>CoutManaMagieInventaire</th>
+                <th>NiveauMagieInventaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventaire_magie in inventaire_magies %}
+            <tr>
+                <td>{{ inventaire_magie.id }}</td>
+                <td>{{ inventaire_magie.nomItemInventaire }}</td>
+                <td>{{ inventaire_magie.descriptionItemInventaire }}</td>
+                <td>{{ inventaire_magie.poidsItemInventaire }}</td>
+                <td>{{ inventaire_magie.beneficeMaluceInventaire }}</td>
+                <td>{{ inventaire_magie.valeurInventaire }}</td>
+                <td>{{ inventaire_magie.degatMagieInventaire }}</td>
+                <td>{{ inventaire_magie.coutManaMagieInventaire }}</td>
+                <td>{{ inventaire_magie.niveauMagieInventaire }}</td>
+                <td>
+                    <a href="{{ path('inventaire_magie_show', {'id': inventaire_magie.id}) }}">show</a>
+                    <a href="{{ path('inventaire_magie_edit', {'id': inventaire_magie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventaire_magie_new') }}">Create new</a>
+{% endblock %}

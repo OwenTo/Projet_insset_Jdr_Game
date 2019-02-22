@@ -106,6 +106,11 @@ class Personnage
      */
     private $collCompagnons;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\InventaireItem", inversedBy="personnages")
+     */
+    private $inventaire;
+
 
 //    /**
 //     * @var string
@@ -125,6 +130,7 @@ class Personnage
         $this->collRangGuilds = new ArrayCollection();
         $this->collCompagnons = new ArrayCollection();
         $this->valeurCaract = new ArrayCollection();
+        $this->inventaire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -409,6 +415,32 @@ class Personnage
     {
         if ($this->collCompagnons->contains($collCompagnon)) {
             $this->collCompagnons->removeElement($collCompagnon);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|InventaireItem[]
+     */
+    public function getInventaire(): Collection
+    {
+        return $this->inventaire;
+    }
+
+    public function addInventaire(InventaireItem $inventaire): self
+    {
+        if (!$this->inventaire->contains($inventaire)) {
+            $this->inventaire[] = $inventaire;
+        }
+
+        return $this;
+    }
+
+    public function removeInventaire(InventaireItem $inventaire): self
+    {
+        if ($this->inventaire->contains($inventaire)) {
+            $this->inventaire->removeElement($inventaire);
         }
 
         return $this;

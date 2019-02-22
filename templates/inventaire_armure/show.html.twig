@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InventaireArmure{% endblock %}
+
+{% block body %}
+    <h1>InventaireArmure</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ inventaire_armure.id }}</td>
+            </tr>
+            <tr>
+                <th>NomItemInventaire</th>
+                <td>{{ inventaire_armure.nomItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionItemInventaire</th>
+                <td>{{ inventaire_armure.descriptionItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>PoidsItemInventaire</th>
+                <td>{{ inventaire_armure.poidsItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>BeneficeMaluceInventaire</th>
+                <td>{{ inventaire_armure.beneficeMaluceInventaire }}</td>
+            </tr>
+            <tr>
+                <th>ValeurInventaire</th>
+                <td>{{ inventaire_armure.valeurInventaire }}</td>
+            </tr>
+            <tr>
+                <th>DefenseArmureInventaire</th>
+                <td>{{ inventaire_armure.defenseArmureInventaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventaire_armure_index') }}">back to list</a>
+
+    <a href="{{ path('inventaire_armure_edit', {'id': inventaire_armure.id}) }}">edit</a>
+
+    {{ include('inventaire_armure/_delete_form.html.twig') }}
+{% endblock %}

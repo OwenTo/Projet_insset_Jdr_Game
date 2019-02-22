@@ -53,6 +53,21 @@
             <td><a href="{{ path('personnage_rang_guilde_index', {'idPersonnage': personnage.id}) }}">liste guilde</a>
 
         </tr>
+        <tr>    <th>    Ajout d'arme inventaire</th>
+            <td> <p> <a href="{{ path('personnage_inventaire_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
+                <p> <a href="{{ path('inventaire_arme_personnage_index',{'idPersonnage':personnage.id} )}}">liste  des armes possédées </a> </p>
+            </td>
+
+        </tr>
+        <tr>
+
+            <th>Ajouter armure dans l'inventaire </th>
+            <td><p><a href="{{ path('personnage_inventaire_armure',{'idPersonnage':personnage.id} )}}">ajouter une armure a l'inventaire </a> </p>
+                <p>  <a href="{{ path('inventaire_armure_personnage_index',{'idPersonnage':personnage.id} )}}">liste des armures possédées </a>  </p>  </td>
+
+            <td>    </td>
+
+        </tr>
         </tbody>
     </table>
 

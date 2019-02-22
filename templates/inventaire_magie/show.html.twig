@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InventaireMagie{% endblock %}
+
+{% block body %}
+    <h1>InventaireMagie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ inventaire_magie.id }}</td>
+            </tr>
+            <tr>
+                <th>NomItemInventaire</th>
+                <td>{{ inventaire_magie.nomItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionItemInventaire</th>
+                <td>{{ inventaire_magie.descriptionItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>PoidsItemInventaire</th>
+                <td>{{ inventaire_magie.poidsItemInventaire }}</td>
+            </tr>
+            <tr>
+                <th>BeneficeMaluceInventaire</th>
+                <td>{{ inventaire_magie.beneficeMaluceInventaire }}</td>
+            </tr>
+            <tr>
+                <th>ValeurInventaire</th>
+                <td>{{ inventaire_magie.valeurInventaire }}</td>
+            </tr>
+            <tr>
+                <th>DegatMagieInventaire</th>
+                <td>{{ inventaire_magie.degatMagieInventaire }}</td>
+            </tr>
+            <tr>
+                <th>CoutManaMagieInventaire</th>
+                <td>{{ inventaire_magie.coutManaMagieInventaire }}</td>
+            </tr>
+            <tr>
+                <th>NiveauMagieInventaire</th>
+                <td>{{ inventaire_magie.niveauMagieInventaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('inventaire_magie_index') }}">back to list</a>
+
+    <a href="{{ path('inventaire_magie_edit', {'id': inventaire_magie.id}) }}">edit</a>
+
+    {{ include('inventaire_magie/_delete_form.html.twig') }}
+{% endblock %}
