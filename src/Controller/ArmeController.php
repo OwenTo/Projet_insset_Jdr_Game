@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\Arme;
 use App\Entity\Fichier;
 use App\Entity\InventaireArme;
-use App\Entity\InventaireItem;
 use App\Form\ArmeType;
 use App\Repository\ArmeRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 class ArmeController extends AbstractController
@@ -39,22 +40,18 @@ class ArmeController extends AbstractController
 
 
             $fichier = new Fichier();
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+            $uploaFile = new FileUploader($this->getParameter('upload_directory'));
+
 
             $file = $form->get('imageAvInsertion')->getData();
-//                $file=$form['fichier']->getData();
-            $fileName = md5(uniqid());
-            // Move the file to the directory where brochures are stored
-            $fileNameExtension = $fileName . '.' . $file->guessExtension();
 
-//            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
-            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+            $fileName = $uploaFile->upload($file);
 
+            $path_parts = pathinfo($fileName);
+//            $path_parts = pathinfo($fileNameExtension);
 
-
-            $path_parts = pathinfo($fileNameExtension);
-
-            $fichier->setContenueFichier($fileNameExtension);
+            $fichier->setContenueFichier($fileName);
             $fichier->setFichierExtension($path_parts['extension']);
 
 
@@ -64,15 +61,11 @@ class ArmeController extends AbstractController
             $arme->setFichier($fichier);
 
 
-
-
             $entityManager->persist($arme);
 
-//            var_dump($arme->getNomItem());
-            $this->createArmeItems($arme,$fichier,$file);
+            $this->createArmeItems($arme, $file);
 
             $entityManager->flush();
-
 
 
             return $this->redirectToRoute('arme_index');
@@ -108,21 +101,19 @@ class ArmeController extends AbstractController
 
                 unlink($filDir . "/" . $arme->getFichier()->getContenueFichier());
 
+                $uploaFile = new FileUploader($this->getParameter('upload_directory'));
 
-                /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
                 $file = $form->get('imageAvInsertion')->getData();
-//                $file=$form['fichier']->getData();
-                $fileName = md5(uniqid());
-                // Move the file to the directory where brochures are stored
-                $fileNameExtension = $fileName . '.' . $file->guessExtension();
 
-                $file->move($this->getParameter('upload_directory'), $fileNameExtension);
-                $path_parts = pathinfo($fileNameExtension);
+                $fileName = $uploaFile->upload($file);
+
+                $path_parts = pathinfo($fileName);
+//
 
                 $dateModif = new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
 
-                $arme->getFichier()->setContenueFichier($fileNameExtension);
+                $arme->getFichier()->setContenueFichier($fileName);
                 $arme->getFichier()->setFichierExtension($path_parts['extension']);
                 $arme->getFichier()->setModifFileAt($dateModif);
 
@@ -147,7 +138,7 @@ class ArmeController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $arme->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            if (!empty($arme->getFichier())){
+            if (!empty($arme->getFichier())) {
                 $filDir = $this->getParameter('upload_directory');
                 unlink($filDir . "/" . $arme->getFichier()->getContenueFichier());
 
@@ -161,14 +152,17 @@ class ArmeController extends AbstractController
     }
 
 
-    private function createArmeItems(Arme $arme ,Fichier $fichier ,$file){
+    private function createArmeItems(Arme $arme,UploadedFile $file)
+    {
 
+
+//        var_dump($file . " test ");
 
         $entityManager = $this->getDoctrine()->getManager();
 
 
         $itemInventaireArme = new InventaireArme();
-        $itemInventaireArme->setNomItemInventaire($arme->getNomItem()."invent")
+        $itemInventaireArme->setNomItemInventaire($arme->getNomItem() . "_invent")
             ->setDescriptionItemInventaire($arme->getDescriptionItem())
             ->setPoidsItemInventaire($arme->getPoids())
             ->setBeneficeMaluceInventaire($arme->getBeneficeMaluce())
@@ -178,35 +172,32 @@ class ArmeController extends AbstractController
             ->setMaterielInventaire($arme->getMateriel())
             ->setTypeArmeInventaire($arme->getTypeArme())
             ->setTypeCategorieInventaire($arme->getTypeCategorie())
-
-            ->setDegatArmeInventaire($arme->getDegat())
-        ;
+            ->setDegatArmeInventaire($arme->getDegat());
 
 
+
+
+
+//        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
+//
+//
+//        $fileName = $uploadFileInventaire->upload($file);
+//        var_dump($fileName);
+
+//        $filInventaireName = $fileName;
+//        var_dump($uploadFileInventaire);
+        $filInventaireName = $arme->getFichier()->getContenueFichier();
         $fichierInventaire = new Fichier();
-
-
-
-        $filInventaireName =  "test_".$fichier->getContenueFichier();
-
-        $file2=$file;
-
-        $file2->move($this->getParameter('upload_directory_inventaire'), $filInventaireName);
-
-
-
-        $fichierInventaire->setCreateFileAt($fichier->getCreateFileAt());
+        $fichierInventaire->setCreateFileAt($arme->getFichier()->getCreateFileAt());
         $fichierInventaire->setContenueFichier($filInventaireName);
-        $fichierInventaire->setFichierExtension($fichier->getFichierExtension());
+        $fichierInventaire->setFichierExtension($arme->getFichier()->getFichierExtension());
 
-        $entityManager->persist($fichierInventaire);
+
         $itemInventaireArme->setFichier($fichierInventaire);
 
 
-
-
+        $entityManager->persist($fichierInventaire);
         $entityManager->persist($itemInventaireArme);
-        var_dump($itemInventaireArme->getNomItemInventaire());
         $entityManager->flush();
     }
 }

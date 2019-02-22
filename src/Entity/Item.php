@@ -80,7 +80,7 @@ class Item
 
     public function __construct()
     {
-        $this->inventaires = new ArrayCollection();
+
     }
 
     /**
