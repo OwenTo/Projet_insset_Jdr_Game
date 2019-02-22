@@ -121,24 +121,12 @@ class InventaireArmureController extends AbstractController
 
 
         }
-        return $this->render('inventaire_arme/new.html.twig', [
+        return $this->render('inventaire_armure/new.html.twig', [
 //            'inventaire_arme' => $inventaireArme,
             'form' => $form->createView(),
         ]);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     private function searchPersonnageAction(Personnage $personnage)
     {
@@ -162,8 +150,8 @@ class InventaireArmureController extends AbstractController
         $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
 
         $inventaires =$repositoryPersonnage->findInventaireArmure($personnage->getId());
-        return $this->render('inventaire_arme/index.html.twig', [
-            'inventaire_armure' =>$inventaires,
+        return $this->render('inventaire_armure/index.html.twig', [
+            'inventaire_armures' =>$inventaires,
 //            'inventaire_armes' => $inventaireArmeRepository->findAll(),
         ]);
     }

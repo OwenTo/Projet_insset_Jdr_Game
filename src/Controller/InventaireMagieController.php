@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\InventaireMagie;
+use App\Entity\Personnage;
 use App\Form\InventaireMagieType;
+use App\Form\PersonnageInventaireMagieType;
 use App\Repository\InventaireMagieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,5 +97,59 @@ class InventaireMagieController extends AbstractController
 //    }
 
 
+    /**
+     * @Route("/add/inventaire/magie/personnage/{idPersonnage}",name="personnage_inventaire_magie", methods={"GET","POST"})
+     * @param Request $request
+     * @param Personnage $idPersonnage
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function addArmeAtPersonnnage(Request $request ,Personnage $idPersonnage){
+        $personnage=$this->searchPersonnageAction($idPersonnage);
 
+        $form = $this->createForm(PersonnageInventaireMagieType::class, $personnage);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($personnage);
+
+            $entityManager->flush();
+            return $this->redirectToRoute('inventaire_magie_index');
+
+
+        }
+        return $this->render('inventaire_arme/new.html.twig', [
+//            'inventaire_arme' => $inventaireArme,
+            'form' => $form->createView(),
+        ]);
+
+    }
+
+    private function searchPersonnageAction(Personnage $personnage)
+    {
+        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoPersonnage = $repositoryPersonnage->find($personnage);
+
+        return $infoPersonnage;
+    }
+
+
+    /**
+     * @Route("/liste/inventaire/magie/personnage/{idPersonnage}", name="inventaire_magie_personnage_index", methods={"GET"})
+     * @param Personnage $idPersonnage
+     * @return Response
+     */
+    public function indexPersonnageArme(Personnage $idPersonnage): Response
+    {
+        $personnage=$this->searchPersonnageAction($idPersonnage);
+        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+
+        $inventaires =$repositoryPersonnage->findInventaireMagie($personnage->getId());
+        return $this->render('inventaire_magie/index.html.twig', [
+            'inventaire_armures' =>$inventaires,
+//            'inventaire_armes' => $inventaireArmeRepository->findAll(),
+        ]);
+    }
 }

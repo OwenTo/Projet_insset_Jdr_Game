@@ -94,7 +94,7 @@ class PersonnageRepository extends ServiceEntityRepository
 //WHERE personnage.id=X
 
 
-//    public function findInventaireArmure($value){
+    public function findInventaireArmure($value){
 //        return $this->createQueryBuilder('ar')
 //            ->select('ar')
 //            ->from('p.inventaire_arme')
@@ -104,7 +104,7 @@ class PersonnageRepository extends ServiceEntityRepository
 //            ->getQuery()
 //            ->getResult()
 //            ;
-//    }
+    }
 
 
 //SELECT* FROM inventaire_magie
@@ -112,7 +112,7 @@ class PersonnageRepository extends ServiceEntityRepository
 //JOIN personnage on personnage_inventaire_item.personnage_id=personnage.id
 //WHERE personnage.id=X
 
-//    public function findInventaireArme($value){
+    public function findInventaireMagie($value){
 //        return $this->createQueryBuilder('m')
 //            ->select('m')
 //            ->from('m.inventaire_arme')
@@ -122,7 +122,7 @@ class PersonnageRepository extends ServiceEntityRepository
 //            ->getQuery()
 //            ->getResult()
 //            ;
-//    }
+    }
 
 
 }
