@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Fichier;
+use App\Entity\InventaireMagie;
 use App\Entity\Magie;
+use App\Entity\Materiel;
 use App\Entity\TypeMagie;
 use App\Form\MagieType;
 use App\Repository\MagieRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +38,6 @@ class MagieController extends AbstractController
 //        $defautTypeMagie = $em->find(1);
 
 
-
         $magie = new Magie();
         $form = $this->createForm(MagieType::class, $magie);
 
@@ -46,20 +49,33 @@ class MagieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+//
+//            $fichier = new Fichier();
+//            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+//
+//            $file = $form->get('imageAvInsertion')->getData();
+////                $file=$form['fichier']->getData();
+//            $fileName = md5(uniqid());
+//            // Move the file to the directory where brochures are stored
+//            $fileNameExtension = $fileName . '.' . $file->guessExtension();
+//
+//            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
+//            $path_parts = pathinfo($fileNameExtension);
+
 
             $fichier = new Fichier();
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+
+            $uploaFile = new FileUploader($this->getParameter('upload_directory'));
+
 
             $file = $form->get('imageAvInsertion')->getData();
-//                $file=$form['fichier']->getData();
-            $fileName = md5(uniqid());
-            // Move the file to the directory where brochures are stored
-            $fileNameExtension = $fileName . '.' . $file->guessExtension();
 
-            $file->move($this->getParameter('upload_directory'), $fileNameExtension);
-            $path_parts = pathinfo($fileNameExtension);
+            $fileName = $uploaFile->upload($file);
 
-            $fichier->setContenueFichier($fileNameExtension);
+            $path_parts = pathinfo($fileName);
+
+
+            $fichier->setContenueFichier($fileName);
             $fichier->setFichierExtension($path_parts['extension']);
 
 
@@ -71,6 +87,8 @@ class MagieController extends AbstractController
 //
 
             $entityManager->persist($magie);
+
+            $this->createMagieItems($magie,$file);
             $entityManager->flush();
 
             return $this->redirectToRoute('magie_index');
@@ -158,5 +176,49 @@ class MagieController extends AbstractController
         }
 
         return $this->redirectToRoute('magie_index');
+    }
+
+
+    private function createMagieItems(Magie $magie, UploadedFile $file)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $itemInventaireMagie = new InventaireMagie();
+        $itemInventaireMagie->setNomItemInventaire($magie->getNomItem())
+            ->setDescriptionItemInventaire($magie->getDescriptionItem())
+            ->setPoidsItemInventaire($magie->getPoids())
+            ->setBeneficeMaluceInventaire($magie->getBeneficeMaluce()
+            )
+            ->setValeurInventaire($magie->getValeur())
+            ->setTypesDes($magie->getTypeDes())
+            ->setMonnaie($magie->getMonnaie())
+            ->setDegatMagieInventaire($magie->getDegatMagie())
+            ->setCoutManaMagieInventaire($magie->getCoutDeMana())
+            ->setNiveauMagieInventaire($magie->getNiveauMagie());
+
+        foreach ($magie->getTypeMagie() as $typeMagie) {
+            $itemInventaireMagie->addTypeMagieInventaire($typeMagie);
+        }
+
+
+        //        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
+//        $fileName = $uploadFileInventaire->upload($file);
+//        var_dump($fileName);
+
+        $fichierInventaire = new Fichier();
+        $fichierInventaire->setCreateFileAt($magie->getFichier()->getCreateFileAt())
+            ->setContenueFichier($magie->getFichier()->getContenueFichier())
+//            ->setContenueFichier($fileName)
+            ->setFichierExtension($magie->getFichier()->getFichierExtension());
+
+
+        $itemInventaireMagie->setFichier($fichierInventaire);
+        $entityManager->persist($fichierInventaire);
+        $entityManager->persist($itemInventaireMagie);
+        $entityManager->flush();
+
+
+
+
     }
 }
