@@ -22,17 +22,17 @@ class Armure extends Item
      */
     private $equipement;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="collArmure")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $categorie;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Materiel", inversedBy="collArmure")
      * @ORM\JoinColumn(nullable=false)
      */
     private $materiel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCategorie", inversedBy="armures")
+     */
+    private $categorie;
 
 
     public function getDefense(): ?int
@@ -59,17 +59,7 @@ class Armure extends Item
         return $this;
     }
 
-    public function getCategorie(): ?TypeCategorie
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(?TypeCategorie $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
+   
 
     public function getMateriel(): ?Materiel
     {
@@ -79,6 +69,18 @@ class Armure extends Item
     public function setMateriel(?Materiel $materiel): self
     {
         $this->materiel = $materiel;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?TypeCategorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?TypeCategorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

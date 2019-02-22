@@ -12,13 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/inventaire/armure")
- */
+
 class InventaireArmureController extends AbstractController
 {
     /**
-     * @Route("/", name="inventaire_armure_index", methods={"GET"})
+     * @Route("/liste/inventaire/armure", name="inventaire_armure_index", methods={"GET"})
      */
     public function index(InventaireArmureRepository $inventaireArmureRepository): Response
     {
@@ -27,9 +25,9 @@ class InventaireArmureController extends AbstractController
         ]);
     }
 
-    /**
-//     * @Route("/new", name="inventaire_armure_new", methods={"GET","POST"})
-//     */
+//    /**
+////     * @Route("/new", name="inventaire_armure_new", methods={"GET","POST"})
+////     */
 //    public function new(Request $request): Response
 //    {
 //        $inventaireArmure = new InventaireArmure();
@@ -51,7 +49,7 @@ class InventaireArmureController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}", name="inventaire_armure_show", methods={"GET"})
+     * @Route("/detail/{id}", name="inventaire_armure_show", methods={"GET"})
      */
     public function show(InventaireArmure $inventaireArmure): Response
     {
@@ -102,9 +100,6 @@ class InventaireArmureController extends AbstractController
 
     /**
      * @Route("/add/inventaire/armure/personnage/{idPersonnage}",name="personnage_inventaire_armure", methods={"GET","POST"})
-     * @param Request $request
-     * @param Personnage $idPersonnage
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addArmeAtPersonnnage(Request $request ,Personnage $idPersonnage){
         $personnage=$this->searchPersonnageAction($idPersonnage);
@@ -117,7 +112,7 @@ class InventaireArmureController extends AbstractController
             $entityManager->persist($personnage);
 
             $entityManager->flush();
-            return $this->redirectToRoute('inventaire_arme_index');
+            return $this->redirectToRoute('inventaire_armure_index');
 
 
         }
@@ -141,8 +136,7 @@ class InventaireArmureController extends AbstractController
 
     /**
      * @Route("/liste/inventaire/armure/personnage/{idPersonnage}", name="inventaire_armure_personnage_index", methods={"GET"})
-     * @param Personnage $idPersonnage
-     * @return Response
+
      */
     public function indexPersonnageArme(Personnage $idPersonnage): Response
     {

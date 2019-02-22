@@ -12,13 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/inventaire/magie")
- */
+
 class InventaireMagieController extends AbstractController
 {
     /**
-     * @Route("/", name="inventaire_magie_index", methods={"GET"})
+     * @Route("/liste/inventaire/magie", name="inventaire_magie_index", methods={"GET"})
      */
     public function index(InventaireMagieRepository $inventaireMagieRepository): Response
     {
@@ -51,7 +49,7 @@ class InventaireMagieController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}", name="inventaire_magie_show", methods={"GET"})
+     * @Route("/detail/{id}", name="inventaire_magie_show", methods={"GET"})
      */
     public function show(InventaireMagie $inventaireMagie): Response
     {
@@ -99,9 +97,6 @@ class InventaireMagieController extends AbstractController
 
     /**
      * @Route("/add/inventaire/magie/personnage/{idPersonnage}",name="personnage_inventaire_magie", methods={"GET","POST"})
-     * @param Request $request
-     * @param Personnage $idPersonnage
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function addArmeAtPersonnnage(Request $request ,Personnage $idPersonnage){
         $personnage=$this->searchPersonnageAction($idPersonnage);
@@ -138,8 +133,6 @@ class InventaireMagieController extends AbstractController
 
     /**
      * @Route("/liste/inventaire/magie/personnage/{idPersonnage}", name="inventaire_magie_personnage_index", methods={"GET"})
-     * @param Personnage $idPersonnage
-     * @return Response
      */
     public function indexPersonnageArme(Personnage $idPersonnage): Response
     {
@@ -148,7 +141,7 @@ class InventaireMagieController extends AbstractController
 
         $inventaires =$repositoryPersonnage->findInventaireMagie($personnage->getId());
         return $this->render('inventaire_magie/index.html.twig', [
-            'inventaire_armures' =>$inventaires,
+            'inventaire_magies' =>$inventaires,
 //            'inventaire_armes' => $inventaireArmeRepository->findAll(),
         ]);
     }

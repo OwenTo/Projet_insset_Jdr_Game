@@ -49,7 +49,7 @@ class InventaireArmeController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}", name="inventaire_arme_show", methods={"GET"})
+     * @Route("/detail/{id}", name="inventaire_arme_show", methods={"GET"})
      */
     public function show(InventaireArme $inventaireArme): Response
     {
@@ -97,33 +97,31 @@ class InventaireArmeController extends AbstractController
 
     /**
      * @Route("/add/item/arme/personnage/{idPersonnage}",name="personnage_inventaire_arme", methods={"GET","POST"})
-     * @param Request $request
-     * @param Personnage $idPersonnage
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-public function addArmeAtPersonnnage(Request $request ,Personnage $idPersonnage){
-    $personnage=$this->searchPersonnageAction($idPersonnage);
+    public function addArmeAtPersonnnage(Request $request, Personnage $idPersonnage)
+    {
+        $personnage = $this->searchPersonnageAction($idPersonnage);
 
-    $form = $this->createForm(PersonnageInventaireArmeType::class, $personnage);
-    $form->handleRequest($request);
+        $form = $this->createForm(PersonnageInventaireArmeType::class, $personnage);
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($personnage);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($personnage);
 
-        $entityManager->flush();
-        return $this->redirectToRoute('inventaire_arme_index');
+            $entityManager->flush();
+            return $this->redirectToRoute('inventaire_arme_index');
 
 
-    }
-    return $this->render('inventaire_arme/new.html.twig', [
+        }
+        return $this->render('inventaire_arme/new.html.twig', [
 //            'inventaire_arme' => $inventaireArme,
             'form' => $form->createView(),
         ]);
 
-}
-
-
+    }
+//
+//
 
 
     private function searchPersonnageAction(Personnage $personnage)
@@ -137,18 +135,17 @@ public function addArmeAtPersonnnage(Request $request ,Personnage $idPersonnage)
     }
 
 
-
     /**
      * @Route("/liste/inventaire/arme/personnage/{idPersonnage}", name="inventaire_arme_personnage_index", methods={"GET"})
      */
     public function indexPersonnageArme(Personnage $idPersonnage): Response
     {
-        $personnage=$this->searchPersonnageAction($idPersonnage);
+        $personnage = $this->searchPersonnageAction($idPersonnage);
         $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
 
-        $inventaires =$repositoryPersonnage->findInventaireArme($personnage->getId());
+        $inventaires = $repositoryPersonnage->findInventaireArme($personnage->getId());
         return $this->render('inventaire_arme/index.html.twig', [
-            'inventaire_armes' =>$inventaires,
+            'inventaire_armes' => $inventaires,
 //            'inventaire_armes' => $inventaireArmeRepository->findAll(),
         ]);
     }

@@ -57,15 +57,15 @@ class PersonnageRepository extends ServiceEntityRepository
 
     public function findInventaireArme($value): ArrayCollection
     {
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            ' SELECT  
-            FROM App\Entity\InventaireArme
-            WHERE App\Entity\Personnage= :personnage')
-        ->setParameter('personnage',$value);
-
-        return $query->execute();
+//        $entityManager = $this->getEntityManager();
+//
+//        $query = $entityManager->createQuery(
+//            ' SELECT
+//            FROM App\Entity\InventaireArme
+//            WHERE App\Entity\Personnage= :personnage')
+//        ->setParameter('personnage',$value);
+//
+//        return $query->execute();
 
 
 //        return $this->createQueryBuilder('a')
