@@ -94,7 +94,7 @@ class ArmeController extends AbstractController
             $filInventaireName = $arme->getFichier()->getContenueFichier();
             $fichierInventaire = new Fichier();
             $fichierInventaire->setCreateFileAt($arme->getFichier()->getCreateFileAt());
-            $fichierInventaire->setContenueFichier($path_parts['filename']);
+            $fichierInventaire->setContenueFichier($path_parts['basename']);
             $fichierInventaire->setFichierExtension($arme->getFichier()->getFichierExtension());
 
 

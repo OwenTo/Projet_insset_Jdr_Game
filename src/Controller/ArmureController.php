@@ -75,7 +75,54 @@ class ArmureController extends AbstractController
 
 
                 $entityManager->persist($armure);
-                $this->createArmureItems($armure, $file);
+
+
+
+
+
+                ///Duplicat
+
+
+
+                $itemInventaireArumre = new InventaireArmure();
+                $itemInventaireArumre
+                    ->setNomItemInventaire($armure->getNomItem())
+                    ->setDescriptionItemInventaire($armure->getDescriptionItem())
+                    ->setPoidsItemInventaire($armure->getPoids())
+                    ->setBeneficeMaluceInventaire($armure->getBeneficeMaluce())
+                    ->setValeurInventaire($armure->getValeur())
+                    ->setTypesDes($armure->getTypeDes())
+                    ->setMonnaie($armure->getMonnaie())
+                    ->setMaterielArmureInventaire($armure->getMateriel())
+                    ->setEquipementInventaire($armure->getEquipement())
+                    ->setCategorieArmureInventaire($armure->getCategorie())
+                    ->setDefenseArmureInventaire($armure->getDefense());
+
+
+        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
+
+
+                if(!is_dir($uploadFileInventaire->getTargetDirectory())){mkdir($uploadFileInventaire->getTargetDirectory());};
+                copy($uploaFile->getTargetDirectory()."/".$path_parts['basename'],$uploadFileInventaire->getTargetDirectory()."/".$path_parts['basename']);
+
+
+
+                $fichierInventaire = new Fichier();
+                $fichierInventaire->setCreateFileAt($armure->getFichier()->getCreateFileAt())
+                    ->setContenueFichier($path_parts['basename'])
+//            ->setContenueFichier($fileName)
+                    ->setFichierExtension($armure->getFichier()->getFichierExtension());
+
+
+                $itemInventaireArumre->setFichier($fichierInventaire);
+                $entityManager->persist($fichierInventaire);
+                $entityManager->persist($itemInventaireArumre);
+
+
+
+                /// Fin Duplicat
+
+
 
                 $entityManager->flush();
 
@@ -175,41 +222,6 @@ class ArmureController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $itemInventaireArumre = new InventaireArmure();
-        $itemInventaireArumre
-            ->setNomItemInventaire($armure->getNomItem())
-            ->setDescriptionItemInventaire($armure->getDescriptionItem())
-            ->setPoidsItemInventaire($armure->getPoids())
-            ->setBeneficeMaluceInventaire($armure->getBeneficeMaluce())
-            ->setValeurInventaire($armure->getValeur())
-            ->setTypesDes($armure->getTypeDes())
-            ->setMonnaie($armure->getMonnaie())
-            ->setMaterielArmureInventaire($armure->getMateriel())
-            ->setEquipementInventaire($armure->getEquipement())
-            ->setCategorieArmureInventaire($armure->getCategorie())
-            ->setDefenseArmureInventaire($armure->getDefense());
-
-
-//        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
-
-
-//        $fileName = $uploadFileInventaire->upload($file);
-//        var_dump($fileName);
-//
-//
-//        var_dump($uploadFileInventaire);
-
-
-        $fichierInventaire = new Fichier();
-        $fichierInventaire->setCreateFileAt($armure->getFichier()->getCreateFileAt())
-            ->setContenueFichier($armure->getFichier()->getContenueFichier())
-//            ->setContenueFichier($fileName)
-            ->setFichierExtension($armure->getFichier()->getFichierExtension());
-
-
-        $itemInventaireArumre->setFichier($fichierInventaire);
-        $entityManager->persist($fichierInventaire);
-        $entityManager->persist($itemInventaireArumre);
         $entityManager->flush();
 
     }
