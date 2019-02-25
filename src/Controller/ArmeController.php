@@ -46,6 +46,8 @@ class ArmeController extends AbstractController
 
             $file = $form->get('imageAvInsertion')->getData();
 
+
+
             $fileName = $uploaFile->upload($file);
 
             $path_parts = pathinfo($fileName);
@@ -63,7 +65,50 @@ class ArmeController extends AbstractController
 
             $entityManager->persist($arme);
 
-            $this->createArmeItems($arme, $file);
+
+
+
+//
+//            ///Duplicat vers inventaire associé
+//
+            $itemInventaireArme = new InventaireArme();
+            $itemInventaireArme->setNomItemInventaire($arme->getNomItem())
+                ->setDescriptionItemInventaire($arme->getDescriptionItem())
+                ->setPoidsItemInventaire($arme->getPoids())
+                ->setBeneficeMaluceInventaire($arme->getBeneficeMaluce())
+                ->setValeurInventaire($arme->getValeur())
+                ->setTypesDes($arme->getTypeDes())
+                ->setMonnaie($arme->getMonnaie())
+                ->setMaterielInventaire($arme->getMateriel())
+                ->setTypeArmeInventaire($arme->getTypeArme())
+                ->setTypeCategorieInventaire($arme->getTypeCategorie())
+                ->setDegatArmeInventaire($arme->getDegat());
+
+
+            $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
+
+            if(!is_dir($uploadFileInventaire->getTargetDirectory())){mkdir($uploadFileInventaire->getTargetDirectory());};
+            copy($uploaFile->getTargetDirectory()."/".$path_parts['basename'],$uploadFileInventaire->getTargetDirectory()."/".$path_parts['basename']);
+
+
+            $filInventaireName = $arme->getFichier()->getContenueFichier();
+            $fichierInventaire = new Fichier();
+            $fichierInventaire->setCreateFileAt($arme->getFichier()->getCreateFileAt());
+            $fichierInventaire->setContenueFichier($path_parts['filename']);
+            $fichierInventaire->setFichierExtension($arme->getFichier()->getFichierExtension());
+
+
+            $itemInventaireArme->setFichier($fichierInventaire);
+
+            $entityManager->persist($fichierInventaire);
+            $entityManager->persist($itemInventaireArme);
+            ///  Fin Dupplicat
+
+
+
+
+
+//            $this->createArmeItems($arme, $file);
 
             $entityManager->flush();
 
@@ -161,40 +206,6 @@ class ArmeController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
 
-        $itemInventaireArme = new InventaireArme();
-        $itemInventaireArme->setNomItemInventaire($arme->getNomItem())
-            ->setDescriptionItemInventaire($arme->getDescriptionItem())
-            ->setPoidsItemInventaire($arme->getPoids())
-            ->setBeneficeMaluceInventaire($arme->getBeneficeMaluce())
-            ->setValeurInventaire($arme->getValeur())
-            ->setTypesDes($arme->getTypeDes())
-            ->setMonnaie($arme->getMonnaie())
-            ->setMaterielInventaire($arme->getMateriel())
-            ->setTypeArmeInventaire($arme->getTypeArme())
-            ->setTypeCategorieInventaire($arme->getTypeCategorie())
-            ->setDegatArmeInventaire($arme->getDegat());
-
-
-//        $uploadFileInventaire = new FileUploader($this->getParameter('upload_directory_inventaire'));
-//
-//
-//        $fileName = $uploadFileInventaire->upload($file);
-//        var_dump($fileName);
-
-//        $filInventaireName = $fileName;
-//        var_dump($uploadFileInventaire);
-        $filInventaireName = $arme->getFichier()->getContenueFichier();
-        $fichierInventaire = new Fichier();
-        $fichierInventaire->setCreateFileAt($arme->getFichier()->getCreateFileAt());
-        $fichierInventaire->setContenueFichier($filInventaireName);
-        $fichierInventaire->setFichierExtension($arme->getFichier()->getFichierExtension());
-
-
-        $itemInventaireArme->setFichier($fichierInventaire);
-
-
-        $entityManager->persist($fichierInventaire);
-        $entityManager->persist($itemInventaireArme);
         $entityManager->flush();
     }
 }

@@ -47,4 +47,27 @@ class InventaireMagieRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
+//SELECT* FROM inventaire_item
+//JOIN personnage_inventaire_item on personnage_inventaire_item.inventaire_item_id=inventaire_item.id
+//JOIN personnage on personnage_inventaire_item.personnage_id=personnage.id
+//WHERE personnage.id=x
+//AND inventaire_item.enfant LIKE "inventaireMagie"
+
+    public function findInventaireMagie($value)
+    {
+//        return $this->createQueryBuilder('m')
+//            ->select('m')
+//            ->from('m.inventaire_arme')
+//            ->innerJoin("personnage_inventaire_item.inventaire_item_id=inventaire_arme.id")
+//            ->innerJoin("personnage on personnage_inventaire_item.personnage_id=personnage.id")
+//            ->where("personnage.id".$value)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+    }
+
+
 }

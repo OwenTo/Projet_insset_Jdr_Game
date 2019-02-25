@@ -6,6 +6,7 @@ use App\Entity\Fichier;
 use App\Entity\InventaireMagie;
 use App\Entity\Magie;
 use App\Entity\Materiel;
+use App\Entity\Personnage;
 use App\Entity\TypeMagie;
 use App\Form\MagieType;
 use App\Repository\MagieRepository;
@@ -221,4 +222,39 @@ class MagieController extends AbstractController
 
 
     }
+
+
+
+
+    private function searchPersonnageAction(Personnage $personnage)
+    {
+        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoPersonnage = $repositoryPersonnage->find($personnage);
+
+        return $infoPersonnage;
+    }
+
+
+    /**
+     * @Route("/liste/inventaire/magie/personnage/{idPersonnage}", name="inventaire_magie_personnage_index", methods={"GET"})
+
+     */
+    public function indexPersonnageArme(Personnage $idPersonnage): Response
+    {
+        $personnage=$this->searchPersonnageAction($idPersonnage);
+        $repositoryInventaireMagie = $this->getDoctrine()->getRepository('App:InventaireMagie');
+
+        $inventaires =$repositoryInventaireMagie->findInventaireMagie($personnage->getId());
+        return $this->render('inventaire_magie/index.html.twig', [
+            'inventaire_magies' =>$inventaires,
+//            'inventaire_armes' => $inventaireArmeRepository->findAll(),
+        ]);
+    }
+
+
+
+
+
 }

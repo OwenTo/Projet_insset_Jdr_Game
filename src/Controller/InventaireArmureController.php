@@ -141,9 +141,9 @@ class InventaireArmureController extends AbstractController
     public function indexPersonnageArme(Personnage $idPersonnage): Response
     {
         $personnage=$this->searchPersonnageAction($idPersonnage);
-        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+        $repositoryInventaireArmure = $this->getDoctrine()->getRepository('App:IventaireArmure');
 
-        $inventaires =$repositoryPersonnage->findInventaireArmure($personnage->getId());
+        $inventaires =$repositoryInventaireArmure->findInventaireArmure($personnage->getId());
         return $this->render('inventaire_armure/index.html.twig', [
             'inventaire_armures' =>$inventaires,
 //            'inventaire_armes' => $inventaireArmeRepository->findAll(),
