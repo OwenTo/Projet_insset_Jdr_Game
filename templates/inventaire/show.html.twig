@@ -3,7 +3,7 @@
 {% block title %}Inventaire{% endblock %}
 
 {% block body %}
-    <h1>Inventaire</h1>
+    <h1>Inventaire </h1>
 
     <table class="table">
         <tbody>
@@ -15,12 +15,17 @@
                 <th>Categorie</th>
                 <td>{{ inventaire.categorie }}</td>
             </tr>
+
+            <tr>
+                <td>Personnage</td>
+                <td> {{ inventaire.personnage.nomPersonnage }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('inventaire_index') }}">back to list</a>
+    <a href="{{ path('inventaire_index_arme',{'item':'Armed','idPersonnage':inventaire.personnage.id} )}}">Retour</a>
 
-    <a href="{{ path('inventaire_edit', {'id': inventaire.id}) }}">edit</a>
+    {#<a href="{{ path('inventaire_edit', {'id': inventaire.id}) }}">edit</a>#}
 
     {{ include('inventaire/_delete_form.html.twig') }}
 {% endblock %}

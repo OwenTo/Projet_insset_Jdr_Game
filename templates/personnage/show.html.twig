@@ -54,17 +54,17 @@
 
         </tr>
         <tr>    <th>Arme</th>
-            <td> <p> <a href="{{ path('inventaire_new_personnage_item_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
+            <td> <p> <a href="{{ path('inventaire_new_personnage_item_arme',{'categorie':'Armed','idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
             {#<td> <p> <a href="{{ path('personnage_inventaire_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>#}
-                <p> <a href="{{ path('inventaire_arme_personnage_index',{'idPersonnage':personnage.id} )}}">liste  des armes possédées </a> </p>
+                <p> <a href="{{ path('inventaire_index_arme',{'item':'Armed','idPersonnage':personnage.id} )}}">liste  des armes possédées </a> </p>
             </td>
 
         </tr>
         <tr>
 
             <th> Armure </th>
-            <td><p><a href="{{ path('personnage_inventaire_armure',{'idPersonnage':personnage.id} )}}">ajouter une armure a l'inventaire </a> </p>
-                <p>  <a href="{{ path('inventaire_armure_personnage_index',{'idPersonnage':personnage.id} )}}">liste des armures possédées </a>  </p>  </td>
+            <td><p><a href="{{ path('inventaire_personnage_item_armure',{'categorie':'Armor','idPersonnage':personnage.id} )}}">ajouter une armure a l'inventaire </a> </p>
+                <p>  <a href="{{ path('inventaire_index_armure',{'item':'Armor','idPersonnage':personnage.id} )}}">liste des armures possédées </a>  </p>  </td>
 
 
 
@@ -74,8 +74,8 @@
         <tr>
 
             <th> Magie </th>
-            <td><p><a href="{{ path('personnage_inventaire_magie',{'idPersonnage':personnage.id} )}}">Ajouter une magie dans l'inventaire </a> </p>
-                <p>  <a href="{{ path('inventaire_magie_personnage_index',{'idPersonnage':personnage.id} )}}">liste des magies possédées </a>  </p>  </td>
+            <td><p><a href="{{ path('inventaire_personnage_magie',{'categorie':'Magic','idPersonnage':personnage.id} )}}">Ajouter une magie dans l'inventaire </a> </p>
+                <p>  <a href="{{ path('inventaire_index_magie',{'item':'Magic','idPersonnage':personnage.id} )}}">liste des magies possédées </a>  </p>  </td>
 
 
 

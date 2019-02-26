@@ -7,5 +7,12 @@
 
     {{ include('inventaire/_form.html.twig') }}
 
-    <a href="{{ path('inventaire_index') }}">back to list</a>
+
+{% if categorie=="Arm" %}
+    <a href="{{ path('inventaire_index_arme',{'item':'Armed','idPersonnage':personnage.id} )}}">Retour</a>
+{% elseif categorie=="Armor" %}
+    <a href="{{ path('inventaire_index_armure',{'item':'Armor','idPersonnage':personnage.id} )}}">Retour</a>
+{% elseif categorie=="Magic" %}
+    <a href="{{ path('inventaire_index_magie',{'item':'Magic','idPersonnage':personnage.id} )}}">Retour</a>
+{% endif %}
 {% endblock %}
