@@ -77,13 +77,17 @@ class InventaireItem
     private $fichier;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Personnage", mappedBy="inventaire")
+     * @ORM\OneToMany(targetEntity="App\Entity\Inventaire", mappedBy="items")
      */
-    private $personnages;
+    private $inventaires;
+
+
+
+
 
     public function __construct()
     {
-        $this->personnages = new ArrayCollection();
+        $this->inventaires = new ArrayCollection();
     }
 
 
@@ -209,32 +213,40 @@ class InventaireItem
     }
 
     /**
-     * @return Collection|Personnage[]
+     * @return Collection|Inventaire[]
      */
-    public function getPersonnages(): Collection
+    public function getInventaires(): Collection
     {
-        return $this->personnages;
+        return $this->inventaires;
     }
 
-    public function addPersonnage(Personnage $personnage): self
+    public function addInventaire(Inventaire $inventaire): self
     {
-        if (!$this->personnages->contains($personnage)) {
-            $this->personnages[] = $personnage;
-            $personnage->addInventaire($this);
+        if (!$this->inventaires->contains($inventaire)) {
+            $this->inventaires[] = $inventaire;
+            $inventaire->setItems($this);
         }
 
         return $this;
     }
 
-    public function removePersonnage(Personnage $personnage): self
+    public function removeInventaire(Inventaire $inventaire): self
     {
-        if ($this->personnages->contains($personnage)) {
-            $this->personnages->removeElement($personnage);
-            $personnage->removeInventaire($this);
+        if ($this->inventaires->contains($inventaire)) {
+            $this->inventaires->removeElement($inventaire);
+            // set the owning side to null (unless already changed)
+            if ($inventaire->getItems() === $this) {
+                $inventaire->setItems(null);
+            }
         }
 
         return $this;
     }
+
+
+
+
+
 
 
 }

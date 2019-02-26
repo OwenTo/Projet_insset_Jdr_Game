@@ -106,16 +106,25 @@ class Personnage
      */
     private $collCompagnons;
 
+
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\InventaireItem", inversedBy="personnages")
+     * @var integer  nbrArmePosseder
      */
-    private $inventaire;
+
+    private $nbrArmePosseder;
+    /**
+     * @var ArrayCollection[] itemsBefore
+     */
+
+    private $itemsBefore =[];
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inventaire", mappedBy="personnage")
+     */
+    private $inventaires;
 
 
-//    /**
-//     * @var string
-//     */
-//    private $guilde;
+
 
     /**
      * Personnage constructor.
@@ -130,7 +139,8 @@ class Personnage
         $this->collRangGuilds = new ArrayCollection();
         $this->collCompagnons = new ArrayCollection();
         $this->valeurCaract = new ArrayCollection();
-        $this->inventaire = new ArrayCollection();
+        $this->itemsBefore=new ArrayCollection();
+        $this->inventaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,7 +244,7 @@ class Personnage
         return $this;
     }
 
-  
+
 
     /**
      * @return Collection|Langue[]
@@ -420,49 +430,81 @@ class Personnage
         return $this;
     }
 
+
+
     /**
-     * @return Collection|InventaireItem[]
+     * @return Collection|Inventaire[]
      */
-    public function getInventaire(): Collection
+    public function getInventaires(): Collection
     {
-        return $this->inventaire;
+        return $this->inventaires;
     }
 
-    public function addInventaire(InventaireItem $inventaire): self
+    public function addInventaire(Inventaire $inventaire): self
     {
-        if (!$this->inventaire->contains($inventaire)) {
-            $this->inventaire[] = $inventaire;
+        if (!$this->inventaires->contains($inventaire)) {
+            $this->inventaires[] = $inventaire;
+            $inventaire->setPersonnage($this);
         }
 
         return $this;
     }
 
-    public function removeInventaire(InventaireItem $inventaire): self
+    public function removeInventaire(Inventaire $inventaire): self
     {
-        if ($this->inventaire->contains($inventaire)) {
-            $this->inventaire->removeElement($inventaire);
+        if ($this->inventaires->contains($inventaire)) {
+            $this->inventaires->removeElement($inventaire);
+            // set the owning side to null (unless already changed)
+            if ($inventaire->getPersonnage() === $this) {
+                $inventaire->setPersonnage(null);
+            }
         }
 
         return $this;
     }
 
-//
-//    /**
-//     * @return string
-//     */
-//    public function getGuilde()
-//    {
-//        return $this->guilde;
-//    }
-//
-//    /**
-//     * @param string $guilde
-//     * @return Personnage
-//     */
-//    public function setGuilde(string $guilde): Personnage
-//    {
-//        $this->guilde = $guilde;
-//        return $this;
-//    }
+    /**
+     * @return Collection[]|null
+     */
+    public function getItemsBefore(): ?array
+    {
+        return $this->itemsBefore;
+    }
+
+    /**
+     * @param Collection[]
+     * @return Personnage
+     */
+    public function setItemsBefore(array $itemsBefore): Personnage
+    {
+        $this->itemsBefore = $itemsBefore;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbrArmePosseder(): ?int
+    {
+        return $this->nbrArmePosseder;
+    }
+
+    /**
+     * @param int $nbrArmePosseder
+     * @return Personnage
+     */
+    public function setNbrArmePosseder(int $nbrArmePosseder): Personnage
+    {
+        $this->nbrArmePosseder = $nbrArmePosseder;
+        return $this;
+    }
+
+    
+
+
+
+
+
+
 
 }

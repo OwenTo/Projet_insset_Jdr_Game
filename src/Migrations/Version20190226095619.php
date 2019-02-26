@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190222150516 extends AbstractMigration
+final class Version20190226095619 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190222150516 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE personnage_inventaire_item (personnage_id INT NOT NULL, inventaire_item_id INT NOT NULL, INDEX IDX_71C0E13B5E315342 (personnage_id), INDEX IDX_71C0E13BF5742898 (inventaire_item_id), PRIMARY KEY(personnage_id, inventaire_item_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE personnage_inventaire_item ADD CONSTRAINT FK_71C0E13B5E315342 FOREIGN KEY (personnage_id) REFERENCES personnage (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE personnage_inventaire_item ADD CONSTRAINT FK_71C0E13BF5742898 FOREIGN KEY (inventaire_item_id) REFERENCES inventaire_item (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE inventaire_item DROP personnage_id');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +30,6 @@ final class Version20190222150516 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE personnage_inventaire_item');
+        $this->addSql('ALTER TABLE inventaire_item ADD personnage_id INT NOT NULL');
     }
 }

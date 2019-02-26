@@ -54,7 +54,8 @@
 
         </tr>
         <tr>    <th>Arme</th>
-            <td> <p> <a href="{{ path('personnage_inventaire_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
+            <td> <p> <a href="{{ path('inventaire_new_personnage_item_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
+            {#<td> <p> <a href="{{ path('personnage_inventaire_arme',{'idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>#}
                 <p> <a href="{{ path('inventaire_arme_personnage_index',{'idPersonnage':personnage.id} )}}">liste  des armes possédées </a> </p>
             </td>
 

@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Inventaire;
 use App\Entity\InventaireBourse;
 use App\Entity\Personnage;
 use App\Entity\RangGuilde;
 use App\Entity\User;
 use App\Entity\ValeurCaract;
+use App\Form\InventaireType;
+use App\Form\PersonnageInventaireArmeType;
 use App\Form\PersonnageType;
 use App\Repository\PersonnageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -206,11 +209,20 @@ class PersonnageController extends AbstractController
     }
 
 
-//    private function searchGuildBy($guilde)
-//    {
-//        $repositoryGuilde = $this->getDoctrine()->getRepository('App:Guilde');
-//        $infoGuilde = $repositoryGuilde->findOneBy(array('nomGuilde' => $guilde));
-//
-//        return $infoGuilde;
-//    }
+
+
+
+
+    private function searchPersonnageAction(Personnage $personnage)
+    {
+        $repositoryPersonnage = $this->getDoctrine()->getRepository('App:Personnage');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoPersonnage = $repositoryPersonnage->find($personnage);
+
+        return $infoPersonnage;
+    }
+
+
+
 }
