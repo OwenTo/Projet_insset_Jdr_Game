@@ -47,6 +47,19 @@ class Contact
      */
     private $sujet;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createAt;
+
+
+
+    public function __construct()
+    {
+        $this->createAt=new \DateTime('Now ', new \DateTimeZone('Europe/Paris'));
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +123,18 @@ class Contact
     public function setSujet(?string $sujet): self
     {
         $this->sujet = $sujet;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
 
         return $this;
     }

@@ -8,23 +8,24 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameContact</th>
-                <th>EmailContact</th>
-                <th>Message</th>
+                {#<th>Id</th>#}
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>Date</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for contact in contacts %}
             <tr>
-                <td>{{ contact.id }}</td>
+                {#<td>{{ contact.id }}</td>#}
                 <td>{{ contact.nameContact }}</td>
                 <td>{{ contact.emailContact }}</td>
-                <td>{{ contact.message }}</td>
+                <td>{{ contact.createAt|date('d-m-y') }}</td>
+                {#<td>{{ contact.message|truncate(10) }}</td>#}
                 <td>
                     <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+                    {#<a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>#}
                 </td>
             </tr>
         {% else %}
@@ -35,5 +36,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('contact_new') }}">Create new</a>
+    {#<a href="{{ path('contact_new') }}">Create new</a>#}
 {% endblock %}

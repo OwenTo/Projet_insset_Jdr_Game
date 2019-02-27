@@ -1,7 +1,16 @@
-<h1 class="text-center">Demande  de {{ contact.nameContact }}</h1>
-<p>Pour</p>
+<h1 class="text-center">
+ <span>
+    {% if  contact.sujetMail.sujet is not null %}
+        {{ contact.sujetMail.sujet }}
+    {% else %}
+        Demande
+    {% endif %}
+    </span>
+    de {{ contact.nameContact }}</h1>
+{% if contact.sujet is not null %}
+    <p>Au sujet de : {{ contact.sujetMail.sujet }}  </p>
+{% endif %}
 
-</div>
 
 <div class=" centerText container-fluid">
     <table cellpadding='0' cellspacing='0' width='100%' border='0'>
@@ -15,8 +24,11 @@
         </tr>
         <tr>
             <td> message</td>
-            <td> <p>{{ contact.message|nl2br }} </p> </td>
+            <td><p>{{ contact.message|nl2br }} </p></td>
         </tr>
+
+        <tr><td>   Envoyé le :</td>
+        <td>{{ contact.createAt|date('d-m-Y',"Europe/Paris") }}</td></tr>
     </table>
 
 </div>

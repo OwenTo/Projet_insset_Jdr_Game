@@ -23,10 +23,10 @@ class ContactType extends AbstractType
                array('class' =>SujetMail::class,
                'label'=>'sujet',
                    'choice_label'=>'sujet',
-                   'required'=>false,
+//                   'required'=>false,
                    'expanded'=>false,
                    'multiple'=>false))
-            ->add('sujet',TextType::class,array('label'=>'sous-sujet'))
+            ->add('sujet',TextType::class,array('label'=>'sous-sujet','required'=>false))
             ->add('message',TextareaType::class)
         ;
     }
