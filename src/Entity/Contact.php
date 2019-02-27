@@ -36,6 +36,11 @@ class Contact
      */
     private $message;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SujetMail", inversedBy="contacts")
+     */
+    private $sujetMail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +78,18 @@ class Contact
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getSujetMail(): ?SujetMail
+    {
+        return $this->sujetMail;
+    }
+
+    public function setSujetMail(?SujetMail $sujetMail): self
+    {
+        $this->sujetMail = $sujetMail;
 
         return $this;
     }
