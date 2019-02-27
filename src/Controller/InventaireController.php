@@ -38,7 +38,7 @@ class InventaireController extends AbstractController
                 }
 
             }
-$title="Arme";
+            $title = "Arme";
 
         } elseif ($item == "Armor") {
 
@@ -62,12 +62,11 @@ $title="Arme";
             }
 
 
-
         }
-         return $this->render('inventaire/index.html.twig', [
-                'title' => $title, 'personnage' => $personnage,
-                'inventaires' => $inventairesItems,
-            ]);
+        return $this->render('inventaire/index.html.twig', [
+            'title' => $title, 'personnage' => $personnage,
+            'inventaires' => $inventairesItems,
+        ]);
 
     }
 
@@ -197,7 +196,7 @@ $title="Arme";
 //    }
 
     /**
-     * @Route("/suppression/{id}", name="inventaire_delete", methods={"DELETE"})
+     * @Route("/suppresser/{id}", name="inventaire_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Inventaire $inventaire): Response
     {

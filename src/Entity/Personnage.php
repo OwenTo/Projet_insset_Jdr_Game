@@ -61,12 +61,12 @@ class Personnage
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Langue", inversedBy="personnages")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Langue",cascade={"remove"}, inversedBy="personnages")
      */
     private $collLangues;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NiveauMetier", mappedBy="personnage")
+     * @ORM\OneToMany(targetEntity="App\Entity\NiveauMetier",cascade={"remove"}, mappedBy="personnage")
      */
     private $collNiveauMetier;
 
@@ -78,7 +78,7 @@ class Personnage
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ValeurCaract", mappedBy="personnage")
+     * @ORM\OneToMany(targetEntity="App\Entity\ValeurCaract",cascade={"remove"}, mappedBy="personnage")
      */
     private $valeurCaract;
 
@@ -119,7 +119,7 @@ class Personnage
     private $itemsBefore =[];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Inventaire", mappedBy="personnage")
+     * @ORM\OneToMany(targetEntity="App\Entity\Inventaire", cascade={"remove"}, mappedBy="personnage")
      */
     private $inventaires;
 

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Compagnon;
+use App\Entity\Personnage;
 use App\Form\CompagnonType;
+use App\Form\PersonnageCompagnonType;
 use App\Repository\CompagnonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -91,6 +93,11 @@ class CompagnonController extends AbstractController
 
         return $this->redirectToRoute('compagnon_index');
     }
+
+
+
+
+
 
 
 
