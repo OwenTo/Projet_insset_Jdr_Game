@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeTalent index{% endblock %}
+
+{% block body %}
+    <h1>TypeTalent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomTypeTalent</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_talent in type_talents %}
+            <tr>
+                <td>{{ type_talent.id }}</td>
+                <td>{{ type_talent.nomTypeTalent }}</td>
+                <td>
+                    <a href="{{ path('type_talent_show', {'id': type_talent.id}) }}">show</a>
+                    <a href="{{ path('type_talent_edit', {'id': type_talent.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_talent_new') }}">Create new</a>
+{% endblock %}

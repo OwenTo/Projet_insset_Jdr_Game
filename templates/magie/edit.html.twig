@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer une Magie{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Editer une Magie</h1>
+
+<div class="mb-5 mt-5" style="margin-right: 15%;margin-left: 15%">
+
+    <div class="centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded" style="margin-top: 10px; background-color: beige;" >
+
+    {{ include('magie/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+    <a class="btn btn-primary mb-2" href="{{ path('magie_index') }}"><i class="fas fa-backward"></i></a>
+
+    {{ include('magie/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

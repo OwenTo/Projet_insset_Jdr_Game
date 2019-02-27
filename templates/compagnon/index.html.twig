@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compagnon index{% endblock %}
+
+{% block body %}
+    <h1>Compagnon index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>PrixAchatVente</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compagnon in compagnons %}
+            <tr>
+                <td>{{ compagnon.id }}</td>
+                <td>{{ compagnon.nomCompagnon }}</td>
+                <td>{{ compagnon.prixAchatVente }}</td>
+                <td>
+                    <a href="{{ path('compagnon_show', {'id': compagnon.id}) }}">show</a>
+                    <a href="{{ path('compagnon_edit', {'id': compagnon.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('compagnon_new') }}">Create new</a>
+{% endblock %}

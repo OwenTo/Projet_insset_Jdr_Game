@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition de  Armure{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Editer une  Armure</h1>
+<div class="mb-5 mt-5" style="margin-right: 15%;margin-left: 15%">
+
+    <div class="centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded" style="margin-top: 10px; background-color: beige;" >
+
+    {{ include('armure/_form.html.twig', {'button_label': 'Modifider'}) }}
+    </div>
+    <div class="row " >
+    <a class="mr-1 btn btn-primary" href="{{ path('armure_index') }}">
+        <i class="fas fa-backward"></i>
+    </a>
+
+    {{ include('armure/_delete_form.html.twig') }}
+</div>
+    </div>
+{% endblock %}

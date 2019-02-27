@@ -1,0 +1,89 @@
+{{ form_start(form) }}
+<div class="form-group container-fluid">
+    <div class="row">
+        {{ form_label(form.nomItem,"Nom") }}
+        {{ form_widget(form.nomItem,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+    <div class=" row mt-2">
+        {{ form_label(form.imageAvInsertion,"Image") }}
+        {{ form_widget(form.imageAvInsertion) }}
+
+    </div>
+
+    <div class="row">
+        {{ form_label(form.descriptionItem,"Description") }}
+        {{ form_widget(form.descriptionItem,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+
+
+    <div class="row">
+        {{ form_label(form.poids,"Poids du parchemin") }}
+        {{ form_widget(form.poids,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+    <div class="row">
+        {{ form_label(form.beneficeMaluce,"Benefice/Maluce") }}
+        {{ form_widget(form.beneficeMaluce,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+
+
+    <div class="row ">
+        {{ form_label(form.coutDeMana,"Coût de Mana") }}
+        {{ form_widget(form.coutDeMana,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+
+    <div class="row ">
+        {{ form_label(form.niveauMagie,"Niveau acquisition") }}
+        {{ form_widget(form.niveauMagie,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+    <div class=" ">
+        {{ form_label(form.typeMagie,"Elément(s) de la magie ") }}
+        {{ form_widget(form.typeMagie) }}
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4"> {{ form_label(form.valeur,"Prix") }}
+           {{ form_widget(form.valeur,{'attr':{'class':'form-control'}}) }}
+            {#{{ form_label(form.monnaie,"Monnaie") }}#}
+        </div>
+
+        <div class="col-md-3">
+            {{ form_row(form.monnaie,{'attr':{'class':'form-control'}}) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class=col-md-4">{{ form_label(form.degatMagie,"Dégat Magie") }}
+            {{ form_widget(form.degatMagie,{'attr':{'class':'form-control'}}) }}</div>
+        <div class="col-md-3">
+            {{ form_row(form.typeDes,{'attr':{'class':'form-control'}}) }}
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}

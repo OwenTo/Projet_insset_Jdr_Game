@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RegionLangue{% endblock %}
+
+{% block body %}
+    <h1>Create new RegionLangue</h1>
+
+    {{ include('region_langue/_form.html.twig') }}
+
+    <a href="{{ path('region_langue_index') }}">back to list</a>
+{% endblock %}

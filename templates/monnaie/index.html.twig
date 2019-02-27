@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monnaie {% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste Monnaie </h1>
+<div class="container-fluid ">
+    {% if is_granted('ROLE_ADMIN') %}
+    <a  class="ml-5  mr-5 btn btn-primary" href="{{ path('monnaie_new') }}">Ajouter</a>
+{% endif %}
+    <div class=" centerText   ml-5  mr-5 card  shadow p-3 mb-5  rounded"
+     style="margin-top: 10px; background-color: beige;">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Monnaie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for monnaie in monnaies %}
+            <tr>
+
+                <td>{{ monnaie.nomMonnaie }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('monnaie_show', {'id': monnaie.id}) }}"><i class="fas fa-info-circle"></i></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-primary" href="{{ path('monnaie_edit', {'id': monnaie.id}) }}"><i class="fas fa-edit"></i></a>
+                    {#<a class="btn btn-primary" href="{{ path('monnaie_delete', {'id': monnaie.id}) }}" onsubmit="return confirm('êtes vous sur ?')"><i class="fas fa-trash-alt"></i></a>#}
+                {% endif  %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RegionLangue{% endblock %}
+
+{% block body %}
+    <h1>RegionLangue</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ region_langue.id }}</td>
+            </tr>
+            <tr>
+                <th>RegionLangue</th>
+                <td>{{ region_langue.regionLangue }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('region_langue_index') }}">back to list</a>
+
+    <a href="{{ path('region_langue_edit', {'id': region_langue.id}) }}">edit</a>
+
+    {{ include('region_langue/_delete_form.html.twig') }}
+{% endblock %}

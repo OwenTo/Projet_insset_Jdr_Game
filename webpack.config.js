@@ -1,10 +1,12 @@
 var Encore = require('@symfony/webpack-encore');
-// const CopyWebpackPlugin = require('copy-webpack-plugin'); // this line tell to webpack to use the plugin
+
+// CopyWebpackPlugin = require('copy-webpack-plugin'); // this line tell to webpack to use the plugin
 
 
 Encore
 // directory where compiled assets will be stored
     .setOutputPath('public/build/')
+    // .setOutputPath('public/admin/build')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
@@ -20,7 +22,13 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('js/app', './assets/js/app.js')
+
+
+
+    // .addPlugin(new CopyWebpackPlugin([
+    //     { from: './assets/img', to: 'img' }
+    // ]))
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
     // .addPlugin(new CopyWebpackPlugin([

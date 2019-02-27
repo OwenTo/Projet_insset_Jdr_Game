@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeGuilde{% endblock %}
+
+{% block body %}
+    <h1>TypeGuilde</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_guilde.id }}</td>
+            </tr>
+            <tr>
+                <th>TypeGuilde</th>
+                <td>{{ type_guilde.typeGuilde }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_guilde_index') }}">back to list</a>
+
+    <a href="{{ path('type_guilde_edit', {'id': type_guilde.id}) }}">edit</a>
+
+    {{ include('type_guilde/_delete_form.html.twig') }}
+{% endblock %}

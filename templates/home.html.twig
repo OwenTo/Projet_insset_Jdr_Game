@@ -1,41 +1,218 @@
 {% extends '/base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
+    {% if  reponse is defined %}
+        <div class="alert alert-success" style=" "><p>{{ reponse }}</p></div>
+    {% endif %}
 
-    {#{% if  reponse is defined %}#}
-        {#<div class="reponse" style=" "><p>{{ reponse }}</p></div>#}
-    {#{% endif %}#}
+    {% if app.flashes is defined %}
+        {% for message in app.flashes('success') %}
+            <div class=" alert alert-success">{{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-    {#<h1> hello</h1>#}
-
-    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-
-        {#<p><a href="{{ path('infoUser',{'id':app.user.id}) }}">Voir Profil</a></p>#}
-        {#<p><a href="{{ path('listUserFolder',{'id':app.user.id}) }}">liste Fichier</a></p>#}
-        {#<a href="#">Faire une demande</a>#}
-{#<p>{{ app.user.memoireActuelle }}</p>#}
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
 
 
-    {#{% else %}#}
+        {% if   is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        <p>Bienvenu sur un tout nouveau site de Stockage</p>
-        {#<p>pour beneficier de ce cloud , veulez-vous inscrire ici <a href="{{ path('registration') }}  ">ici</a></p>#}
-        <p class="col-lg-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id inventore,
-            itaque
-            iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
-            voluptatum.</p><p>
-        Ab ad amet, architecto autem culpa deleniti eveniet ex in magnam maiores minus nesciunt nihil odit officiis
-        ratione
-        reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p><p>Accusamus accusantium
-        dolorem ducimus esse non quibusdam, reiciendis repudiandae soluta suscipit voluptatem! Ad aut consequatur, dolor
-        ea
-        esse, eveniet exercitationem ipsam iusto labore maiores minima quisquam, quo suscipit tempore voluptate.</p><p>A
-        adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni maiores
-        minima
-        molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
-    {#{% endif %}#}
+        {% include 'user/homeUser.html.twig' %}
 
-    <button class="btn btn-danger badge-pill">bouton</button>
+
+
+
+
+        {% else %}
+        <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
+            <p>Bienvenu sur un tout nouveau site de Stockage</p>
+            <p>pour beneficier de ce cloud , veulez-vous inscrire
+                <a href="{{ path('registration') }}">ici</a></p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A debitis dicta enim error facere id
+                inventore,
+                itaque
+                iure modi mollitia omnis perferendis porro provident, repellat rerum similique soluta tempore
+                voluptatum.</p>
+            <p>
+                Ab ad amet, architecto autem culpa deleniti eveniet ex in magnam maiores minus nesciunt nihil odit
+                officiis
+                ratione
+                reiciendis rem sit. Alias aspernatur atque beatae delectus, fugit rem sunt tempore.</p>
+            <p>Accusamus
+                accusantium
+                dolorem ducimus esse non quibusdam, reiciendis repudiandae soluta suscipit voluptatem! Ad aut
+                consequatur,
+                dolor
+                ea
+                esse, eveniet exercitationem ipsam iusto labore maiores minima quisquam, quo suscipit tempore
+                voluptate.</p>
+            <p>A
+                adipisci alias beatae, commodi deleniti dolorum, ducimus eaque eligendi inventore ipsum magnam magni
+                maiores
+                minima
+                molestiae natus non odio praesentium quam quas, quia quos sapiente similique sunt suscipit ut.</p>
+
+
+
+        </div>
+            <div class="row">
+                {#Magie#}
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Magie
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('magie_index') }}">Liste des magies</a></li>
+                                        <li><a href="{{ path('type_magie_index') }}">Catégorie des magies</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                {#Talent#}
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Talents
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('talent_index') }}">Liste des talents</a></li>
+                                        <li><a href="{{ path('type_talent_index') }}">Catégorie des talents</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                {#Armure#}
+
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Armure
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('armure_index') }}">Liste des armures</a></li>
+                                        <li><a href="{{ path('equipement_index') }}">Catégorie des armures</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {#Arme#}
+                <div class="   ">
+
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Armes
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('arme_index') }}">Liste des arme</a></li>
+                                        <li><a href="{{ path('type_categorie_index') }}">Catégorie des arme</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {#monnaie#}
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Monnaie
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('monnaie_index') }}">Liste des Monnaies</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {#Dés#}
+                <div class=" ">
+
+                    <div class="col-mb-3 mr-2 ">
+                        <div class="card mb-4 shadow p-2 mb-5  rounded " style=" background-color: beige;">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Dés
+                                </div>
+                                <div class="card-text">
+                                    <ul>
+                                        <li><a href="{{ path('monnaie_index') }}">Liste des Dés</a></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+
+
+
+
+
+
 {% endblock %}

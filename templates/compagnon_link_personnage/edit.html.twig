@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Compagnon{% endblock %}
+
+{% block body %}
+    <h1>Edit Compagnon</h1>
+
+    {{ include('compagnon/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('compagnon_index') }}">back to list</a>
+
+    {{ include('compagnon/_delete_form.html.twig') }}
+{% endblock %}

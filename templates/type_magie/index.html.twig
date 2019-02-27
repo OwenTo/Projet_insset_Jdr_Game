@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeMagie index{% endblock %}
+
+{% block body %}
+    <h1>TypeMagie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomTypeMagie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_magie in type_magies %}
+            <tr>
+                <td>{{ type_magie.id }}</td>
+                <td>{{ type_magie.nomTypeMagie }}</td>
+                <td>
+                    <a href="{{ path('type_magie_show', {'id': type_magie.id}) }}">show</a>
+                    <a href="{{ path('type_magie_edit', {'id': type_magie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_magie_new') }}">Create new</a>
+{% endblock %}

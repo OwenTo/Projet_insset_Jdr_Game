@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compagnon index{% endblock %}
+
+{% block body %}
+    <h1>Liste Compagnon pour {{ personnage.nomPersonnage }} </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Compagnon</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compagnon in compagnons %}
+            <tr>
+                {#<td>{{ compagnon.id }}</td>#}
+                <td>{{ compagnon.nomCompagnon }}</td>
+                {#<td>{{ compagnon.prixAchatVente }}</td>#}
+                <td>
+                    <a href="{{ path('compagnon_show', {'id': compagnon.id}) }}">show</a>
+                    <a href="{{ path('compagnon_delete_link', {'id': compagnon.id,'idPersonnage':personnage.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                    {#{{ include('compagnon/_delete_form.html.twig') }}#}
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+     <td> aucune personne ne vous accompagne   </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('compagnon_link_personnage',{'idPersonnage':personnage.id}) }}">Nouveau compagnon a ajouter au personnage </a>
+{% endblock %}

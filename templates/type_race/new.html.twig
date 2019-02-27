@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TypeRace{% endblock %}
+
+{% block body %}
+    <h1>Create new TypeRace</h1>
+
+    {{ include('type_race/_form.html.twig') }}
+
+    <a href="{{ path('type_race_index') }}">back to list</a>
+{% endblock %}

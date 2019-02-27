@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CaracteristiquePrincipal{% endblock %}
+
+{% block body %}
+    <h1>Create new CaracteristiquePrincipal</h1>
+
+    {{ include('caracteristique_principal/_form.html.twig') }}
+
+    <a href="{{ path('caracteristique_principal_index') }}">back to list</a>
+{% endblock %}

@@ -1,3 +1,90 @@
 body {
-    background-color: lightgray;
+    padding: 0;
+
+    background-image: url("../img/fond.jpg" );
+    background-attachment:fixed;
+    /*background-color: rgba(36, 209, 110, 0.9) !important;*/
+    background-color: lightblue;
+    margin-bottom: 10%;
+    background-repeat:no-repeat;
+    background-size: cover;
 }
+.picture{
+    width: 20vw;
+    height: 15vh;
+
+    display: block;
+
+}
+
+.colorBox{
+    /*padding-right: 10px;*/
+    /*padding-left: 30px;*/
+    /*margin-top:50px;*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+
+    /*border-radius: 6px;*/
+    /*line-height: 40px;*/
+
+    /*max-width: 60%;*/
+    background-color: beige;
+    /*padding-bottom: 50px;*/
+    /* padding-left: 5px; */
+    /* margin-left: 250px; */
+    box-shadow: 10px 10px 10px 5px #888888;
+    /* margin-right: 350px; */
+    /* margin-bottom: 100px; */
+    /*float: none;*/
+}
+
+
+.contenueDiv{
+    padding-right: 30px;
+    padding-left: 30px;
+
+    margin-right: 10px!important;
+
+    margin-top: 50px;
+    margin-left: 200px!important;
+
+    line-height: 40px;
+
+    max-width: 75%;
+
+    padding-bottom: 50px;
+
+    float: none;
+}
+
+
+#pwidget
+{
+    /*background-color:lightgray;*/
+    /*width:254px;*/
+    /*padding:2px;*/
+
+    /*text-align:left;*/
+    /*border:1px solid gray;*/
+}
+#progress_selectionne
+{
+    width:250px;
+    padding:2px;
+    -moz-border-radius:3px;
+    border-radius:1px!important;
+    background-color:  greenyellow!important;
+    /*background-color:white;*/
+    /*border:1px solid rgb(255, 68, 0);*/
+    height:20px;
+}
+#indicator
+{
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magie{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Magie</h1>
+    <div class="  mb-5 mt-5  " style="margin-right: 15%;margin-left: 15%">
+        <div class=" centerText  col-mb-3 mr-2 card  shadow p-3 mb-5  rounded"
+             style="margin-top: 10px; background-color: beige;">
+            <table class="table">
+                <tbody>
+                {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ magie.id }}</td>#}
+                {#</tr>#}
+                <tr>
+                    <th>Nom de la magie</th>
+                    <td>{{ magie.nomItem }}</td>
+                </tr>
+                <tr>
+                    <th>image</th>
+                    <td><img class="picture" src="{{ asset('upload/'~magie.fichier.contenueFichier) }}"/></td>
+                </tr>
+
+                <tr>
+                    <th>Description de la magie</th>
+                    <td>{{ magie.descriptionItem }}</td>
+                </tr>
+                <tr>
+                    <th>Poids du parchemin</th>
+                    <td>{{ magie.poids }} Kg</td>
+                </tr>
+                <tr>
+                    <th>Benefice/Maluce</th>
+                    <td>{{ magie.beneficeMaluce }}</td>
+                </tr>
+                <tr>
+                    <th>Valeurs</th>
+                    <td>{{ magie.valeur }} {{ magie.monnaie.nomMonnaie }}</td>
+                </tr>
+                <tr>
+                    <th>Degat Magie</th>
+                    <td>{{ magie.degatMagie }} {{ magie.typeDes.des }}</td>
+                </tr>
+                <tr>
+                    <th>Cout De Mana</th>
+                    <td>{{ magie.coutDeMana }} Pm</td>
+                </tr>
+                <tr>
+                    <th>Niveau de la Magie</th>
+                    <td>{{ magie.niveauMagie }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row ml-2 " >
+
+            <a class="btn btn-primary mr-1  " href="{{ path('magie_index') }}"><i class="fas fa-undo"></i></a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-primary mr-1 " href="{{ path('magie_edit', {'id': magie.id}) }}">
+                <i class="fas fa-edit"></i></a>
+
+            {{ include('magie/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<form method="post" action="{{ path('monnaie_delete', {'id': monnaie.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette monnaie?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ monnaie.id) }}">
+
+       <div class="">
+           <button class="btn btn-primary">
+               <i class="fas fa-trash-alt"></i>
+           </button>
+       </div>
+   </div>
+
+</form>

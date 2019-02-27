@@ -1,4 +1,6 @@
-
+.gitgignore
+/.idea/
+.idea/workspace.xml
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/

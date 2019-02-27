@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RangGuilde{% endblock %}
+
+{% block body %}
+    <h1>RangGuilde</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rang_guilde.id }}</td>
+            </tr>
+            <tr>
+                <th>Rang</th>
+                <td>{{ rang_guilde.rang }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('personnage_rang_guilde_index',{'idPersonnage':personnage}) }}">back to list</a>
+
+    <a href="{{ path('rang_guilde_edit', {'id': rang_guilde.id}) }}">edit</a>
+
+    {{ include('rang_guilde/_delete_form.html.twig') }}
+{% endblock %}

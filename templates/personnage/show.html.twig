@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnage{% endblock %}
+
+{% block body %}
+    <h1>Personnage</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ personnage.id }}</td>
+        </tr>
+        <tr>
+            <th>NomPersonnage</th>
+            <td>{{ personnage.nomPersonnage }}</td>
+        </tr>
+        <tr>
+            <th>PrenomPersonnage</th>
+            <td>{{ personnage.PrenomPersonnage }}</td>
+        </tr>
+        <tr>
+            <th>DescriptionPersonnege</th>
+            <td>{{ personnage.DescriptionPersonnege }}</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ personnage.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>{{ personnage.age }}</td>
+        </tr>
+        <tr>
+            <th>Poids</th>
+            <td>{{ personnage.poids }}</td>
+        </tr>
+        <tr>
+            <th>Taille</th>
+            <td>{{ personnage.taille }}</td>
+        </tr>
+        <tr>
+            <th>Niveau</th>
+            <td>{{ personnage.niveau }}</td>
+        </tr>
+
+        <tr>
+            <th> Compagnon</th>
+            <td><a href="{{ path('compagnon_index_link', {'idPersonnage': personnage.id}) }}">Compagnon </a>
+        </tr>
+        <tr>
+            <th>liste des métiers du personnage</th>
+            <td><a href="{{ path('personnage_niveau_metier_index', {'idPersonnage': personnage.id}) }}">liste metier</a>
+            </td>
+        </tr>
+        <tr>
+            <th> liste des guilde que le personnae posséde</th>
+            <td><a href="{{ path('personnage_rang_guilde_index', {'idPersonnage': personnage.id}) }}">liste guilde</a>
+
+        </tr>
+        <tr>    <th>Arme</th>
+            <td> <p> <a href="{{ path('inventaire_new_personnage_item_arme',{'categorie':'Armed','idPersonnage':personnage.id} )}}">ajouter une arme a l'inventaire </a>  </p>
+{% if personnage.inventaires is not empty%}
+                <p> <a href="{{ path('inventaire_index_arme',{'item':'Armed','idPersonnage':personnage.id} )}}">liste  des armes possédées </a> </p>
+  {% endif %}          </td>
+
+        </tr>
+        <tr>
+
+            <th> Armure </th>
+            <td><p><a href="{{ path('inventaire_personnage_item_armure',{'categorie':'Armor','idPersonnage':personnage.id} )}}">ajouter une armure a l'inventaire </a> </p>
+               {% if personnage.inventaires is not empty%}
+                <p>  <a href="{{ path('inventaire_index_armure',{'item':'Armor','idPersonnage':personnage.id} )}}">liste des armures possédées </a>  </p>  </td>
+{% endif %}
+
+
+        </tr>
+
+
+        <tr>
+
+            <th> Magie </th>
+            <td><p><a href="{{ path('inventaire_personnage_magie',{'categorie':'Magic','idPersonnage':personnage.id} )}}">Ajouter une magie dans l'inventaire </a> </p>
+              {% if personnage.inventaires is not empty%}
+                <p>  <a href="{{ path('inventaire_index_magie',{'item':'Magic','idPersonnage':personnage.id} )}}">liste des magies possédées </a>  </p>  </td>
+{% endif %}
+
+
+        </tr>
+
+
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('personnage_index') }}">back to list</a>
+
+    <a href="{{ path('personnage_edit', {'id': personnage.id}) }}">edit</a>
+
+    {{ include('personnage/_delete_form.html.twig') }}
+{% endblock %}
