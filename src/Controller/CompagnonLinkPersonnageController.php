@@ -74,7 +74,7 @@ class CompagnonLinkPersonnageController extends AbstractController
 
 
     /**
-     * @Route("/supprimer/compagnon/{id}/link/personnage/{idPersonnage}", name="compagnon_delete_link", methods={"POST"})
+     * @Route("/supprimer/compagnon/{id}/link/personnage/{idPersonnage}", name="compagnon_delete_link")
      */
     public function delete(Request $request, Compagnon $compagnon ,Personnage $idPersonnage): Response
     {

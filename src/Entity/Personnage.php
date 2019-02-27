@@ -71,7 +71,7 @@ class Personnage
     private $collNiveauMetier;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RangGuilde", mappedBy="personnage")
+     * @ORM\OneToMany(targetEntity="App\Entity\RangGuilde",cascade={"remove"}, mappedBy="personnage")
      */
     private $collRangGuilds;
 
@@ -425,6 +425,8 @@ class Personnage
     {
         if ($this->collCompagnons->contains($collCompagnon)) {
             $this->collCompagnons->removeElement($collCompagnon);
+            $collCompagnon->removePersonnage($this);
+
         }
 
         return $this;
