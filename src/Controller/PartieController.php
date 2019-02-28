@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Partie;
 use App\Entity\User;
 use App\Form\PartieType;
+use App\Notification\ContactNotification;
 use App\Repository\PartieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +46,7 @@ class PartieController extends AbstractController
      * @Route("/create/partie{idUser}", name="partie_new", methods={"GET","POST"})
      * @Route("/add/partie/{idUser}", name="partie_new_user", methods={"GET","POST"})
      */
-    public function new(Request $request, User $idUser): Response
+    public function new(Request $request, User $idUser ,ContactNotification $invitation): Response
     {
         $user=$this->searchUserAction($idUser);
         $partie = new Partie();
@@ -56,10 +57,24 @@ class PartieController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $partie->setUtilisateur($user);
+
+            $joueurs=$partie->getJoueurs();
+
+            foreach ($joueurs as $joueur){
+            $invitation->notifyInvitationPartie($partie ,$joueur);
+            }
             $entityManager->persist($partie);
+
+
+
             $entityManager->flush();
 
-            return $this->redirectToRoute('partie_index');
+
+            $message = " la partie est crée et les mails d'invitation on été envoyé";
+            $this->addFlash('success', $message);
+            return $this->render('home.html.twig');
+
+//            return $this->redirectToRoute('partie_index');
         }
 
         return $this->render('partie/new.html.twig', [

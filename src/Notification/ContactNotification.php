@@ -10,6 +10,8 @@ namespace App\Notification;
 
 
 use App\Entity\Contact;
+use App\Entity\Partie;
+use App\Entity\User;
 use Twig\Environment;
 
 class ContactNotification
@@ -42,5 +44,24 @@ class ContactNotification
 
 
     }
+
+
+
+
+
+    public function  notifyInvitationPartie(Partie $partie ,User $joueur){
+        $message=(new \Swift_Message("invitation de :".$partie->getUtilisateur()->getUsername() ."pour  jouer a la partie ")) ;
+        $message->setFrom($partie->getUtilisateur()->getEmail());
+        $message->setTo($joueur->getEmail());
+//        $message->setReplyTo($contact->getEmailContact());
+        $message->setBody($this->renderer->render('contact/emails/invitation.html.twig',[
+            'partie'=>$partie,
+            'joueur'=>$joueur
+        ]),'text/html');
+        $this->mailler->send($message);
+
+
+    }
+
 
 }
