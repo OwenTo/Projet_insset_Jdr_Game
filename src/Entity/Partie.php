@@ -32,7 +32,7 @@ class Partie
 //     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="partieRejoins")
 //     * @ORM\JoinColumn(nullable=false)
 //     */
-//    private $joueurs;
+    private $joueurs=[];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Invitation", mappedBy="partie", orphanRemoval=true)
@@ -41,6 +41,7 @@ class Partie
 
     public function __construct()
     {
+        $this->joueurs=new ArrayCollection();
         $this->invitations = new ArrayCollection();
     }
 
@@ -104,4 +105,26 @@ class Partie
 
         return $this;
     }
+
+    /**
+     * @return array|ArrayCollection
+     */
+    public function getJoueurs()
+    {
+        return $this->joueurs;
+    }
+
+    /**
+     * @param array|ArrayCollection $joueurs
+     * @return Partie
+     */
+    public function setJoueurs($joueurs)
+    {
+        $this->joueurs = $joueurs;
+        return $this;
+    }
+
+
+
+
 }

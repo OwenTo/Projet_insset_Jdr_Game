@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Invitation;
 use App\Entity\Partie;
 use App\Entity\User;
 use App\Form\PartieType;
@@ -46,7 +47,7 @@ class PartieController extends AbstractController
      * @Route("/create/partie{idUser}", name="partie_new", methods={"GET","POST"})
      * @Route("/add/partie/{idUser}", name="partie_new_user", methods={"GET","POST"})
      */
-    public function new(Request $request, User $idUser ,ContactNotification $invitation): Response
+    public function new(Request $request, User $idUser ,ContactNotification $invitationMail): Response
     {
         $user=$this->searchUserAction($idUser);
         $partie = new Partie();
@@ -61,7 +62,14 @@ class PartieController extends AbstractController
             $joueurs=$partie->getJoueurs();
 
             foreach ($joueurs as $joueur){
-            $invitation->notifyInvitationPartie($partie ,$joueur);
+                $invitation=new Invitation();
+                $invitation->setPartie($partie);
+                $invitation->setPlayer($joueur);
+                $invitation->setStatus("En attente");
+
+            $invitationMail->notifyInvitationPartie($partie ,$joueur);
+
+            $entityManager->persist($invitation);
             }
             $entityManager->persist($partie);
 
