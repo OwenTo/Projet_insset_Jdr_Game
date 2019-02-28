@@ -123,6 +123,11 @@ class Personnage
      */
     private $inventaires;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ChoixPersonnage", mappedBy="personnage", orphanRemoval=true)
+     */
+    private $choixPersonnages;
+
 
 
 
@@ -141,6 +146,7 @@ class Personnage
         $this->valeurCaract = new ArrayCollection();
         $this->itemsBefore=new ArrayCollection();
         $this->inventaires = new ArrayCollection();
+        $this->choixPersonnages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -498,6 +504,37 @@ class Personnage
     public function setNbrArmePosseder(int $nbrArmePosseder): Personnage
     {
         $this->nbrArmePosseder = $nbrArmePosseder;
+        return $this;
+    }
+
+    /**
+     * @return Collection|ChoixPersonnage[]
+     */
+    public function getChoixPersonnages(): Collection
+    {
+        return $this->choixPersonnages;
+    }
+
+    public function addChoixPersonnage(ChoixPersonnage $choixPersonnage): self
+    {
+        if (!$this->choixPersonnages->contains($choixPersonnage)) {
+            $this->choixPersonnages[] = $choixPersonnage;
+            $choixPersonnage->setPersonnage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChoixPersonnage(ChoixPersonnage $choixPersonnage): self
+    {
+        if ($this->choixPersonnages->contains($choixPersonnage)) {
+            $this->choixPersonnages->removeElement($choixPersonnage);
+            // set the owning side to null (unless already changed)
+            if ($choixPersonnage->getPersonnage() === $this) {
+                $choixPersonnage->setPersonnage(null);
+            }
+        }
+
         return $this;
     }
 

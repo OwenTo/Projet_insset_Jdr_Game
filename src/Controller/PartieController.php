@@ -44,7 +44,7 @@ class PartieController extends AbstractController
 
 
     /**
-     * @Route("/create/partie{idUser}", name="partie_new", methods={"GET","POST"})
+     * @Route("/create/partie/{idUser}", name="partie_new", methods={"GET","POST"})
      * @Route("/add/partie/{idUser}", name="partie_new_user", methods={"GET","POST"})
      */
     public function new(Request $request, User $idUser ,ContactNotification $invitationMail): Response
@@ -67,9 +67,11 @@ class PartieController extends AbstractController
                 $invitation->setPlayer($joueur);
                 $invitation->setStatus("En attente");
 
-            $invitationMail->notifyInvitationPartie($partie ,$joueur);
+                $entityManager->persist($invitation);
 
-            $entityManager->persist($invitation);
+            $invitationMail->notifyInvitationPartie($invitation);
+
+
             }
             $entityManager->persist($partie);
 
@@ -92,7 +94,7 @@ class PartieController extends AbstractController
     }
 
     /**
-     * @Route("/detail/{id}", name="partie_show", methods={"GET"})
+     * @Route("/detail/partie/{id}", name="partie_show", methods={"GET"})
      */
     public function show(Partie $partie): Response
     {

@@ -164,7 +164,7 @@ class PersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="personnage_delete", methods={"DELETE"})
+     * @Route("/supprimer/{id}", name="personnage_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Personnage $personnage): Response
     {

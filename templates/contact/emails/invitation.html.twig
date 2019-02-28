@@ -6,6 +6,6 @@ Bonjour {{ joueur.username }}
 
 
 <div class=" centerText container-fluid">
-   <p>{{ partie.utilisateur.username }} vous invite a participer a sa partie de JDR </p>
+   <p>{{ partie.utilisateur.username }} vous invite a participer a sa partie de JDR : {{ path('choix_personnage_new',{'idUser':joueur.id,'idPartie': partie.id}) }}</p>
 
 </div>
