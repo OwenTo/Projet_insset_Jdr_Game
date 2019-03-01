@@ -7,14 +7,26 @@
 
     <table class="table">
         <tbody>
-            {#<tr>#}
-                {#<th>Id</th>#}
-                {#<td>{{ partie.id }}</td>#}
-            {#</tr>#}
+        {#<tr>#}
+        {#<th>Id</th>#}
+        {#<td>{{ partie.id }}</td>#}
+        {#</tr>#}
+        <tr>
+            <th>NomPartie</th>
+            <td>{{ partie.nomPartie }}</td>
+        </tr>
+
+        {% if partie.invitations is not empty %}
             <tr>
-                <th>NomPartie</th>
-                <td>{{ partie.nomPartie }}</td>
+                <th>Joueurs participant</th>
+
+                {% for invitation in partie.invitations %}
+                    <td> {{ invitation.player.username }} etat : {{ invitation.status }}  </td>
+
+                {% endfor %}
             </tr>
+
+        {% endif %}
         </tbody>
     </table>
 

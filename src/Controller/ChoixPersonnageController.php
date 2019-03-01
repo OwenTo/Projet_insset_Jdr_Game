@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ChoixPersonnage;
+use App\Entity\Invitation;
 use App\Entity\Partie;
 use App\Entity\User;
 use App\Form\ChoixPersonnageType;
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChoixPersonnageController extends AbstractController
 {
     /**
-     * @Route("/", name="choix_personnage_index", methods={"GET"})
+     * @Route("/liste", name="choix_personnage_index", methods={"GET"})
      */
     public function index(ChoixPersonnageRepository $choixPersonnageRepository): Response
     {
@@ -28,12 +29,13 @@ class ChoixPersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/add/personnage/{idUser}/partie/{idPartie}", name="choix_personnage_new", methods={"GET","POST"})
+     * @Route("/invitation/{idInvitation}personnage/{idUser}/partie/{idPartie}", name="choix_personnage_new", methods={"GET","POST"})
      */
-    public function new(Request $request,User $user ,Partie $partie): Response
+    public function new(Request $request,User $idUser ,Partie $idPartie ,Invitation$idInvitation): Response
     {
-        $game=$this->searchPartieAction($partie);
-        $utilisateur =$this->searchUserAction($user);
+        $invitation=$this->searchInvitationAction($idInvitation);
+        $game=$this->searchPartieAction($idPartie);
+        $utilisateur =$this->searchUserAction($idUser);
         $personnages=$utilisateur->getPersonnages();
         $choixPersonnage = new ChoixPersonnage();
         $form = $this->createForm(ChoixPersonnageType::class, $choixPersonnage ,array('personnages'=>$personnages));
@@ -41,8 +43,15 @@ class ChoixPersonnageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             $choixPersonnage->setPartie($game);
             $entityManager->persist($choixPersonnage);
+
+            $invitation->setStatus('accepter');
+
+            $entityManager->persist($invitation);
+
+
             $entityManager->flush();
 
             return $this->redirectToRoute('choix_personnage_index');
@@ -87,7 +96,7 @@ class ChoixPersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="choix_personnage_delete", methods={"DELETE"})
+     * @Route("/supprimer/{id}", name="choix_personnage_delete", methods={"DELETE"})
      */
     public function delete(Request $request, ChoixPersonnage $choixPersonnage): Response
     {
@@ -123,5 +132,17 @@ class ChoixPersonnageController extends AbstractController
         $infoPartie = $repositoryPartie->find($partie);
 
         return $infoPartie;
+    }
+
+
+
+    private function searchInvitationAction(Invitation $invitation)
+    {
+        $repositoryInvitation = $this->getDoctrine()->getRepository('App:Invitation');
+        //on récupère l'id de la siuation
+        // on recuper les info d'une situation precise
+        $infoInvitation = $repositoryInvitation->find($invitation);
+
+        return $infoInvitation;
     }
 }

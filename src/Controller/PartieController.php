@@ -61,6 +61,14 @@ class PartieController extends AbstractController
 
             $joueurs=$partie->getJoueurs();
 
+            $entityManager->persist($partie);
+
+
+
+            $entityManager->flush();
+
+
+
             foreach ($joueurs as $joueur){
                 $invitation=new Invitation();
                 $invitation->setPartie($partie);
@@ -69,16 +77,12 @@ class PartieController extends AbstractController
 
                 $entityManager->persist($invitation);
 
-            $invitationMail->notifyInvitationPartie($invitation);
+                $invitationMail->notifyInvitationPartie($invitation);
 
 
             }
-            $entityManager->persist($partie);
-
-
 
             $entityManager->flush();
-
 
             $message = " la partie est crée et les mails d'invitation on été envoyé";
             $this->addFlash('success', $message);

@@ -51,10 +51,10 @@ class ContactNotification
 
 
     public function  notifyInvitationPartie(Invitation $invitation){
-        $message=(new \Swift_Message("invitation de :".$invitation->getPartie()->getUtilisateur()->getUsername() ."pour  jouer a la partie ")) ;
+        $message=(new \Swift_Message("invitation de :".$invitation->getPartie()->getUtilisateur()->getUsername() ." pour  jouer a la partie ")) ;
         $message->setFrom($invitation->getPartie()->getUtilisateur()->getEmail());
         $message->setTo($invitation->getPlayer()->getEmail());
-//        $message->setReplyTo($contact->getEmailContact());
+var_dump($invitation->getPartie()->getId()." id partie ");
         $message->setBody($this->renderer->render('contact/emails/invitation.html.twig',[
 'invitation' =>$invitation,
             'partie'=>$invitation->getPartie(),
