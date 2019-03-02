@@ -76,6 +76,7 @@ class PartieController extends AbstractController
                 $invitation->setStatus("En attente");
 
                 $entityManager->persist($invitation);
+                $entityManager->flush();
 
                 $invitationMail->notifyInvitationPartie($invitation);
 
