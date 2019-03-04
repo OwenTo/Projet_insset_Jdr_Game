@@ -55,13 +55,13 @@ class PersonnageType extends AbstractType
 
 
 
-        ->add('collCompagnons',EntityType::class,
-            array('class'=>Compagnon::class,
-                'label'=>'Compagnon',
-                'choice_label'=>'nomCompagnon',
-                'expanded'=>true,
-                'multiple'=>true,
-                'required'   => false))
+//        ->add('collCompagnons',EntityType::class,
+//            array('class'=>Compagnon::class,
+//                'label'=>'Compagnon',
+//                'choice_label'=>'nomCompagnon',
+//                'expanded'=>true,
+//                'multiple'=>true,
+//                'required'   => false))
         ;
     }
 
