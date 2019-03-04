@@ -31,8 +31,6 @@ class PartieController extends AbstractController
      */
     public function liste(User $idUser) :Response
     {
-
-
         $user=$this->searchUserAction($idUser);
 
 //var_dump($user);
@@ -87,7 +85,8 @@ class PartieController extends AbstractController
 
             $message = " la partie est crée et les mails d'invitation on été envoyé";
             $this->addFlash('success', $message);
-            return $this->render('home.html.twig');
+            return $this->redirectToRoute('partie_show',['id'=>$partie->getId()]);
+//            return $this->render('home.html.twig');
 
 //            return $this->redirectToRoute('partie_index');
         }
@@ -137,12 +136,15 @@ class PartieController extends AbstractController
      */
     public function delete(Request $request, Partie $partie): Response
     {
+        $idUtilisateur=$partie->getUtilisateur()->getId();
+
         if ($this->isCsrfTokenValid('delete'.$partie->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partie);
             $entityManager->flush();
         }
 
+//        return $this->redirectToRoute('partie_index_user',['idUser'=>$idUtilisateur]);
         return $this->redirectToRoute('partie_index');
     }
 

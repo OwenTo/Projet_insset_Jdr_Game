@@ -8,6 +8,9 @@ use App\Entity\Partie;
 use App\Entity\User;
 use App\Form\ChoixPersonnageType;
 use App\Repository\ChoixPersonnageRepository;
+use App\Repository\InvitationRepository;
+use App\Repository\PartieRepository;
+use App\Repository\PersonnageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,14 +41,41 @@ class ChoixPersonnageController extends AbstractController
      * @param Invitation $idInvitation
      * @return Response
      */
-    public function new(Request $request,User $idUser ,Partie $idPartie ,Invitation$idInvitation): Response
+    public function new(Request $request, User $idUser, Partie $idPartie, Invitation $idInvitation, PersonnageRepository $personnageRepository, InvitationRepository $invitationRepository): Response
     {
-        $invitation=$this->searchInvitationAction($idInvitation);
-        $partie=$this->searchPartieAction($idPartie);
-        $utilisateur =$this->searchUserAction($idUser);
-        $personnages=$utilisateur->getPersonnages();
-        $choixPersonnage = new ChoixPersonnage();
-        $form = $this->createForm(ChoixPersonnageType::class, $choixPersonnage ,array('personnages'=>$personnages));
+        $partieSearch = $invitationRepository->findByPlayer($idUser);
+        if (count($partieSearch) != 0) {
+            if ($partieSearch[0]->getStatus() == "En attente") {
+                $invitation = $this->searchInvitationAction($idInvitation);
+                $choixPersonnage = new ChoixPersonnage();
+                $partie = $this->searchPartieAction($idPartie);
+                $utilisateur = $this->searchUserAction($idUser);
+                $personnages = $utilisateur->getPersonnages();
+
+                if (isset($_POST['sendPersonnageChoix'])) {
+                    $entityManager = $this->getDoctrine()->getManager();
+
+                    $choixPersonnage->setPartie($partie);
+                    $personnageChoix = $personnageRepository->find($_POST['idPersonnage']);
+                    $choixPersonnage->setPersonnage($personnageChoix);
+                    $entityManager->persist($choixPersonnage);
+
+                    $invitation->setStatus('accepter');
+
+                    $entityManager->persist($invitation);
+
+
+                    $entityManager->flush();
+//
+//                    return $this->redirectToRoute('choix_personnage_index');
+
+
+                    return $this->redirectToRoute('partie_show',['id'=>$partie->getId()]);
+                }
+            }
+        }
+
+        /*$form = $this->createForm(ChoixPersonnageType::class, $choixPersonnage ,array('personnages'=>$personnages));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,13 +92,14 @@ class ChoixPersonnageController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('partie_show',['id'=>$partie->getId()]);
+
 //            return $this->redirectToRoute('choix_personnage_index');
-        }
+        }*/
 
         return $this->render('choix_personnage/new.html.twig', [
             'choix_personnage' => $choixPersonnage,
-            'form' => $form->createView(),
+            'personnages' => $personnages,
+            // 'form' => $form->createView(),
         ]);
     }
 
@@ -115,7 +146,7 @@ class ChoixPersonnageController extends AbstractController
      */
     public function delete(Request $request, ChoixPersonnage $choixPersonnage): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$choixPersonnage->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $choixPersonnage->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($choixPersonnage);
             $entityManager->flush();
@@ -123,7 +154,6 @@ class ChoixPersonnageController extends AbstractController
 
         return $this->redirectToRoute('choix_personnage_index');
     }
-
 
 
     private function searchUserAction(User $user)
@@ -137,9 +167,7 @@ class ChoixPersonnageController extends AbstractController
     }
 
 
-
-
-    private function searchPartieAction(Partie $partie)
+    private function searchPartieAction(Partie $partie): Partie
     {
         $repositoryPartie = $this->getDoctrine()->getRepository('App:Partie');
         //on récupère l'id de la siuation
@@ -148,7 +176,6 @@ class ChoixPersonnageController extends AbstractController
 
         return $infoPartie;
     }
-
 
 
     private function searchInvitationAction(Invitation $invitation)
