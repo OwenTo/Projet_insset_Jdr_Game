@@ -20,6 +20,8 @@ class ChoixPersonnageController extends AbstractController
 {
     /**
      * @Route("/liste", name="choix_personnage_index", methods={"GET"})
+     * @param ChoixPersonnageRepository $choixPersonnageRepository
+     * @return Response
      */
     public function index(ChoixPersonnageRepository $choixPersonnageRepository): Response
     {
@@ -29,12 +31,17 @@ class ChoixPersonnageController extends AbstractController
     }
 
     /**
-     * @Route("/invitation/{idInvitation}personnage/{idUser}/partie/{idPartie}", name="choix_personnage_new", methods={"GET","POST"})
+     * @Route("/invitation/{idInvitation}/personnage/{idUser}/partie/{idPartie}", name="choix_personnage_new", methods={"GET","POST"})
+     * @param Request $request
+     * @param User $idUser
+     * @param Partie $idPartie
+     * @param Invitation $idInvitation
+     * @return Response
      */
     public function new(Request $request,User $idUser ,Partie $idPartie ,Invitation$idInvitation): Response
     {
         $invitation=$this->searchInvitationAction($idInvitation);
-        $game=$this->searchPartieAction($idPartie);
+        $partie=$this->searchPartieAction($idPartie);
         $utilisateur =$this->searchUserAction($idUser);
         $personnages=$utilisateur->getPersonnages();
         $choixPersonnage = new ChoixPersonnage();
@@ -44,7 +51,8 @@ class ChoixPersonnageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $choixPersonnage->setPartie($game);
+
+            $choixPersonnage->setPartie($partie);
             $entityManager->persist($choixPersonnage);
 
             $invitation->setStatus('accepter');
@@ -54,7 +62,8 @@ class ChoixPersonnageController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('choix_personnage_index');
+            return $this->redirectToRoute('partie_show',['id'=>$partie->getId()]);
+//            return $this->redirectToRoute('choix_personnage_index');
         }
 
         return $this->render('choix_personnage/new.html.twig', [
@@ -75,6 +84,9 @@ class ChoixPersonnageController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="choix_personnage_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param ChoixPersonnage $choixPersonnage
+     * @return Response
      */
     public function edit(Request $request, ChoixPersonnage $choixPersonnage): Response
     {
@@ -97,6 +109,9 @@ class ChoixPersonnageController extends AbstractController
 
     /**
      * @Route("/supprimer/{id}", name="choix_personnage_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param ChoixPersonnage $choixPersonnage
+     * @return Response
      */
     public function delete(Request $request, ChoixPersonnage $choixPersonnage): Response
     {
