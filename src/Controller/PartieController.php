@@ -7,6 +7,7 @@ use App\Entity\Partie;
 use App\Entity\User;
 use App\Form\PartieType;
 use App\Notification\ContactNotification;
+use App\Repository\InvitationRepository;
 use App\Repository\PartieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -113,7 +114,7 @@ class PartieController extends AbstractController
      * @param ContactNotification $invitationMail
      * @return Response
      */
-    public function edit(Request $request, Partie $partie, ContactNotification $invitationMail): Response
+    public function edit(Request $request, Partie $partie, ContactNotification $invitationMail,InvitationRepository $invitationRepository): Response
     {
         $form = $this->createForm(PartieType::class, $partie);
         $form->handleRequest($request);
@@ -130,7 +131,35 @@ class PartieController extends AbstractController
 
 
             foreach ($joueurs as $joueur) {
+                $array = array(
+                    "player" => $joueur,
+                    "partie" => $partie,
+                    "status" => "accepter",
+                );
+                $array2 = array(
+                    "player" => $joueur,
+                    "partie" => $partie,
+                    "status" => "En attente",
+                );
+                $invitationList = $invitationRepository->findBy($array);
+                $invitationList2 = $invitationRepository->findBy($array2);
+                if(count($invitationList)==0 && (count($invitationList2)==0)
+                {
+                    $invitation = new Invitation();
+                    $invitation->setPartie($partie);
+                    $invitation->setPlayer($joueur);
+                    $invitation->setStatus("En attente");
 
+                    $entityManager->persist($invitation);
+
+
+                    $entityManager->flush();
+
+                    $invitationMail->notifyInvitationPartie($invitation);
+                }
+
+
+            /*
                 foreach ($partieInvitations as $partieInvitation) {
                     $joueurDejaInscrit = $partieInvitation->getPlayer();
 
@@ -148,7 +177,7 @@ class PartieController extends AbstractController
 
                         $invitationMail->notifyInvitationPartie($invitation);
                     }
-                }
+                }*/
 
             }
 
