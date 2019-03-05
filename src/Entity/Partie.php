@@ -28,15 +28,20 @@ class Partie
      */
     private $utilisateur;
 
+//    /**
+//     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="partieRejoins")
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $joueurs;
+
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="partieRejoins")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Invitation", mappedBy="partie", orphanRemoval=true)
      */
-    private $joueurs;
+    private $invitations;
 
     public function __construct()
     {
-        $this->joueurs = new ArrayCollection();
+        $this->invitations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,27 +73,33 @@ class Partie
         return $this;
     }
 
+
     /**
-     * @return Collection|User[]
+     * @return Collection|Invitation[]
      */
-    public function getJoueurs(): Collection
+    public function getInvitations(): Collection
     {
-        return $this->joueurs;
+        return $this->invitations;
     }
 
-    public function addJoueur(User $joueur): self
+    public function addInvitation(Invitation $invitation): self
     {
-        if (!$this->joueurs->contains($joueur)) {
-            $this->joueurs[] = $joueur;
+        if (!$this->invitations->contains($invitation)) {
+            $this->invitations[] = $invitation;
+            $invitation->setPartie($this);
         }
 
         return $this;
     }
 
-    public function removeJoueur(User $joueur): self
+    public function removeInvitation(Invitation $invitation): self
     {
-        if ($this->joueurs->contains($joueur)) {
-            $this->joueurs->removeElement($joueur);
+        if ($this->invitations->contains($invitation)) {
+            $this->invitations->removeElement($invitation);
+            // set the owning side to null (unless already changed)
+            if ($invitation->getPartie() === $this) {
+                $invitation->setPartie(null);
+            }
         }
 
         return $this;

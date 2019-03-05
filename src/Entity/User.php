@@ -73,11 +73,16 @@ class User implements UserInterface
      */
     private $maps;
 
+//    /**
+//     * @ORM\ManyToMany(targetEntity="App\Entity\Partie", mappedBy="joueurs")
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $partieRejoins;
+
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Partie", mappedBy="joueurs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Invitation", mappedBy="player", orphanRemoval=true)
      */
-    private $partieRejoins;
+    private $invitations;
 
 
 
@@ -164,6 +169,7 @@ class User implements UserInterface
         $this->personnages = new ArrayCollection();
         $this->maps = new ArrayCollection();
         $this->partieRejoins = new ArrayCollection();
+        $this->invitations = new ArrayCollection();
 //        $this->roles[]="ROLE_ADMIN";
 
     }
@@ -284,29 +290,60 @@ class User implements UserInterface
         return $this;
     }
 
+//    /**
+//     * @return Collection|Partie[]
+//     */
+//    public function getPartieRejoins(): Collection
+//    {
+//        return $this->partieRejoins;
+//    }
+//
+//    public function addPartieRejoin(Partie $partieRejoin): self
+//    {
+//        if (!$this->partieRejoins->contains($partieRejoin)) {
+//            $this->partieRejoins[] = $partieRejoin;
+//            $partieRejoin->addJoueur($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removePartieRejoin(Partie $partieRejoin): self
+//    {
+//        if ($this->partieRejoins->contains($partieRejoin)) {
+//            $this->partieRejoins->removeElement($partieRejoin);
+//            $partieRejoin->removeJoueur($this);
+//        }
+//
+//        return $this;
+//    }
+
     /**
-     * @return Collection|Partie[]
+     * @return Collection|Invitation[]
      */
-    public function getPartieRejoins(): Collection
+    public function getInvitations(): Collection
     {
-        return $this->partieRejoins;
+        return $this->invitations;
     }
 
-    public function addPartieRejoin(Partie $partieRejoin): self
+    public function addInvitation(Invitation $invitation): self
     {
-        if (!$this->partieRejoins->contains($partieRejoin)) {
-            $this->partieRejoins[] = $partieRejoin;
-            $partieRejoin->addJoueur($this);
+        if (!$this->invitations->contains($invitation)) {
+            $this->invitations[] = $invitation;
+            $invitation->setPlayer($this);
         }
 
         return $this;
     }
 
-    public function removePartieRejoin(Partie $partieRejoin): self
+    public function removeInvitation(Invitation $invitation): self
     {
-        if ($this->partieRejoins->contains($partieRejoin)) {
-            $this->partieRejoins->removeElement($partieRejoin);
-            $partieRejoin->removeJoueur($this);
+        if ($this->invitations->contains($invitation)) {
+            $this->invitations->removeElement($invitation);
+            // set the owning side to null (unless already changed)
+            if ($invitation->getPlayer() === $this) {
+                $invitation->setPlayer(null);
+            }
         }
 
         return $this;

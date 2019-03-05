@@ -1,6 +1,7 @@
 <nav class="navbar navbar-top navbar-expand-lg navbar-dark bg-primary ">
     <a class="navbar-brand" href="{{ path('home') }}">JDR </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -8,31 +9,47 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
 
-                <a class="nav-link" href="{{ path('home') }}">  <i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('home') }}"> <i class="fa fa-home" aria-hidden="true"></i> Home <span
+                            class="sr-only">(current)</span></a>
             </li>
 
 
-            {% if  not app.user %}
+            {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a href="{{ path('security_logout') }}  " class="nav-link"><i class="fa fa-sign-out-alt"></i>
+                        Deconnexion</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+
+                    <li class="nav-item">
+                        <a href="{{ path('contact_index') }}  " class="nav-link"><i class="fa fa-sign-out-alt"></i>
+                            liste des mails</a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+
                 <li class="nav-item ">
-                    <a href="{{ path('registration') }}" class="nav-link"> <i class="fas fa-user-plus"></i>   Inscription</a>
+                    <a href="{{ path('registration') }}" class="nav-link"> <i class="fas fa-user-plus"></i> Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ path('security_login') }}  " class="nav-link"> <i class="fa fa-sign-in-alt"></i> Connexion</a>
+                    <a href="{{ path('security_login') }}  " class="nav-link"> <i class="fa fa-sign-in-alt"></i>
+                        Connexion</a>
                 </li>
-            {% else  %}
-
-
 
                 {#<li class="nav-item">#}
-                    {#<a class="nav-link" href="{{ path('listUserFolder',{'id':app.user.id}) }}"> <i class="fas fa-hdd"></i> Mon Drive</a>#}
+                {#<a class="nav-link" href="{{ path('listUserFolder',{'id':app.user.id}) }}"> <i class="fas fa-hdd"></i> Mon Drive</a>#}
                 {#</li>#}
-
-                <li class="nav-item">
-                    <a href="{{ path('security_logout') }}  " class="nav-link"><i class="fa fa-sign-out-alt"></i> Deconnexion</a>
-                </li>
 
 
             {% endif %}
+
+            <li class="nav-item">
+                <a href="{{ path('contact_new') }}"><i class="far fa-envelope"></i> Mail </a>
+
+            </li>
+
         </ul>
 
     </div>
