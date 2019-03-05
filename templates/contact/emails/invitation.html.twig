@@ -6,7 +6,16 @@ Bonjour {{ joueur.username }}
 
 
 <div class=" centerText container-fluid">
-   <p>{{ partie.utilisateur.username }} vous invite a participer a sa partie de JDR : <a href="{{ url('choix_personnage_new',{'idPartie': partie.id,'idUser':joueur.id,'idInvitation':invitation.id}) }}" target="_blank">
+
+    {% if joueur.personnages is empty %}
+        <p>
+            Veuillez créer au moins un personnage pour pourvoir rejoindre la partie :
+            <a href="{{ url('personnage_new_user',{'idUser':joueur.id}) }}"> créer</a>
+        </p>
+    {% endif %}
+    <p>
+        {{ partie.utilisateur.username }} vous invite a participer a sa partie de JDR :
+        <a href="{{ url('choix_personnage_new',{'idPartie': partie.id,'idUser':joueur.id,'idInvitation':invitation.id}) }}" target="_blank">
            lien
        </a>
    </p>
