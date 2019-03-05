@@ -36,71 +36,82 @@ class ChoixPersonnageController extends AbstractController
     /**
      * @Route("/invitation/{idInvitation}/personnage/{idUser}/partie/{idPartie}", name="choix_personnage_new", methods={"GET","POST"})
      * @param Request $request
-     * @param User $idUser
-     * @param Partie $idPartie
-     * @param Invitation $idInvitation
+     * @param $idUser
+     * @param $idPartie
+     * @param $idInvitation
+     * @param PersonnageRepository $personnageRepository
+     * @param InvitationRepository $invitationRepository
      * @return Response
      */
-    public function new(Request $request, User $idUser, Partie $idPartie, Invitation $idInvitation, PersonnageRepository $personnageRepository, InvitationRepository $invitationRepository): Response
+    public function new(Request $request, $idUser, $idPartie, $idInvitation, PersonnageRepository $personnageRepository, InvitationRepository $invitationRepository): Response
     {
         $partieSearch = $invitationRepository->findByPlayer($idUser);
-        if (count($partieSearch) != 0) {
-            if ($partieSearch[0]->getStatus() == "En attente") {
-                $invitation = $this->searchInvitationAction($idInvitation);
-                $choixPersonnage = new ChoixPersonnage();
-                $partie = $this->searchPartieAction($idPartie);
-                $utilisateur = $this->searchUserAction($idUser);
-                $personnages = $utilisateur->getPersonnages();
 
-                if (isset($_POST['sendPersonnageChoix'])) {
-                    $entityManager = $this->getDoctrine()->getManager();
+        $partie = $this->searchPartieAction($idPartie);
 
-                    $choixPersonnage->setPartie($partie);
-                    $personnageChoix = $personnageRepository->find($_POST['idPersonnage']);
-                    $choixPersonnage->setPersonnage($personnageChoix);
-                    $entityManager->persist($choixPersonnage);
+        if (!$partie) {
+            return $this->render('home.html.twig');
+        }
+        else {
+            if (count($partieSearch) != 0) {
+                if ($partieSearch[0]->getStatus() == "En attente") {
+                    $invitation = $this->searchInvitationAction($idInvitation);
+                    $choixPersonnage = new ChoixPersonnage();
+                    $utilisateur = $this->searchUserAction($idUser);
+                    $personnages = $utilisateur->getPersonnages();
 
-                    $invitation->setStatus('accepter');
+                    if (isset($_POST['sendPersonnageChoix'])) {
+                        $entityManager = $this->getDoctrine()->getManager();
 
-                    $entityManager->persist($invitation);
+                        $choixPersonnage->setPartie($partie);
+                        $personnageChoix = $personnageRepository->find($_POST['idPersonnage']);
+                        $choixPersonnage->setPersonnage($personnageChoix);
+                        $entityManager->persist($choixPersonnage);
+
+                        $invitation->setStatus('accepter');
+
+                        $entityManager->persist($invitation);
 
 
-                    $entityManager->flush();
+                        $entityManager->flush();
 //
 //                    return $this->redirectToRoute('choix_personnage_index');
 
 
-                    return $this->redirectToRoute('partie_show',['id'=>$partie->getId()]);
+                        return $this->redirectToRoute('partie_show', ['id' => $partie->getId()]);
+                    }
                 }
+            } else {
+                return $this->render('home.html.twig');
             }
+
+            /*$form = $this->createForm(ChoixPersonnageType::class, $choixPersonnage ,array('personnages'=>$personnages));
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+
+
+                $choixPersonnage->setPartie($partie);
+                $entityManager->persist($choixPersonnage);
+
+                $invitation->setStatus('accepter');
+
+                $entityManager->persist($invitation);
+
+
+                $entityManager->flush();
+
+
+    //            return $this->redirectToRoute('choix_personnage_index');
+            }*/
+
+            return $this->render('choix_personnage/new.html.twig', [
+                'choix_personnage' => $choixPersonnage,
+                'personnages' => $personnages,
+                // 'form' => $form->createView(),
+            ]);
         }
-
-        /*$form = $this->createForm(ChoixPersonnageType::class, $choixPersonnage ,array('personnages'=>$personnages));
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-
-
-            $choixPersonnage->setPartie($partie);
-            $entityManager->persist($choixPersonnage);
-
-            $invitation->setStatus('accepter');
-
-            $entityManager->persist($invitation);
-
-
-            $entityManager->flush();
-
-
-//            return $this->redirectToRoute('choix_personnage_index');
-        }*/
-
-        return $this->render('choix_personnage/new.html.twig', [
-            'choix_personnage' => $choixPersonnage,
-            'personnages' => $personnages,
-            // 'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -156,7 +167,7 @@ class ChoixPersonnageController extends AbstractController
     }
 
 
-    private function searchUserAction(User $user)
+    private function searchUserAction($user)
     {
         $repositoryUser = $this->getDoctrine()->getRepository('App:User');
         //on récupère l'id de la siuation
@@ -167,18 +178,20 @@ class ChoixPersonnageController extends AbstractController
     }
 
 
-    private function searchPartieAction(Partie $partie): Partie
+    private function searchPartieAction($partie)
     {
         $repositoryPartie = $this->getDoctrine()->getRepository('App:Partie');
         //on récupère l'id de la siuation
         // on recuper les info d'une situation precise
-        $infoPartie = $repositoryPartie->find($partie);
-
-        return $infoPartie;
+        $infoPartie = $repositoryPartie->findById($partie);
+        if(count($infoPartie)!=0)
+            return $infoPartie[0];
+        else
+            return false;
     }
 
 
-    private function searchInvitationAction(Invitation $invitation)
+    private function searchInvitationAction($invitation)
     {
         $repositoryInvitation = $this->getDoctrine()->getRepository('App:Invitation');
         //on récupère l'id de la siuation
