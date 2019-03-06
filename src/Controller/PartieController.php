@@ -143,7 +143,7 @@ class PartieController extends AbstractController
                 );
                 $invitationList = $invitationRepository->findBy($array);
                 $invitationList2 = $invitationRepository->findBy($array2);
-                if(count($invitationList)==0 && (count($invitationList2)==0)
+                if(count($invitationList)==0 && (count($invitationList2)==0))
                 {
                     $invitation = new Invitation();
                     $invitation->setPartie($partie);
