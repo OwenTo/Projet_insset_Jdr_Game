@@ -3,24 +3,59 @@
 {% block title %}Partie{% endblock %}
 
 {% block body %}
-    <h1>Partie</h1>
+
+    {% if app.flashes is defined %}
+        {% for message in app.flashes('success') %}
+            <div class=" alert alert-success">{{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <h1>Partie {{ partie.nomPartie }}</h1>
 
     <table class="table">
         <tbody>
-            {#<tr>#}
-                {#<th>Id</th>#}
-                {#<td>{{ partie.id }}</td>#}
-            {#</tr>#}
+        {#<tr>#}
+        {#<th>Id</th>#}
+        {#<td>{{ partie.id }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+        {#<th>NomPartie</th>#}
+        {#<td></td>#}
+        {#</tr>#}
+
+        <tr>
+            <th>Joueurs participant</th>
+            <th>Etat</th>
+
+        </tr>
+
+        {% if partie.invitations is not empty %}
             <tr>
-                <th>NomPartie</th>
-                <td>{{ partie.nomPartie }}</td>
+
+                {% for invitation in partie.invitations %}
+                    <td> {{ invitation.player.username }} </td>
+
+                    <td> {{ invitation.status }} </td>
+                {% endfor %}
             </tr>
+
+        {% endif %}
         </tbody>
     </table>
 
-    <a href="{{ path('partie_index') }}">back to list</a>
 
     {#<a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>#}
+    <a href="{{ path('partie_index_user',{'idUser':app.user.id }) }}">back to list</a>
+
+    {% if partie.utilisateur.id ==app.user.id %}
+        <a href="{{ path('partie_index_user',{'idUser':partie.utilisateur.id }) }}">back to list</a>
 
     {{ include('partie/_delete_form.html.twig') }}
+
+   {#{% else %}#}
+       {#<a href="{{ path('partie_index') }}">back to list</a>#}
+
+
+    {% endif %}
 {% endblock %}

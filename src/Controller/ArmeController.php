@@ -131,7 +131,7 @@ class ArmeController extends AbstractController
     }
 
     /**
-     * @Route("/edit/arme{id}", name="arme_edit", methods={"GET","POST"})
+     * @Route("/edit/arme/{id}", name="arme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Arme $arme): Response
     {

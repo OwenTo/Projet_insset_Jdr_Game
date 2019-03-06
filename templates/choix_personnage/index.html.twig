@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ChoixPersonnage index{% endblock %}
+
+{% block body %}
+    <h1>ChoixPersonnage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for choix_personnage in choix_personnages %}
+            <tr>
+                <td>{{ choix_personnage.id }}</td>
+                <td>
+                    <a href="{{ path('choix_personnage_show', {'id': choix_personnage.id}) }}">show</a>
+                    <a href="{{ path('choix_personnage_edit', {'id': choix_personnage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#<a href="{{ path('choix_personnage_new') }}">Create new</a>#}
+{% endblock %}
